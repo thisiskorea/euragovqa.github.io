@@ -32,6 +32,12 @@
 
     <h1 class="text-4xl font-extrabold mb-6 text-center">Leaderboard</h1>
 
+    <!-- ───── Radar 버튼 ───── -->
+    <button id="radar-btn"
+            class="mb-4 px-4 py-2 bg-emerald-600 text-white rounded shadow">
+      Show Radar&nbsp;Chart
+    </button>
+
     <!-- ───── 표 ───── -->
     <table id="lb-table" class="display stripe hover w-full">
       <thead>
@@ -53,13 +59,26 @@
          class="underline text-blue-600">JSON source</a>
     </p>
 
-    <!-- ───── 시각화 영역 ───── -->
+    <!-- ───── 드롭다운 막대그래프 ───── -->
     <div class="my-10 space-y-4">
       <div>
         <label class="font-medium mr-2">Metric :</label>
         <select id="metric-select" class="border rounded px-2 py-1"></select>
       </div>
       <canvas id="metric-chart" class="w-full max-w-4xl mx-auto"></canvas>
+    </div>
+  </div>
+
+  <!-- ░░░ Radar 모달 ░░░ -->
+  <div id="radar-modal"
+       class="fixed inset-0 bg-black/50 hidden place-items-center z-50">
+    <div class="bg-white p-6 rounded-xl shadow-xl w-[600px] max-w-[90vw]">
+      <h2 class="text-xl font-bold mb-4">Domain Radar (Top-3 Models)</h2>
+      <canvas id="radar-canvas"></canvas>
+      <button id="close-radar"
+              class="mt-4 px-4 py-2 bg-gray-700 text-white rounded">
+        Close
+      </button>
     </div>
   </div>
 
