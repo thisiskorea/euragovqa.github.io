@@ -8,9 +8,23 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="assets/css/style.css">
 
-<!-- DataTables -->
+<!-- DataTables core -->
 <link rel="stylesheet"
       href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+
+<!-- DataTables Buttons (colVis) & Responsive -->
+<link rel="stylesheet"
+      href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+<link rel="stylesheet"
+      href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-slate-50 text-gray-800">
 
@@ -25,7 +39,7 @@
 </nav>
 
 <!-- ░░░ Main ░░░ -->
-<div class="max-w-[90vw] mx-auto py-12">
+<div class="max-w-[92vw] mx-auto py-12">
 
   <h1 class="text-4xl font-extrabold mb-6 text-center">Leaderboard</h1>
 
@@ -69,14 +83,16 @@
 <!-- ░░░ Radar 모달 ░░░ -->
 <div id="radar-modal"
      class="fixed inset-0 bg-black/50 hidden place-items-center z-50">
-  <div class="bg-white p-6 rounded-xl shadow-xl w-[700px] max-w-[95vw]">
+  <div class="bg-white p-6 rounded-xl shadow-xl w-[720px] max-w-[95vw]">
     <div class="flex justify-between items-center mb-4">
       <h2 class="text-xl font-bold">Nation Radar</h2>
       <div class="flex items-center gap-2">
         <label class="text-sm font-medium">Top&nbsp;N:</label>
         <select id="top-n-select" class="border rounded px-2 py-1 text-sm">
-          <option value="3">3</option><option value="5" selected>5</option>
-          <option value="10">10</option><option value="all">All</option>
+          <option value="3">3</option>
+          <option value="5" selected>5</option>
+          <option value="10">10</option>
+          <option value="all">All</option>
         </select>
       </div>
     </div>
@@ -88,10 +104,7 @@
   </div>
 </div>
 
-<!-- ░░░ Scripts ░░░ -->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- ░░░ Custom JS ░░░ -->
 <script src="assets/js/leaderboard.js"></script>
 </body>
 </html>
