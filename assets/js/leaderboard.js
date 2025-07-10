@@ -1,4 +1,4 @@
-/* Leaderboard + Metric 그래프 */
+/* ------------------------------ constants ------------------------------ */
 const nations = ['india','eu','japan','taiwan','south_korea'];
 const tasks   = [
   'biology','law','chemistry','medicine','administration','physics',
@@ -6,10 +6,11 @@ const tasks   = [
   'language','geography','engineering','earth_science','psychology','politics'
 ];
 
+/* ------------------------------ main logic ----------------------------- */
 fetch('./data/leaderboard.json')
   .then(r => r.json())
   .then(rows => {
-    /* ---------- DataTable ---------- */
+    /* ---------- build DataTable ---------- */
     rows.sort((a, b) => b.overall - a.overall);
     const tbody = $('#lb-table tbody');
     rows.forEach((r, idx) => {
@@ -24,11 +25,11 @@ fetch('./data/leaderboard.json')
         </tr>
       `);
     });
-    $('#lb-table').DataTable({ order: [[2,'desc']], pageLength: 10 });
+    $('#lb-table').DataTable({ order: [[2, 'desc']], pageLength: 10 });
     document.getElementById('timestamp').textContent =
-      new Date().toISOString().slice(0,10);
+      new Date().toISOString().slice(0, 10);
 
-    /* ---------- Metric dropdown + Chart ---------- */
+    /* ---------- dropdown bar chart ---------- */
     const select = document.getElementById('metric-select');
     select.innerHTML =
       `<option value="overall">overall</option>` +
@@ -39,29 +40,69 @@ fetch('./data/leaderboard.json')
         tasks.map(t => `<option value="${t}">${t}</option>`).join('') +
       `</optgroup>`;
 
-    const ctx = document.getElementById('metric-chart');
-    let chart = null;
-    const draw = metric => {
-      if (chart) chart.destroy();
+    const barCtx = document.getElementById('metric-chart');
+    let barChart = null;
+    const drawBar = metric => {
+      if (barChart) barChart.destroy();
       const labels = rows.map(r => r.model);
-      let data;
-      if (metric === 'overall') {
-        data = rows.map(r => r.overall);
-      } else if (nations.includes(metric)) {
-        data = rows.map(r => r.nation[metric] ?? 0);
-      } else { // task
-        data = rows.map(r => r.tasks[metric] ?? 0);
-      }
-      chart = new Chart(ctx, {
+      const data = metric === 'overall'
+        ? rows.map(r => r.overall)
+        : nations.includes(metric)
+          ? rows.map(r => r.nation?.[metric] ?? 0)
+          : rows.map(r => r.tasks?.[metric] ?? 0);
+
+      barChart = new Chart(barCtx, {
         type: 'bar',
         data: { labels,
                 datasets: [{ label: metric.toUpperCase(), data }] },
-        options: { responsive:true,
-                   scales:{ y:{ beginAtZero:true, max:100 } } }
+        options: { responsive:true, scales:{ y:{ beginAtZero:true, max:100 } } }
       });
     };
+    drawBar('overall');
+    select.addEventListener('change', e => drawBar(e.target.value));
 
-    draw('overall');
-    select.addEventListener('change', e => draw(e.target.value));
+    /* -------------------- Radar Chart (Top-3 models) -------------------- */
+    const buckets = {
+      administration: ['administration','politics','law'],
+      humanities:     ['history','language','philosophy'],
+      social:         ['economics','geography','psychology'],
+      stem:           ['mathematics','physics','chemistry','engineering',
+                       'computer_science','earth_science','biology','medicine']
+    };
+
+    // show & hide modal
+    const modal   = document.getElementById('radar-modal');
+    document.getElementById('radar-btn').onclick  = () => modal.classList.remove('hidden');
+    document.getElementById('close-radar').onclick = () => modal.classList.add('hidden');
+
+    const radarCtx = document.getElementById('radar-canvas');
+    const colors = [
+      'rgba(30,144,255,0.5)',
+      'rgba(255,99,132,0.5)',
+      'rgba(255,205,86,0.5)'
+    ];
+    const top3 = rows.slice(0, 3);
+    const radarData = {
+      labels: Object.keys(buckets),
+      datasets: top3.map((r, i) => ({
+        label: r.model,
+        data: Object.values(buckets).map(arr =>
+          arr.reduce((sum, k) => sum + (r.tasks[k] || 0), 0) / arr.length),
+        backgroundColor: colors[i],
+        borderColor: colors[i].replace('0.5', '1'),
+        borderWidth: 1,
+        fill: true
+      }))
+    };
+    new Chart(radarCtx, {
+      type: 'radar',
+      data: radarData,
+      options: {
+        responsive: true,
+        scales: { r: { beginAtZero: true, max: 100 } },
+        plugins: { legend: { position: 'top' } }
+      }
+    });
   })
   .catch(err => console.error(err));
+
