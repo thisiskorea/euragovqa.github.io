@@ -1,5 +1,10 @@
-/* Custom styles */
 img.round {
   border-radius: 0.75rem;
   box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+
+/* 표 th·td 중앙 정렬 */
+#lb-table th,
+#lb-table td {
+  text-align: center;
 }
