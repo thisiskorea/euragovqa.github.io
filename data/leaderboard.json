@@ -1,14 +1,37 @@
 [
   {
     "model": "GPT-4o-Vision",
-    "overall": 63.4,
-    "law": 71.2,
-    "biology": 59.8
+    "overall": 85.3,
+    "law": 91.2,
+    "biology": 82.7,
+    "paper": "https://openai.com/gpt4o"
   },
   {
-    "model": "Gemini\u00a01.5\u00a0Pro\u00a0V",
-    "overall": 58.1,
-    "law": 67.0,
-    "biology": 53.4
+    "model": "Gemini 1.5 Pro Vision",
+    "overall": 80.4,
+    "law": 87.5,
+    "biology": 76.9,
+    "paper": "https://ai.google.dev/gemini"
+  },
+  {
+    "model": "Claude 4o Vision",
+    "overall": 78.1,
+    "law": 84.3,
+    "biology": 74.5,
+    "paper": "https://www.anthropic.com"
+  },
+  {
+    "model": "LLaVA-NeXT 2",
+    "overall": 65.2,
+    "law": 71.8,
+    "biology": 61.0,
+    "paper": "https://llava-vl.github.io"
+  },
+  {
+    "model": "BLIP-3",
+    "overall": 62.7,
+    "law": 68.1,
+    "biology": 58.3,
+    "paper": "https://salesforce-ai.github.io"
   }
 ]
