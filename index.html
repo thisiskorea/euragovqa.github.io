@@ -2,40 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>EuraGovQA Benchmark</title>
+  <title>EuraGovQA • Leaderboard</title>
+
+  <!-- Tailwind (styles) -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- jQuery + DataTables (interactivity) -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha384-H+K7U5CnX"
+          crossorigin="anonymous"></script>
+  <link rel="stylesheet"
+        href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="bg-slate-50 text-gray-800">
-  <!-- Navbar -->
+  <!-- Navbar (Leaderboard=현재 페이지) -->
   <nav class="w-full bg-white shadow-md">
     <div class="max-w-6xl mx-auto px-4 py-3 flex gap-6">
-      <a href="index.html" class="font-bold">EuraGovQA</a>
+      <a href="index.html" class="font-bold text-blue-600">EuraGovQA</a>
+      <a href="index.html" class="font-semibold">Leaderboard</a>
       <a href="paper.html">Paper</a>
       <a href="dataset.html">Dataset</a>
-      <a href="leaderboard.html">Leaderboard</a>
       <a href="submission.html">Submission</a>
       <a href="examples.html">Examples</a>
       <a href="team.html">Team</a>
     </div>
   </nav>
 
-  <!-- Hero -->
-  <header class="text-center py-20">
-    <h1 class="text-4xl font-extrabold mb-4">EuraGovQA</h1>
-    <p class="max-w-3xl mx-auto text-lg">
-      A multimodal benchmark built from Eurasian civil-service examinations across 17 domains.
+  <div class="max-w-6xl mx-auto py-12 px-4">
+    <h1 class="text-4xl font-extrabold mb-6 text-center">Leaderboard</h1>
+
+    <!-- DataTable -->
+    <table id="lb-table" class="display stripe hover" style="width:100%">
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Model</th>
+          <th>Overall</th>
+          <th>Law</th>
+          <th>Biology</th>
+          <th>Paper / Link</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <p class="text-sm text-gray-500 mt-4">
+      Last updated: <span id="timestamp"></span> &middot;  
+      <a href="https://github.com/thisiskorea/euragovqa.github.io/tree/main/data/leaderboard.json"
+         class="underline text-blue-600">JSON source</a>
     </p>
-    <a href="paper.html" class="mt-6 inline-block px-6 py-3 bg-blue-600 text-white rounded-lg shadow">
-      Read the Paper
-    </a>
-  </header>
+  </div>
 
-  <!-- Footer -->
-  <footer class="text-center py-6 text-sm text-gray-500">
-    © 2025 EuraGovQA Project
-  </footer>
-
-  <script src="assets/js/main.js"></script>
+  <!-- JS -->
+  <script src="assets/js/leaderboard.js"></script>
 </body>
 </html>
