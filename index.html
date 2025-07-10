@@ -1,36 +1,36 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>EuraGovQA • Leaderboard</title>
+  <meta charset="utf-8">
+  <title>EuraGovQA • Leaderboard</title>
 
-<!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="assets/css/style.css">
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="assets/css/style.css">
 
-<!-- DataTables core -->
-<link rel="stylesheet"
-      href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+  <!-- DataTables core -->
+  <link rel="stylesheet"
+        href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 
-<!-- DataTables Buttons (colVis) & Responsive -->
-<link rel="stylesheet"
-      href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
-<link rel="stylesheet"
-      href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
-<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+  <!-- DataTables Buttons (colVis) & Responsive -->
+  <link rel="stylesheet"
+        href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+  <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
+  <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
 
-<!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="bg-slate-50 text-gray-800">
 
 <!-- ░░░ Navbar ░░░ -->
 <nav class="w-full bg-white shadow-md">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex gap-6">
+  <div class="max-w-screen-lg mx-auto px-4 py-3 flex gap-6">
     <a href="index.html" class="font-bold text-blue-600">EuraGovQA</a>
     <a href="index.html" class="font-semibold">Leaderboard</a>
     <a href="paper.html">Paper</a>
@@ -39,7 +39,7 @@
 </nav>
 
 <!-- ░░░ Main ░░░ -->
-<div class="max-w-[92vw] mx-auto py-12">
+<div class="max-w-screen-lg mx-auto py-12 px-2">
 
   <h1 class="text-4xl font-extrabold mb-6 text-center">Leaderboard</h1>
 
@@ -76,14 +76,14 @@
       <label class="font-medium mr-2">Metric :</label>
       <select id="metric-select" class="border rounded px-2 py-1"></select>
     </div>
-    <canvas id="metric-chart" class="w-full max-w-6xl mx-auto"></canvas>
+    <canvas id="metric-chart" class="w-full max-w-screen-lg mx-auto"></canvas>
   </div>
 </div>
 
 <!-- ░░░ Radar 모달 ░░░ -->
 <div id="radar-modal"
      class="fixed inset-0 bg-black/50 hidden place-items-center z-50">
-  <div class="bg-white p-6 rounded-xl shadow-xl w-[720px] max-w-[95vw]">
+  <div class="bg-white p-6 rounded-xl shadow-xl w-full max-w-xl mx-auto">
     <div class="flex justify-between items-center mb-4">
       <h2 class="text-xl font-bold">Nation Radar</h2>
       <div class="flex items-center gap-2">
@@ -108,3 +108,4 @@
 <script src="assets/js/leaderboard.js"></script>
 </body>
 </html>
+
