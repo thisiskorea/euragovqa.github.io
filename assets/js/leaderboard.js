@@ -66,7 +66,84 @@ function buildTable(view){
       tr.append(`<td>${r.overall}</td>`);
       TASK_KEYS.forEach(k=>tr.append(`<td>${r.tasks[k]}</td>`));
     }else{
-      tr.app
+      tr.append(`<td>${r.overall}</td>`);
+      NATION_KEYS.forEach(k=>tr.append(`<td>${r.nation[k]}</td>`));
+    }
+    tr.append(`<td>${r.paper?`<a href="${r.paper}" target="_blank">link</a>`:'-'}</td>`);
+    tbody.append(tr);
+  });
+  $('#lb-table').append(tbody);
 
+  /* DataTable init */
+  table = $('#lb-table').DataTable({
+    scrollX:true,
+    responsive:true,
+    dom:'Bfrtip',
+    buttons:['colvis'],
+    order:[[ view==='task'?2:3,'desc' ]],
+    pageLength:10
+  });
 }
 
+/* ---------- Metric Bar Chart ---------- */
+function initBar(){
+  const sel=document.getElementById('metric-select');
+  sel.innerHTML =
+    `<option value="overall">overall</option>`+
+    `<optgroup label="nation">`+
+      NATION_KEYS.map((k,i)=>`<option value="${k}">${NATION_LABELS[i]}</option>`).join('')+
+    `</optgroup>`+
+    `<optgroup label="task">`+
+      TASK_KEYS.map(t=>`<option value="${t}">${t}</option>`).join('')+
+    `</optgroup>`;
+  const ctx=document.getElementById('metric-chart');
+  let chart=null;
+  const draw=metric=>{
+    chart&&chart.destroy();
+    const labels=rows.map(r=>r.model);
+    const data =
+      metric==='overall' ? rows.map(r=>r.overall) :
+      NATION_KEYS.includes(metric) ? rows.map(r=>r.nation[metric]) :
+      rows.map(r=>r.tasks[metric]);
+    chart=new Chart(ctx,{type:'bar',
+      data:{labels,datasets:[{label:metric.toUpperCase(),data}]},
+      options:{responsive:true,animation:{duration:1200,easing:'easeOutQuart'},
+               scales:{y:{min:0,max:100}}}});
+  };
+  draw('overall');
+  sel.onchange=e=>draw(e.target.value);
+}
+
+/* ---------- Nation Radar Chart ---------- */
+function initRadar(){
+  const modal = document.getElementById('radar-modal');
+  const radarBtn=document.getElementById('radar-btn');
+  const closeBtn=document.getElementById('close-radar');
+  const topSel=document.getElementById('top-n-select');
+  const ctx=document.getElementById('radar-canvas');
+  let chart=null;
+
+  const draw = () => {
+    chart&&chart.destroy();
+    const val=topSel.value;
+    const n= val==='all'? rows.length : parseInt(val,10);
+    const tops=rows.slice(0,n);
+    const data={
+      labels:NATION_LABELS,
+      datasets: tops.map((r,i)=>({
+        label:r.model,
+        data:NATION_KEYS.map(k=>r.nation[k]),
+        backgroundColor:rgba(COLORS[i%COLORS.length],0.3),
+        borderColor:COLORS[i%COLORS.length],
+        fill:true,borderWidth:2,pointRadius:3
+      }))
+    };
+    chart=new Chart(ctx,{type:'radar',data,
+      options:{responsive:true,animation:{duration:1500,easing:'easeOutQuad'},
+               scales:{r:{min:0,max:100,ticks:{stepSize:20}}}}});
+  };
+
+  radarBtn.onclick = ()=>{ modal.classList.remove('hidden'); draw(); };
+  closeBtn.onclick = ()=> modal.classList.add('hidden');
+  topSel.onchange = draw;
+}
