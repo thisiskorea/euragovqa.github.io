@@ -1,0 +1,14 @@
+[
+  {
+    "model": "GPT-4o-Vision",
+    "overall": 63.4,
+    "law": 71.2,
+    "biology": 59.8
+  },
+  {
+    "model": "Gemini\u00a01.5\u00a0Pro\u00a0V",
+    "overall": 58.1,
+    "law": 67.0,
+    "biology": 53.4
+  }
+]
