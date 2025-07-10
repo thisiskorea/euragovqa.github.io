@@ -1,22 +1,30 @@
 /* ------------------------------ constants ------------------------------ */
-const nations = ['india','eu','japan','taiwan','south_korea'];
-const tasks   = [
+const NATION_LABELS = ['India', 'EU', 'Japan', 'Taiwan', 'South Korea'];
+const NATION_KEYS   = ['india','eu','japan','taiwan','south_korea'];
+
+const TASK_KEYS = [
   'biology','law','chemistry','medicine','administration','physics',
   'mathematics','computer_science','philosophy','economics','history',
   'language','geography','engineering','earth_science','psychology','politics'
 ];
 
-/* ------------------------------ main logic ----------------------------- */
+const BAR_ANIM_MS = 1200; // 바차트 애니메이션(ms)
+
+/* ------------------------------ helpers ----------------------------- */
+const makeColor = (hex, alpha) =>
+  Chart.helpers.color(hex).alpha(alpha).rgbString();
+
+/* ------------------------------ main ----------------------------- */
 fetch('./data/leaderboard.json')
   .then(r => r.json())
   .then(rows => {
-    /* ---------- build DataTable ---------- */
-    rows.sort((a, b) => b.overall - a.overall);
+    /* ---------- TABLE ---------- */
+    rows.sort((a,b)=>b.overall-a.overall);
     const tbody = $('#lb-table tbody');
-    rows.forEach((r, idx) => {
+    rows.forEach((r,i)=>{
       tbody.append(`
         <tr>
-          <td>${idx + 1}</td>
+          <td>${i+1}</td>
           <td>${r.model}</td>
           <td>${r.overall}</td>
           <td>${r.tasks.law}</td>
@@ -25,84 +33,81 @@ fetch('./data/leaderboard.json')
         </tr>
       `);
     });
-    $('#lb-table').DataTable({ order: [[2, 'desc']], pageLength: 10 });
+    $('#lb-table').DataTable({order:[[2,'desc']],pageLength:10});
     document.getElementById('timestamp').textContent =
-      new Date().toISOString().slice(0, 10);
+      new Date().toISOString().slice(0,10);
 
-    /* ---------- dropdown bar chart ---------- */
+    /* ---------- BAR ---------- */
     const select = document.getElementById('metric-select');
     select.innerHTML =
-      `<option value="overall">overall</option>` +
+      `<option value="overall" selected>overall</option>` +
       `<optgroup label="nation">` +
-        nations.map(n => `<option value="${n}">${n}</option>`).join('') +
+        NATION_KEYS.map((k,i)=>`<option value="${k}">${NATION_LABELS[i]}</option>`).join('') +
       `</optgroup>` +
       `<optgroup label="task">` +
-        tasks.map(t => `<option value="${t}">${t}</option>`).join('') +
+        TASK_KEYS.map(t=>`<option value="${t}">${t}</option>`).join('') +
       `</optgroup>`;
 
-    const barCtx = document.getElementById('metric-chart');
-    let barChart = null;
-    const drawBar = metric => {
-      if (barChart) barChart.destroy();
-      const labels = rows.map(r => r.model);
-      const data = metric === 'overall'
-        ? rows.map(r => r.overall)
-        : nations.includes(metric)
-          ? rows.map(r => r.nation?.[metric] ?? 0)
-          : rows.map(r => r.tasks?.[metric] ?? 0);
-
-      barChart = new Chart(barCtx, {
-        type: 'bar',
-        data: { labels,
-                datasets: [{ label: metric.toUpperCase(), data }] },
-        options: { responsive:true, scales:{ y:{ beginAtZero:true, max:100 } } }
+    const barCtx=document.getElementById('metric-chart');let barChart=null;
+    const drawBar=metric=>{
+      barChart&&barChart.destroy();
+      const labels=rows.map(r=>r.model);
+      const data=metric==='overall'
+        ? rows.map(r=>r.overall)
+        : NATION_KEYS.includes(metric)
+          ? rows.map(r=>r.nation?.[metric]||0)
+          : rows.map(r=>r.tasks?.[metric]||0);
+      barChart=new Chart(barCtx,{
+        type:'bar',
+        data:{labels,datasets:[{label:metric.toUpperCase(),data}]},
+        options:{responsive:true,
+                 animation:{duration:BAR_ANIM_MS,easing:'easeOutQuart'},
+                 scales:{y:{beginAtZero:true,max:100}}}
       });
     };
     drawBar('overall');
-    select.addEventListener('change', e => drawBar(e.target.value));
+    select.addEventListener('change',e=>drawBar(e.target.value));
 
-    /* -------------------- Radar Chart (Top-3 models) -------------------- */
-    const buckets = {
-      administration: ['administration','politics','law'],
-      humanities:     ['history','language','philosophy'],
-      social:         ['economics','geography','psychology'],
-      stem:           ['mathematics','physics','chemistry','engineering',
-                       'computer_science','earth_science','biology','medicine']
-    };
-
-    // show & hide modal
+    /* ---------- NATION RADAR ---------- */
     const modal   = document.getElementById('radar-modal');
-    document.getElementById('radar-btn').onclick  = () => modal.classList.remove('hidden');
-    document.getElementById('close-radar').onclick = () => modal.classList.add('hidden');
+    const radarBtn= document.getElementById('radar-btn');
+    const closeBtn= document.getElementById('close-radar');
+    const topSel  = document.getElementById('top-n-select');
+    const radarCtx= document.getElementById('radar-canvas');
+    const palette = ['#1e90ff','#ff6384','#ffcd56','#4bc0c0','#9966ff',
+                     '#c9cbcf','#f67019','#00a950','#c92020','#ffa500'];
 
-    const radarCtx = document.getElementById('radar-canvas');
-    const colors = [
-      'rgba(30,144,255,0.5)',
-      'rgba(255,99,132,0.5)',
-      'rgba(255,205,86,0.5)'
-    ];
-    const top3 = rows.slice(0, 3);
-    const radarData = {
-      labels: Object.keys(buckets),
-      datasets: top3.map((r, i) => ({
-        label: r.model,
-        data: Object.values(buckets).map(arr =>
-          arr.reduce((sum, k) => sum + (r.tasks[k] || 0), 0) / arr.length),
-        backgroundColor: colors[i],
-        borderColor: colors[i].replace('0.5', '1'),
-        borderWidth: 1,
-        fill: true
-      }))
+    let radarChart=null;
+    const drawRadar = topN => {
+      radarChart&&radarChart.destroy();
+      const n = topN==='all'? rows.length : parseInt(topN,10);
+      const topRows = rows.slice(0,n);
+      const data = {
+        labels:NATION_LABELS,
+        datasets: topRows.map((r,i)=>({
+          label:r.model,
+          data:NATION_KEYS.map(k=>r.nation?.[k]||0),
+          backgroundColor:makeColor(palette[i%palette.length],0.4),
+          borderColor:palette[i%palette.length],
+          borderWidth:2,
+          pointRadius:3,
+          fill:true
+        }))
+      };
+      radarChart=new Chart(radarCtx,{
+        type:'radar',
+        data,
+        options:{
+          responsive:true,
+          animation:{duration:1500,easing:'easeOutQuad'},
+          scales:{r:{min:0,max:100,ticks:{stepSize:20}}},
+          plugins:{legend:{position:'top'}}
+        }
+      });
     };
-    new Chart(radarCtx, {
-      type: 'radar',
-      data: radarData,
-      options: {
-        responsive: true,
-        scales: { r: { beginAtZero: true, max: 100 } },
-        plugins: { legend: { position: 'top' } }
-      }
-    });
-  })
-  .catch(err => console.error(err));
 
+    radarBtn.onclick   = ()=>{ modal.classList.remove('hidden'); drawRadar(topSel.value); };
+    closeBtn.onclick   = ()=> modal.classList.add('hidden');
+    topSel.onchange    = e  => drawRadar(e.target.value);
+  })
+  .catch(console.error);
