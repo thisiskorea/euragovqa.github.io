@@ -1,0 +1,184 @@
+[
+  {
+    "model": "GPT-4o-Vision",
+    "overall": 85.3,
+    "nation": { "india": 86.0, "eu": 84.1, "japan": 85.9, "taiwan": 83.8, "south_korea": 86.5 },
+    "tasks": {
+      "biology": 82.7, "law": 91.2, "chemistry": 78.4, "medicine": 88.1,
+      "administration": 90.0, "physics": 80.2, "mathematics": 87.3,
+      "computer_science": 89.5, "philosophy": 74.0, "economics": 83.1,
+      "history": 81.7, "language": 79.8, "geography": 80.5,
+      "engineering": 86.2, "earth_science": 77.1, "psychology": 75.0,
+      "politics": 84.6
+    },
+    "paper": "https://openai.com/gpt4o"
+  },
+  {
+    "model": "Gemini 1.5 Pro Vision",
+    "overall": 80.4,
+    "nation": { "india": 81.3, "eu": 79.2, "japan": 80.9, "taiwan": 78.7, "south_korea": 82.0 },
+    "tasks": {
+      "biology": 76.9, "law": 87.5, "chemistry": 72.1, "medicine": 82.4,
+      "administration": 85.8, "physics": 76.3, "mathematics": 82.7,
+      "computer_science": 85.2, "philosophy": 70.5, "economics": 78.9,
+      "history": 77.0, "language": 75.4, "geography": 74.8,
+      "engineering": 81.5, "earth_science": 70.7, "psychology": 71.9,
+      "politics": 79.6
+    },
+    "paper": "https://ai.google.dev/gemini"
+  },
+  {
+    "model": "Claude 4o Vision",
+    "overall": 78.1,
+    "nation": { "india": 79.2, "eu": 77.0, "japan": 78.1, "taiwan": 75.8, "south_korea": 79.6 },
+    "tasks": {
+      "biology": 74.5, "law": 84.3, "chemistry": 69.2, "medicine": 80.0,
+      "administration": 83.0, "physics": 73.8, "mathematics": 79.4,
+      "computer_science": 82.1, "philosophy": 68.1, "economics": 76.3,
+      "history": 74.4, "language": 72.9, "geography": 72.2,
+      "engineering": 78.0, "earth_science": 68.0, "psychology": 69.5,
+      "politics": 76.8
+    },
+    "paper": "https://www.anthropic.com"
+  },
+  {
+    "model": "LLaVA-NeXT 2",
+    "overall": 65.2,
+    "nation": { "india": 66.4, "eu": 64.3, "japan": 65.5, "taiwan": 62.7, "south_korea": 67.0 },
+    "tasks": {
+      "biology": 61.0, "law": 71.8, "chemistry": 55.1, "medicine": 63.2,
+      "administration": 70.4, "physics": 59.3, "mathematics": 66.0,
+      "computer_science": 68.7, "philosophy": 51.8, "economics": 60.5,
+      "history": 59.0, "language": 58.2, "geography": 57.4,
+      "engineering": 64.9, "earth_science": 54.0, "psychology": 53.7,
+      "politics": 61.8
+    },
+    "paper": "https://llava-vl.github.io"
+  },
+  {
+    "model": "BLIP-3",
+    "overall": 62.7,
+    "nation": { "india": 63.5, "eu": 61.9, "japan": 62.8, "taiwan": 60.2, "south_korea": 64.0 },
+    "tasks": {
+      "biology": 58.3, "law": 68.1, "chemistry": 52.4, "medicine": 60.8,
+      "administration": 67.0, "physics": 57.0, "mathematics": 62.1,
+      "computer_science": 65.4, "philosophy": 49.7, "economics": 58.9,
+      "history": 57.2, "language": 55.9, "geography": 55.1,
+      "engineering": 61.3, "earth_science": 50.8, "psychology": 51.0,
+      "politics": 57.9
+    },
+    "paper": "https://salesforce-ai.github.io"
+  },
+  {
+    "model": "Qwen-VL-Plus",
+    "overall": 59.8,
+    "nation": { "india": 60.6, "eu": 58.7, "japan": 59.5, "taiwan": 57.1, "south_korea": 61.2 },
+    "tasks": {
+      "biology": 55.6, "law": 65.4, "chemistry": 49.0, "medicine": 57.3,
+      "administration": 63.8, "physics": 54.2, "mathematics": 59.0,
+      "computer_science": 61.9, "philosophy": 47.2, "economics": 55.5,
+      "history": 54.0, "language": 52.6, "geography": 52.0,
+      "engineering": 58.4, "earth_science": 48.3, "psychology": 49.1,
+      "politics": 55.8
+    },
+    "paper": "https://github.com/Qwen-VL"
+  },
+  {
+    "model": "OpenFlamingo-9B",
+    "overall": 55.1,
+    "nation": { "india": 56.2, "eu": 54.0, "japan": 55.0, "taiwan": 52.6, "south_korea": 56.8 },
+    "tasks": {
+      "biology": 51.0, "law": 60.7, "chemistry": 45.6, "medicine": 52.0,
+      "administration": 58.9, "physics": 50.1, "mathematics": 55.4,
+      "computer_science": 57.8, "philosophy": 43.5, "economics": 50.7,
+      "history": 49.4, "language": 48.0, "geography": 47.3,
+      "engineering": 54.1, "earth_science": 45.0, "psychology": 45.8,
+      "politics": 51.9
+    },
+    "paper": "https://github.com/openflamingo-ml"
+  },
+  {
+    "model": "InternVL 1.5",
+    "overall": 50.9,
+    "nation": { "india": 51.8, "eu": 49.7, "japan": 50.5, "taiwan": 48.2, "south_korea": 52.3 },
+    "tasks": {
+      "biology": 47.2, "law": 56.3, "chemistry": 41.2, "medicine": 48.5,
+      "administration": 54.6, "physics": 46.0, "mathematics": 50.9,
+      "computer_science": 53.0, "philosophy": 39.8, "economics": 46.3,
+      "history": 45.1, "language": 44.0, "geography": 43.5,
+      "engineering": 49.7, "earth_science": 41.0, "psychology": 42.1,
+      "politics": 47.8
+    },
+    "paper": "https://github.com/OpenGVLab/InternVL"
+  },
+  {
+    "model": "PaLM-2-Vision",
+    "overall": 60.4,
+    "nation": { "india": 61.2, "eu": 59.0, "japan": 60.1, "taiwan": 57.9, "south_korea": 62.4 },
+    "tasks": {
+      "biology": 56.8, "law": 66.5, "chemistry": 50.2, "medicine": 58.9,
+      "administration": 65.3, "physics": 53.4, "mathematics": 60.2,
+      "computer_science": 63.0, "philosophy": 48.5, "economics": 56.1,
+      "history": 54.7, "language": 53.0, "geography": 52.4,
+      "engineering": 59.2, "earth_science": 49.5, "psychology": 50.3,
+      "politics": 56.9
+    },
+    "paper": "https://developers.google.com/ai/palm"
+  },
+  {
+    "model": "Kosmos-3-Vision",
+    "overall": 58.3,
+    "nation": { "india": 59.1, "eu": 57.0, "japan": 58.0, "taiwan": 55.8, "south_korea": 60.1 },
+    "tasks": {
+      "biology": 54.2, "law": 63.7, "chemistry": 48.1, "medicine": 56.0,
+      "administration": 62.0, "physics": 51.8, "mathematics": 58.0,
+      "computer_science": 60.7, "philosophy": 46.3, "economics": 54.2,
+      "history": 52.8, "language": 51.5, "geography": 50.7,
+      "engineering": 56.6, "earth_science": 47.8, "psychology": 48.6,
+      "politics": 54.4
+    },
+    "paper": "https://github.com/microsoft/Kosmos-2"
+  },
+  {
+    "model": "Yi-VL-34B",
+    "overall": 57.0,
+    "nation": { "india": 57.8, "eu": 55.7, "japan": 56.6, "taiwan": 54.3, "south_korea": 58.8 },
+    "tasks": {
+      "biology": 52.9, "law": 62.1, "chemistry": 47.0, "medicine": 55.1,
+      "administration": 60.4, "physics": 50.3, "mathematics": 56.4,
+      "computer_science": 59.0, "philosophy": 45.2, "economics": 52.8,
+      "history": 51.4, "language": 50.1, "geography": 49.4,
+      "engineering": 55.2, "earth_science": 46.5, "psychology": 47.3,
+      "politics": 53.0
+    },
+    "paper": "https://github.com/01-ai/Yi-VL"
+  },
+  {
+    "model": "VisualGLM-4",
+    "overall": 53.2,
+    "nation": { "india": 54.0, "eu": 52.0, "japan": 53.0, "taiwan": 50.9, "south_korea": 55.2 },
+    "tasks": {
+      "biology": 49.5, "law": 59.0, "chemistry": 44.2, "medicine": 52.3,
+      "administration": 57.6, "physics": 48.0, "mathematics": 53.5,
+      "computer_science": 56.0, "philosophy": 42.1, "economics": 49.6,
+      "history": 48.2, "language": 47.0, "geography": 46.3,
+      "engineering": 52.1, "earth_science": 43.7, "psychology": 44.5,
+      "politics": 50.2
+    },
+    "paper": "https://github.com/THUDM/VisualGLM-6B"
+  },
+  {
+    "model": "CoCa-2-Vision",
+    "overall": 50.5,
+    "nation": { "india": 51.3, "eu": 49.6, "japan": 50.4, "taiwan": 48.2, "south_korea": 52.0 },
+    "tasks": {
+      "biology": 46.9, "law": 56.0, "chemistry": 42.8, "medicine": 50.1,
+      "administration": 55.0, "physics": 46.0, "mathematics": 51.2,
+      "computer_science": 53.6, "philosophy": 40.9, "economics": 48.3,
+      "history": 47.1, "language": 45.8, "geography": 45.0,
+      "engineering": 50.7, "earth_science": 41.9, "psychology": 42.6,
+      "politics": 48.4
+    },
+    "paper": "https://github.com/google-research/coca"
+  }
+]
