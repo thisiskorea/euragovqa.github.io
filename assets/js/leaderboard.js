@@ -1,15 +1,34 @@
+// assets/js/leaderboard.js
 fetch('data/leaderboard.json')
   .then(r => r.json())
   .then(rows => {
-    const tbody = document.getElementById('lb-body');
-    rows.forEach(r => {
-      const tr = document.createElement('tr');
-      tr.innerHTML = `
-        <td class="border px-4 py-2 font-medium">${r.model}</td>
-        <td class="border px-4 py-2 text-center">${r.overall}</td>
-        <td class="border px-4 py-2 text-center">${r.law}</td>
-        <td class="border px-4 py-2 text-center">${r.biology}</td>
-      `;
-      tbody.appendChild(tr);
+    // sort by overall desc
+    rows.sort((a, b) => b.overall - a.overall);
+
+    // build table rows
+    const tbody = $('#lb-table tbody');
+    rows.forEach((r, idx) => {
+      tbody.append(`
+        <tr>
+          <td>${idx + 1}</td>
+          <td>${r.model}</td>
+          <td>${r.overall}</td>
+          <td>${r.law}</td>
+          <td>${r.biology}</td>
+          <td>
+            ${r.paper ? `<a href="${r.paper}" target="_blank" class="text-blue-600 underline">paper</a>` : '-'}
+          </td>
+        </tr>
+      `);
     });
+
+    // init DataTables
+    $('#lb-table').DataTable({
+      order: [[2, 'desc']],
+      pageLength: 10
+    });
+
+    // timestamp
+    document.getElementById('timestamp').textContent =
+      new Date().toISOString().slice(0, 10);
   });
