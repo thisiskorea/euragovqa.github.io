@@ -1,297 +1,240 @@
-/* === constants === */
-const NATION_LABELS = ['India', 'EU', 'Japan', 'Taiwan', 'South Korea'];
-const NATION_KEYS = ['india', 'eu', 'japan', 'taiwan', 'south_korea'];
-const TASK_KEYS = [
+/**
+ * EuraGovQA Leaderboard & Charts
+ * Clean, minimal academic style
+ */
+
+const NATIONS = ['india', 'eu', 'japan', 'taiwan', 'south_korea'];
+const NATION_LABELS = ['India', 'EU', 'Japan', 'Taiwan', 'S.Korea'];
+const SUBJECTS = [
   'biology', 'law', 'chemistry', 'medicine', 'administration', 'physics',
   'mathematics', 'computer_science', 'philosophy', 'economics', 'history',
   'language', 'geography', 'engineering', 'earth_science', 'psychology', 'politics'
 ];
-const TASK_LABELS = [
-  'Biology', 'Law', 'Chemistry', 'Medicine', 'Administration', 'Physics',
-  'Mathematics', 'Computer Science', 'Philosophy', 'Economics', 'History',
-  'Language', 'Geography', 'Engineering', 'Earth Science', 'Psychology', 'Politics'
-];
-const COLORS = [
-  '#3b82f6', '#ef4444', '#f59e0b', '#10b981', '#8b5cf6',
-  '#6366f1', '#ec4899', '#14b8a6', '#f97316', '#06b6d4',
-  '#84cc16', '#a855f7', '#22c55e'
-];
 
-let rows = [], table = null;
+const COLORS = {
+  amber: '#f59e0b',
+  slate: '#64748b',
+  emerald: '#10b981',
+  blue: '#3b82f6',
+  red: '#ef4444',
+  purple: '#8b5cf6',
+};
 
-/* === fetch === */
+let data = [];
+
+// Load data and initialize
 fetch('./data/leaderboard.json')
   .then(r => r.json())
   .then(json => {
-    rows = json.sort((a, b) => b.overall - a.overall);
-    document.getElementById('timestamp').textContent = new Date().toISOString().slice(0, 10);
-    initTabs();
-    initBar();
-    initRadar();
-  });
+    data = json.sort((a, b) => b.overall - a.overall);
+    initLeaderboard();
+    initCharts();
+  })
+  .catch(err => console.error('Failed to load leaderboard data:', err));
 
-/* === tabs & table === */
-function initTabs() {
+/**
+ * Leaderboard Table
+ */
+function initLeaderboard() {
+  renderTable('overall');
+
+  // Tab switching
   document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.onclick = () => {
-      document.querySelectorAll('.tab-btn').forEach(b => {
-        b.classList.remove('bg-white', 'text-blue-600', 'shadow', 'active');
-        b.classList.add('text-gray-600');
-      });
-      btn.classList.remove('text-gray-600');
-      btn.classList.add('bg-white', 'text-blue-600', 'shadow', 'active');
-      buildTable(btn.dataset.view);
-    };
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderTable(btn.dataset.view);
+    });
   });
-  buildTable('task');
 }
 
-function buildTable(view) {
-  if (table) {
-    table.destroy();
+function renderTable(view) {
+  const tbody = document.getElementById('lb-body');
+  const thead = document.querySelector('#lb-table thead tr');
+
+  // Update headers based on view
+  let headers = ['Rank', 'Model', 'Overall'];
+  if (view === 'overall' || view === 'nation') {
+    headers = headers.concat(NATION_LABELS);
+  } else if (view === 'task') {
+    headers = headers.concat(SUBJECTS.slice(0, 8).map(s => s.charAt(0).toUpperCase() + s.slice(1)));
   }
-  $('#lb-table').empty();
+  headers.push('Paper');
 
-  const isTask = view === 'task';
-  const headers = [
-    'Rank',
-    'Model',
-    'Overall',
-    ...(isTask ? TASK_LABELS : NATION_LABELS),
-    'Paper'
-  ];
+  thead.innerHTML = headers.map((h, i) =>
+    `<th class="${i === 1 ? '' : 'center'}">${h}</th>`
+  ).join('');
 
-  $('#lb-table').append('<thead><tr>' + headers.map(h => `<th>${h}</th>`).join('') + '</tr></thead>');
+  // Render rows
+  tbody.innerHTML = data.map((row, i) => {
+    const rank = i + 1;
+    const rankClass = rank <= 3 ? `rank-${rank}` : '';
+    const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
 
-  const tbody = $('<tbody></tbody>');
-  rows.forEach((r, i) => {
-    const cells = [
-      getMedalRank(i + 1),
-      `<span class="font-medium">${r.model}</span>`
-    ];
+    let cells = `
+      <td class="center"><span class="medal">${medal}</span></td>
+      <td><span class="model-name">${row.model}</span></td>
+      <td class="center"><span class="score ${getScoreClass(row.overall)}">${row.overall.toFixed(1)}</span></td>
+    `;
 
-    // Overall score with color coding
-    cells.push(getScoreCell(r.overall));
-
-    if (isTask) {
-      TASK_KEYS.forEach(k => cells.push(getScoreCell(r.tasks[k])));
-    } else {
-      NATION_KEYS.forEach(k => cells.push(getScoreCell(r.nation[k])));
+    if (view === 'overall' || view === 'nation') {
+      NATIONS.forEach(n => {
+        const score = row.nation[n];
+        cells += `<td class="center"><span class="score ${getScoreClass(score)}">${score.toFixed(1)}</span></td>`;
+      });
+    } else if (view === 'task') {
+      SUBJECTS.slice(0, 8).forEach(s => {
+        const score = row.tasks[s];
+        cells += `<td class="center"><span class="score ${getScoreClass(score)}">${score.toFixed(1)}</span></td>`;
+      });
     }
 
-    cells.push(r.paper
-      ? `<a href="${r.paper}" target="_blank" class="text-blue-600 hover:text-blue-800 hover:underline">Link</a>`
-      : '-');
+    cells += `<td class="center">${row.paper ? `<a href="${row.paper}" target="_blank" class="paper-link">Link</a>` : '—'}</td>`;
 
-    tbody.append('<tr>' + cells.map(c => `<td>${c}</td>`).join('') + '</tr>');
-  });
-
-  $('#lb-table').append(tbody);
-
-  table = $('#lb-table').DataTable({
-    scrollX: true,
-    responsive: true,
-    dom: 'Bfrtip',
-    buttons: ['colvis'],
-    columnDefs: [{ targets: '_all', className: 'dt-center' }],
-    order: [[2, 'desc']],
-    pageLength: 15,
-    language: {
-      search: "Search models:",
-      lengthMenu: "Show _MENU_ models",
-      info: "Showing _START_ to _END_ of _TOTAL_ models"
-    }
-  });
+    return `<tr class="${rankClass}">${cells}</tr>`;
+  }).join('');
 }
 
-function getMedalRank(rank) {
-  if (rank === 1) return '<span class="text-xl">🥇</span>';
-  if (rank === 2) return '<span class="text-xl">🥈</span>';
-  if (rank === 3) return '<span class="text-xl">🥉</span>';
-  return `<span class="text-gray-600">${rank}</span>`;
+function getScoreClass(score) {
+  if (score >= 80) return 'high';
+  if (score >= 60) return 'mid';
+  return 'low';
 }
 
-function getScoreCell(score) {
-  let colorClass = 'text-gray-700';
-  if (score >= 80) colorClass = 'text-emerald-600 font-semibold';
-  else if (score >= 70) colorClass = 'text-blue-600';
-  else if (score >= 60) colorClass = 'text-amber-600';
-  else if (score < 50) colorClass = 'text-red-500';
-  return `<span class="${colorClass}">${score.toFixed(1)}</span>`;
-}
-
-/* === bar chart === */
-function initBar() {
-  const sel = document.getElementById('metric-select');
-  sel.innerHTML = '<option value="overall">Overall</option>' +
-    '<optgroup label="By Nation">' +
-    NATION_KEYS.map((k, i) => `<option value="${k}">${NATION_LABELS[i]}</option>`).join('') +
-    '</optgroup>' +
-    '<optgroup label="By Task">' +
-    TASK_KEYS.map((t, i) => `<option value="${t}">${TASK_LABELS[i]}</option>`).join('') +
-    '</optgroup>';
-
-  const ctx = document.getElementById('metric-chart');
-  let chart = null;
-
-  const draw = m => {
-    if (chart) chart.destroy();
-
-    const data = m === 'overall' ? rows.map(r => r.overall) :
-      NATION_KEYS.includes(m) ? rows.map(r => r.nation[m]) : rows.map(r => r.tasks[m]);
-
-    const backgroundColors = rows.map((_, i) => COLORS[i % COLORS.length]);
-
-    chart = new Chart(ctx, {
-      type: 'bar',
+/**
+ * Charts
+ */
+function initCharts() {
+  // Overview radar chart
+  const radarCtx = document.getElementById('overview-radar');
+  if (radarCtx) {
+    new Chart(radarCtx, {
+      type: 'radar',
       data: {
-        labels: rows.map(r => r.model),
-        datasets: [{
-          label: m.charAt(0).toUpperCase() + m.slice(1).replace('_', ' '),
-          data,
-          backgroundColor: backgroundColors,
-          borderColor: backgroundColors.map(c => c),
-          borderWidth: 1,
-          borderRadius: 4
-        }]
+        labels: ['India', 'EU', 'Japan', 'Taiwan', 'S.Korea'],
+        datasets: data.slice(0, 3).map((row, i) => ({
+          label: row.model,
+          data: NATIONS.map(n => row.nation[n]),
+          borderColor: [COLORS.amber, COLORS.blue, COLORS.emerald][i],
+          backgroundColor: [
+            'rgba(245, 158, 11, 0.1)',
+            'rgba(59, 130, 246, 0.1)',
+            'rgba(16, 185, 129, 0.1)'
+          ][i],
+          borderWidth: 2,
+          pointRadius: 3,
+          pointBackgroundColor: [COLORS.amber, COLORS.blue, COLORS.emerald][i],
+        }))
       },
       options: {
-        animation: { duration: 800, easing: 'easeOutQuart' },
         responsive: true,
-        maintainAspectRatio: true,
         plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: '#1e293b',
-            titleColor: '#f8fafc',
-            bodyColor: '#e2e8f0',
-            padding: 12,
-            cornerRadius: 8,
-            callbacks: {
-              label: ctx => `Score: ${ctx.raw.toFixed(1)}%`
+          legend: {
+            position: 'bottom',
+            labels: {
+              usePointStyle: true,
+              padding: 16,
+              font: { size: 11 }
             }
           }
         },
         scales: {
-          y: {
-            min: 0,
+          r: {
+            min: 50,
             max: 100,
-            grid: { color: '#e2e8f0' },
-            ticks: { callback: v => v + '%' }
-          },
-          x: {
-            grid: { display: false },
             ticks: {
-              maxRotation: 45,
-              minRotation: 45,
+              stepSize: 10,
+              font: { size: 10 },
+              backdropColor: 'transparent'
+            },
+            pointLabels: {
+              font: { size: 11, weight: '500' }
+            },
+            grid: { color: '#e2e8f0' },
+            angleLines: { color: '#e2e8f0' }
+          }
+        }
+      }
+    });
+  }
+
+  // Country distribution (doughnut)
+  const countryCtx = document.getElementById('country-chart');
+  if (countryCtx) {
+    new Chart(countryCtx, {
+      type: 'doughnut',
+      data: {
+        labels: ['India', 'EU', 'Japan', 'Taiwan', 'South Korea'],
+        datasets: [{
+          data: [4521, 2134, 2876, 2543, 3160],
+          backgroundColor: [
+            '#f97316', '#3b82f6', '#ef4444', '#10b981', '#8b5cf6'
+          ],
+          borderWidth: 0,
+          hoverOffset: 8
+        }]
+      },
+      options: {
+        responsive: true,
+        cutout: '60%',
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: {
+              usePointStyle: true,
+              padding: 16,
               font: { size: 11 }
             }
           }
         }
       }
     });
-  };
+  }
 
-  draw('overall');
-  sel.onchange = e => draw(e.target.value);
-}
+  // Subject distribution (bar)
+  const subjectCtx = document.getElementById('subject-chart');
+  if (subjectCtx) {
+    const subjectData = [
+      { name: 'Law', count: 1423 },
+      { name: 'Admin', count: 1287 },
+      { name: 'Econ', count: 1156 },
+      { name: 'History', count: 1089 },
+      { name: 'Geo', count: 1034 },
+      { name: 'Math', count: 987 },
+      { name: 'Physics', count: 923 },
+      { name: 'Chem', count: 876 },
+      { name: 'Bio', count: 845 },
+      { name: 'CS', count: 812 },
+    ];
 
-/* === radar === */
-function initRadar() {
-  const modal = document.getElementById('radar-modal');
-  const ctx = document.getElementById('radar-canvas');
-
-  document.getElementById('radar-btn').onclick = () => {
-    modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    draw();
-  };
-
-  document.getElementById('close-radar').onclick = () => {
-    modal.classList.add('hidden');
-    modal.classList.remove('flex');
-  };
-
-  // Close on backdrop click
-  modal.onclick = e => {
-    if (e.target === modal) {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    }
-  };
-
-  document.getElementById('top-n-select').onchange = draw;
-
-  let chart = null;
-
-  function draw() {
-    if (chart) chart.destroy();
-
-    const nSel = document.getElementById('top-n-select').value;
-    const tops = nSel === 'all' ? rows : rows.slice(0, parseInt(nSel));
-
-    chart = new Chart(ctx, {
-      type: 'radar',
+    new Chart(subjectCtx, {
+      type: 'bar',
       data: {
-        labels: NATION_LABELS,
-        datasets: tops.map((r, i) => ({
-          label: r.model,
-          data: NATION_KEYS.map(k => r.nation[k]),
-          backgroundColor: hexToRgba(COLORS[i % COLORS.length], 0.15),
-          borderColor: COLORS[i % COLORS.length],
-          fill: true,
-          borderWidth: 2,
-          pointRadius: 4,
-          pointBackgroundColor: COLORS[i % COLORS.length],
-          pointBorderColor: '#fff',
-          pointBorderWidth: 1
-        }))
+        labels: subjectData.map(d => d.name),
+        datasets: [{
+          data: subjectData.map(d => d.count),
+          backgroundColor: '#0f172a',
+          borderRadius: 4,
+          barThickness: 20
+        }]
       },
       options: {
         responsive: true,
-        animation: { duration: 1000, easing: 'easeOutQuad' },
+        indexAxis: 'y',
         plugins: {
-          legend: {
-            position: 'bottom',
-            labels: {
-              padding: 20,
-              usePointStyle: true,
-              pointStyle: 'circle'
-            }
-          },
-          tooltip: {
-            backgroundColor: '#1e293b',
-            titleColor: '#f8fafc',
-            bodyColor: '#e2e8f0',
-            padding: 12,
-            cornerRadius: 8
-          }
+          legend: { display: false }
         },
         scales: {
-          r: {
-            min: 0,
-            max: 100,
-            ticks: {
-              stepSize: 20,
-              backdropColor: 'transparent',
-              font: { size: 10 }
-            },
+          x: {
             grid: { color: '#e2e8f0' },
-            angleLines: { color: '#e2e8f0' },
-            pointLabels: {
-              font: { size: 12, weight: '500' },
-              color: '#374151'
-            }
+            ticks: { font: { size: 10 } }
+          },
+          y: {
+            grid: { display: false },
+            ticks: { font: { size: 11 } }
           }
         }
       }
     });
   }
-}
-
-function hexToRgba(hex, alpha) {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }

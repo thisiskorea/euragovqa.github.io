@@ -1,602 +1,893 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EuraGovQA: A Multilingual Multimodal Benchmark for Government Examinations</title>
-  <meta name="description" content="EuraGovQA is a comprehensive multimodal benchmark dataset based on government examinations across Eurasian countries.">
+  <title>EuraGovQA: A Multilingual Multimodal Benchmark</title>
+  <meta name="description" content="A comprehensive benchmark for evaluating vision-language models on government examination questions across Eurasia.">
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#1e40af',
-            secondary: '#3b82f6',
-            accent: '#0ea5e9',
-          }
-        }
-      }
-    }
-  </script>
-
-  <!-- Google Fonts -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-  <!-- DataTables core -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-
-  <!-- DataTables Buttons (colVis) & Responsive -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
-  <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
-  <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
-  <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-
   <style>
-    body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    }
-    code, .mono {
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    /* Gradient backgrounds */
-    .hero-gradient {
-      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #2563eb 50%, #3b82f6 75%, #60a5fa 100%);
-    }
-
-    .stat-card {
-      background: white;
-      border-radius: 1rem;
-      padding: 1.5rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-    .stat-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    :root {
+      --slate-900: #0f172a;
+      --slate-800: #1e293b;
+      --slate-700: #334155;
+      --slate-600: #475569;
+      --slate-500: #64748b;
+      --slate-400: #94a3b8;
+      --slate-300: #cbd5e1;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --slate-50: #f8fafc;
+      --amber-500: #f59e0b;
+      --amber-400: #fbbf24;
+      --amber-600: #d97706;
+      --emerald-500: #10b981;
+      --red-500: #ef4444;
     }
 
-    /* Table styling */
-    #lb-table th, #lb-table td {
-      text-align: center;
-      vertical-align: middle;
-    }
-    #lb-table thead th {
-      background: #1e40af !important;
-      color: white !important;
-      font-weight: 600;
-      padding: 12px 8px;
-    }
-    #lb-table tbody tr:hover {
-      background: #eff6ff !important;
-    }
-    #lb-table tbody tr:first-child td {
-      background: linear-gradient(90deg, #fef3c7 0%, #fde68a 100%);
-      font-weight: 600;
-    }
-    #lb-table tbody tr:nth-child(2) td {
-      background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 100%);
-    }
-    #lb-table tbody tr:nth-child(3) td {
-      background: linear-gradient(90deg, #fed7aa 0%, #fdba74 100%);
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    /* Citation box */
-    .citation-box {
-      background: #1e293b;
-      border-radius: 0.75rem;
-      padding: 1.5rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      line-height: 1.6;
-      color: #e2e8f0;
-      overflow-x: auto;
-    }
-
-    /* Smooth scroll */
     html {
       scroll-behavior: smooth;
     }
 
-    /* Feature cards */
-    .feature-card {
-      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-      border: 1px solid #e2e8f0;
-      border-radius: 1rem;
-      padding: 2rem;
-      transition: all 0.3s;
-    }
-    .feature-card:hover {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--slate-50);
+      color: var(--slate-800);
+      line-height: 1.6;
     }
 
-    /* Nav active state */
-    .nav-link {
-      position: relative;
-      padding-bottom: 4px;
+    h1, h2, h3, h4 {
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.3;
     }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
+
+    code, .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      top: 0;
       left: 0;
-      width: 0;
-      height: 2px;
-      background: #3b82f6;
-      transition: width 0.3s;
-    }
-    .nav-link:hover::after {
-      width: 100%;
+      right: 0;
+      background: rgba(255,255,255,0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--slate-200);
+      z-index: 100;
     }
 
-    /* Button styles */
-    .btn-primary {
-      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+
+    .logo {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--slate-900);
+    }
+
+    .logo span {
+      color: var(--amber-500);
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--slate-600);
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--slate-900);
+    }
+
+    /* ===== TITLE SECTION ===== */
+    .title-section {
+      padding: 120px 0 60px;
+      text-align: center;
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--slate-900);
       color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 4px;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    .title-section h1 {
+      font-size: 3rem;
+      color: var(--slate-900);
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 1.35rem;
+      color: var(--slate-600);
+      font-weight: 400;
+      margin-bottom: 32px;
+    }
+
+    .authors {
+      font-size: 1.05rem;
+      color: var(--slate-700);
+      margin-bottom: 12px;
+    }
+
+    .affiliations {
+      font-size: 0.9rem;
+      color: var(--slate-500);
+      margin-bottom: 32px;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-size: 0.9rem;
       font-weight: 600;
       transition: all 0.2s;
-      box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
     }
+
+    .btn-primary {
+      background: var(--slate-900);
+      color: white;
+    }
+
     .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 12px -1px rgba(37, 99, 235, 0.4);
+      background: var(--slate-700);
     }
 
     .btn-secondary {
       background: white;
-      color: #1e40af;
-      padding: 0.75rem 1.5rem;
-      border-radius: 0.5rem;
+      color: var(--slate-800);
+      border: 1.5px solid var(--slate-300);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--slate-400);
+      background: var(--slate-50);
+    }
+
+    /* ===== TL;DR ===== */
+    .tldr {
+      padding: 48px 0;
+      background: var(--slate-900);
+      color: white;
+    }
+
+    .tldr-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+
+    .tldr-item {
+      text-align: center;
+    }
+
+    .tldr-number {
+      font-family: 'Crimson Pro', serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--amber-400);
+      margin-bottom: 4px;
+    }
+
+    .tldr-label {
+      font-size: 0.85rem;
+      color: var(--slate-400);
+      font-weight: 500;
+    }
+
+    /* ===== SECTIONS ===== */
+    section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
       font-weight: 600;
-      border: 2px solid #1e40af;
+      color: var(--amber-600);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--slate-900);
+      margin-bottom: 24px;
+    }
+
+    /* ===== OVERVIEW ===== */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .overview-text {
+      font-size: 1.1rem;
+      color: var(--slate-700);
+      line-height: 1.8;
+    }
+
+    .overview-text p {
+      margin-bottom: 16px;
+    }
+
+    .overview-figure {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .overview-figure img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .figure-caption {
+      font-size: 0.85rem;
+      color: var(--slate-500);
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    /* ===== KEY RESULTS ===== */
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .result-card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 32px;
+      text-align: center;
+    }
+
+    .result-card .number {
+      font-family: 'Crimson Pro', serif;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .result-card .number.gold { color: var(--amber-500); }
+    .result-card .number.green { color: var(--emerald-500); }
+    .result-card .number.red { color: var(--red-500); }
+
+    .result-card .label {
+      font-size: 0.95rem;
+      color: var(--slate-600);
+      font-weight: 500;
+    }
+
+    .result-card .detail {
+      font-size: 0.8rem;
+      color: var(--slate-400);
+      margin-top: 4px;
+    }
+
+    /* ===== LEADERBOARD ===== */
+    .leaderboard-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .tab-btn {
+      padding: 10px 20px;
+      border: 1px solid var(--slate-300);
+      background: white;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--slate-600);
+      cursor: pointer;
       transition: all 0.2s;
     }
-    .btn-secondary:hover {
-      background: #1e40af;
+
+    .tab-btn.active {
+      background: var(--slate-900);
       color: white;
+      border-color: var(--slate-900);
+    }
+
+    .tab-btn:hover:not(.active) {
+      border-color: var(--slate-400);
+    }
+
+    .table-wrapper {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background: var(--slate-100);
+      padding: 14px 16px;
+      text-align: left;
+      font-weight: 600;
+      color: var(--slate-700);
+      border-bottom: 1px solid var(--slate-200);
+    }
+
+    th.center, td.center {
+      text-align: center;
+    }
+
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--slate-100);
+      color: var(--slate-700);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover {
+      background: var(--slate-50);
+    }
+
+    .rank-1 { background: linear-gradient(90deg, #fef3c7 0%, transparent 100%); }
+    .rank-2 { background: linear-gradient(90deg, #f1f5f9 0%, transparent 100%); }
+    .rank-3 { background: linear-gradient(90deg, #fed7aa 0%, transparent 100%); }
+
+    .medal {
+      font-size: 1.1rem;
+    }
+
+    .model-name {
+      font-weight: 600;
+      color: var(--slate-900);
+    }
+
+    .score {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 500;
+    }
+
+    .score.high { color: var(--emerald-500); }
+    .score.mid { color: var(--amber-600); }
+    .score.low { color: var(--red-500); }
+
+    .paper-link {
+      color: var(--amber-600);
+      font-weight: 500;
+    }
+
+    .paper-link:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== DATASET ===== */
+    .dataset-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .chart-card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 24px;
+    }
+
+    .chart-card h4 {
+      font-size: 1rem;
+      margin-bottom: 16px;
+      color: var(--slate-700);
+    }
+
+    /* ===== EXAMPLES ===== */
+    .examples-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .example-card {
+      background: white;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .example-header {
+      background: var(--slate-800);
+      color: white;
+      padding: 12px 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .example-body {
+      padding: 20px;
+    }
+
+    .example-image {
+      background: var(--slate-100);
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .example-image img {
+      max-width: 100%;
+      max-height: 150px;
+      border-radius: 4px;
+    }
+
+    .example-question {
+      font-size: 0.95rem;
+      color: var(--slate-800);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    .example-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .option {
+      padding: 10px 14px;
+      background: var(--slate-50);
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--slate-700);
+    }
+
+    .option.correct {
+      background: #d1fae5;
+      color: #065f46;
+      font-weight: 500;
+    }
+
+    /* ===== CITATION ===== */
+    .citation-box {
+      background: var(--slate-900);
+      border-radius: 12px;
+      padding: 24px;
+      position: relative;
+    }
+
+    .citation-box pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--slate-300);
+      line-height: 1.7;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      padding: 8px 16px;
+      background: var(--slate-700);
+      color: var(--slate-300);
+      border: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--slate-600);
+      color: white;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--slate-900);
+      color: var(--slate-400);
+      padding: 48px 0;
+      text-align: center;
+    }
+
+    footer .logo {
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    footer p {
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--amber-400);
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .tldr-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .overview-grid,
+      .dataset-grid,
+      .examples-grid,
+      .results-grid {
+        grid-template-columns: 1fr;
+      }
+      nav {
+        display: none;
+      }
+      .title-section h1 {
+        font-size: 2.2rem;
+      }
     }
   </style>
 </head>
+<body>
 
-<body class="bg-slate-50 text-gray-800">
-
-<!-- ==================== NAVIGATION ==================== -->
-<nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
-  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-    <a href="index.html" class="flex items-center gap-2">
-      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
-        <span class="text-white font-bold text-sm">E</span>
-      </div>
-      <span class="font-bold text-xl text-gray-900">EuraGovQA</span>
-    </a>
-    <div class="flex items-center gap-8">
-      <a href="#leaderboard" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Leaderboard</a>
-      <a href="#features" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Features</a>
-      <a href="#citation" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Citation</a>
-      <a href="paper.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Paper</a>
-      <a href="dataset.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Dataset</a>
-    </div>
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="container">
+    <a href="#" class="logo">Eura<span>Gov</span>QA</a>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#results">Results</a>
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#dataset">Dataset</a>
+      <a href="#examples">Examples</a>
+      <a href="#citation">Citation</a>
+    </nav>
   </div>
-</nav>
+</header>
 
-<!-- ==================== HERO SECTION ==================== -->
-<section class="hero-gradient pt-32 pb-20 text-white">
-  <div class="max-w-5xl mx-auto px-4 text-center">
-    <!-- Badge -->
-    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
-      <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-      <span class="text-sm font-medium">NeurIPS 2025 Datasets and Benchmarks Track</span>
-    </div>
-
-    <!-- Title -->
-    <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
-      EuraGovQA
-    </h1>
-    <p class="text-2xl md:text-3xl font-light text-blue-100 mb-4">
-      A Multilingual Multimodal Benchmark for<br>Government Examinations
+<!-- ===== TITLE ===== -->
+<section class="title-section">
+  <div class="container">
+    <div class="badge">NeurIPS 2025 Datasets & Benchmarks</div>
+    <h1>EuraGovQA</h1>
+    <p class="subtitle">A Multilingual Multimodal Question Answering Benchmark<br>for Government Examinations across Eurasia</p>
+    <p class="authors">
+      <strong>Author One</strong><sup>1</sup>,
+      <strong>Author Two</strong><sup>1</sup>,
+      <strong>Author Three</strong><sup>2</sup>,
+      <strong>Author Four</strong><sup>1,2</sup>
     </p>
-
-    <!-- Authors -->
-    <p class="text-blue-200 mb-8 text-lg">
-      Anonymous Authors<sup>*</sup>
+    <p class="affiliations">
+      <sup>1</sup>University A &nbsp;&nbsp; <sup>2</sup>Research Lab B
     </p>
-
-    <!-- Action Buttons -->
-    <div class="flex flex-wrap justify-center gap-4 mb-12">
-      <a href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank"
-         class="inline-flex items-center gap-2 bg-white text-blue-800 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition shadow-lg">
-        <i data-lucide="file-text" class="w-5 h-5"></i>
-        arXiv Paper
+    <div class="btn-group">
+      <a href="#" class="btn btn-primary">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Paper
       </a>
-      <a href="https://github.com/euragovqa/euragovqa" target="_blank"
-         class="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition shadow-lg">
-        <i data-lucide="github" class="w-5 h-5"></i>
-        GitHub
+      <a href="#" class="btn btn-secondary">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        Code
       </a>
-      <a href="https://huggingface.co/datasets/euragovqa/euragovqa" target="_blank"
-         class="inline-flex items-center gap-2 bg-yellow-500 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition shadow-lg">
+      <a href="#" class="btn btn-secondary">
         🤗 Dataset
       </a>
-      <a href="#leaderboard"
-         class="inline-flex items-center gap-2 bg-emerald-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-600 transition shadow-lg">
-        <i data-lucide="trophy" class="w-5 h-5"></i>
+      <a href="#leaderboard" class="btn btn-secondary">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
         Leaderboard
       </a>
     </div>
   </div>
 </section>
 
-<!-- ==================== STATS SECTION ==================== -->
-<section class="relative -mt-12 z-10 mb-16">
-  <div class="max-w-5xl mx-auto px-4">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <div class="stat-card text-center">
-        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-blue-100 flex items-center justify-center">
-          <i data-lucide="file-question" class="w-6 h-6 text-blue-600"></i>
-        </div>
-        <div class="text-3xl font-bold text-gray-900">15,234</div>
-        <div class="text-sm text-gray-500 font-medium">Questions</div>
+<!-- ===== TL;DR ===== -->
+<div class="tldr">
+  <div class="container">
+    <div class="tldr-grid">
+      <div class="tldr-item">
+        <div class="tldr-number">15,234</div>
+        <div class="tldr-label">Questions</div>
       </div>
-      <div class="stat-card text-center">
-        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-emerald-100 flex items-center justify-center">
-          <i data-lucide="globe" class="w-6 h-6 text-emerald-600"></i>
-        </div>
-        <div class="text-3xl font-bold text-gray-900">5</div>
-        <div class="text-sm text-gray-500 font-medium">Countries</div>
+      <div class="tldr-item">
+        <div class="tldr-number">5</div>
+        <div class="tldr-label">Countries</div>
       </div>
-      <div class="stat-card text-center">
-        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-purple-100 flex items-center justify-center">
-          <i data-lucide="layers" class="w-6 h-6 text-purple-600"></i>
-        </div>
-        <div class="text-3xl font-bold text-gray-900">17</div>
-        <div class="text-sm text-gray-500 font-medium">Subject Areas</div>
+      <div class="tldr-item">
+        <div class="tldr-number">17</div>
+        <div class="tldr-label">Subject Areas</div>
       </div>
-      <div class="stat-card text-center">
-        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-orange-100 flex items-center justify-center">
-          <i data-lucide="image" class="w-6 h-6 text-orange-600"></i>
-        </div>
-        <div class="text-3xl font-bold text-gray-900">8,421</div>
-        <div class="text-sm text-gray-500 font-medium">Images</div>
+      <div class="tldr-item">
+        <div class="tldr-number">55%</div>
+        <div class="tldr-label">Multimodal</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== ABSTRACT ==================== -->
-<section class="py-16 bg-white">
-  <div class="max-w-4xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-8 text-gray-900">Abstract</h2>
-    <div class="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 border border-slate-200">
-      <p class="text-lg text-gray-700 leading-relaxed">
-        We introduce <strong>EuraGovQA</strong>, a comprehensive multilingual multimodal benchmark
-        designed to evaluate vision-language models on real-world government examination questions
-        across Eurasian countries. Our benchmark comprises <strong>15,234 questions</strong> spanning
-        <strong>17 subject areas</strong> from official civil service examinations in
-        <strong>India, the European Union, Japan, Taiwan, and South Korea</strong>.
-        Unlike existing benchmarks that focus primarily on English or academic contexts,
-        EuraGovQA captures the diverse linguistic, cultural, and administrative knowledge
-        required for government positions across different nations. We evaluate
-        <strong>13 state-of-the-art vision-language models</strong> and reveal significant
-        performance gaps across languages and domains, highlighting the need for more
-        culturally-aware multimodal AI systems.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== FEATURES ==================== -->
-<section id="features" class="py-16 bg-slate-50">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-4 text-gray-900">Key Features</h2>
-    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-      EuraGovQA provides a rigorous evaluation framework for assessing vision-language models on real-world governmental knowledge.
-    </p>
-
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="feature-card">
-        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-4">
-          <i data-lucide="languages" class="w-7 h-7 text-white"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-2 text-gray-900">Multilingual</h3>
-        <p class="text-gray-600">
-          Questions in English, Hindi, Japanese, Traditional Chinese, and Korean, reflecting authentic examination formats.
-        </p>
-      </div>
-
-      <div class="feature-card">
-        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center mb-4">
-          <i data-lucide="scan-eye" class="w-7 h-7 text-white"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-2 text-gray-900">Multimodal</h3>
-        <p class="text-gray-600">
-          Over 55% of questions include images such as diagrams, charts, maps, and figures essential for solving the problems.
-        </p>
-      </div>
-
-      <div class="feature-card">
-        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center mb-4">
-          <i data-lucide="landmark" class="w-7 h-7 text-white"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-2 text-gray-900">Real Examinations</h3>
-        <p class="text-gray-600">
-          Sourced from actual government civil service examinations, ensuring practical relevance and difficulty calibration.
-        </p>
-      </div>
-
-      <div class="feature-card">
-        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center mb-4">
-          <i data-lucide="book-open" class="w-7 h-7 text-white"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-2 text-gray-900">17 Subject Areas</h3>
-        <p class="text-gray-600">
-          Comprehensive coverage including Law, Medicine, Administration, Economics, Science, and Humanities.
-        </p>
-      </div>
-
-      <div class="feature-card">
-        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-rose-500 to-rose-700 flex items-center justify-center mb-4">
-          <i data-lucide="bar-chart-3" class="w-7 h-7 text-white"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-2 text-gray-900">Fine-grained Analysis</h3>
-        <p class="text-gray-600">
-          Detailed performance breakdown by country, language, subject, and question type for comprehensive evaluation.
-        </p>
-      </div>
-
-      <div class="feature-card">
-        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-700 flex items-center justify-center mb-4">
-          <i data-lucide="scale" class="w-7 h-7 text-white"></i>
-        </div>
-        <h3 class="text-xl font-bold mb-2 text-gray-900">Human Baseline</h3>
-        <p class="text-gray-600">
-          Includes expert human performance data collected from qualified professionals for meaningful comparison.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== LEADERBOARD ==================== -->
-<section id="leaderboard" class="py-16 bg-white">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-4 text-gray-900">Leaderboard</h2>
-    <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
-      Performance comparison of vision-language models on EuraGovQA. All scores are accuracy percentages.
-    </p>
-
-    <!-- Tab buttons -->
-    <div class="flex justify-center gap-4 mb-6">
-      <div id="view-tabs" class="inline-flex bg-slate-100 rounded-lg p-1">
-        <button data-view="task"
-                class="tab-btn px-6 py-2 rounded-md text-sm font-semibold transition-all bg-white text-blue-600 shadow active">
-          By Task
-        </button>
-        <button data-view="nation"
-                class="tab-btn px-6 py-2 rounded-md text-sm font-semibold transition-all text-gray-600 hover:text-gray-900">
-          By Nation
-        </button>
-      </div>
-
-      <button id="radar-btn"
-              class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition shadow">
-        <i data-lucide="radar" class="w-4 h-4"></i>
-        Show Radar Chart
-      </button>
-    </div>
-
-    <!-- Leaderboard Table -->
-    <div class="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden">
-      <div class="overflow-x-auto">
-        <table id="lb-table" class="stripe hover w-full"></table>
-      </div>
-    </div>
-
-    <p class="text-sm text-gray-500 mt-4 text-center">
-      Last updated: <span id="timestamp"></span>
-    </p>
-
-    <!-- Bar Chart -->
-    <div class="mt-12 bg-slate-50 rounded-xl p-6 border border-slate-200">
-      <div class="flex items-center justify-between mb-4">
-        <h3 class="text-lg font-semibold text-gray-900">Performance Visualization</h3>
-        <select id="metric-select" class="border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></select>
-      </div>
-      <canvas id="metric-chart" class="w-full"></canvas>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== EXAMPLES ==================== -->
-<section class="py-16 bg-slate-50">
-  <div class="max-w-6xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-4 text-gray-900">Example Questions</h2>
-    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-      Sample questions from EuraGovQA demonstrating the diversity and complexity of government examinations.
-    </p>
-
-    <div class="grid md:grid-cols-2 gap-6">
-      <!-- Example 1 -->
-      <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
-        <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2">
-          <span class="text-white text-sm font-medium">India • UPSC Civil Services • Geography</span>
-        </div>
-        <div class="p-6">
-          <div class="bg-slate-100 rounded-lg p-4 mb-4">
-            <img src="assets/img/example1.png" alt="Example question" class="w-full rounded">
-          </div>
-          <p class="text-gray-700 mb-4">
-            Which of the following rivers does NOT originate from the Western Ghats?
-          </p>
-          <div class="space-y-2 text-sm">
-            <div class="flex items-center gap-2 p-2 rounded bg-slate-50">A) Krishna</div>
-            <div class="flex items-center gap-2 p-2 rounded bg-slate-50">B) Godavari</div>
-            <div class="flex items-center gap-2 p-2 rounded bg-green-100 border border-green-300">C) Mahanadi ✓</div>
-            <div class="flex items-center gap-2 p-2 rounded bg-slate-50">D) Cauvery</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Example 2 -->
-      <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
-        <div class="bg-gradient-to-r from-rose-600 to-rose-700 px-4 py-2">
-          <span class="text-white text-sm font-medium">South Korea • 공무원시험 • Law</span>
-        </div>
-        <div class="p-6">
-          <div class="bg-slate-100 rounded-lg p-4 mb-4">
-            <img src="assets/img/example2.png" alt="Example question" class="w-full rounded">
-          </div>
-          <p class="text-gray-700 mb-4">
-            다음 중 헌법재판소의 권한에 해당하지 않는 것은?
-          </p>
-          <div class="space-y-2 text-sm">
-            <div class="flex items-center gap-2 p-2 rounded bg-slate-50">A) 위헌법률심판</div>
-            <div class="flex items-center gap-2 p-2 rounded bg-slate-50">B) 탄핵심판</div>
-            <div class="flex items-center gap-2 p-2 rounded bg-green-100 border border-green-300">C) 명령·규칙 심사 ✓</div>
-            <div class="flex items-center gap-2 p-2 rounded bg-slate-50">D) 권한쟁의심판</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="text-center mt-8">
-      <a href="examples.html" class="btn-primary inline-flex items-center gap-2">
-        View More Examples
-        <i data-lucide="arrow-right" class="w-4 h-4"></i>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== CITATION ==================== -->
-<section id="citation" class="py-16 bg-white">
-  <div class="max-w-4xl mx-auto px-4">
-    <h2 class="text-3xl font-bold text-center mb-4 text-gray-900">Citation</h2>
-    <p class="text-center text-gray-600 mb-8">
-      If you use EuraGovQA in your research, please cite our paper.
-    </p>
-
-    <div class="relative">
-      <pre class="citation-box"><code>@article{euragovqa2025,
-  title     = {EuraGovQA: A Multilingual Multimodal Benchmark for
-               Government Examinations across Eurasia},
-  author    = {Anonymous Authors},
-  journal   = {Advances in Neural Information Processing Systems},
-  year      = {2025},
-  url       = {https://arxiv.org/abs/xxxx.xxxxx}
-}</code></pre>
-      <button id="copy-citation"
-              class="absolute top-3 right-3 p-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition"
-              title="Copy to clipboard">
-        <i data-lucide="copy" class="w-4 h-4 text-slate-300"></i>
-      </button>
-    </div>
-
-    <p id="copy-feedback" class="text-center text-green-600 font-medium mt-4 opacity-0 transition-opacity">
-      Copied to clipboard!
-    </p>
-  </div>
-</section>
-
-<!-- ==================== FOOTER ==================== -->
-<footer class="bg-slate-900 text-white py-12">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="grid md:grid-cols-3 gap-8 mb-8">
-      <div>
-        <div class="flex items-center gap-2 mb-4">
-          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
-            <span class="text-white font-bold text-sm">E</span>
-          </div>
-          <span class="font-bold text-xl">EuraGovQA</span>
-        </div>
-        <p class="text-slate-400 text-sm">
-          A comprehensive multilingual multimodal benchmark for evaluating AI systems on government examination questions.
-        </p>
-      </div>
-
-      <div>
-        <h4 class="font-semibold mb-4">Quick Links</h4>
-        <ul class="space-y-2 text-slate-400">
-          <li><a href="#leaderboard" class="hover:text-white transition">Leaderboard</a></li>
-          <li><a href="paper.html" class="hover:text-white transition">Paper</a></li>
-          <li><a href="dataset.html" class="hover:text-white transition">Dataset</a></li>
-          <li><a href="submission.html" class="hover:text-white transition">Submit Results</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="font-semibold mb-4">Resources</h4>
-        <ul class="space-y-2 text-slate-400">
-          <li><a href="https://github.com/euragovqa/euragovqa" class="hover:text-white transition">GitHub Repository</a></li>
-          <li><a href="https://huggingface.co/datasets/euragovqa" class="hover:text-white transition">HuggingFace Dataset</a></li>
-          <li><a href="https://arxiv.org/abs/xxxx.xxxxx" class="hover:text-white transition">arXiv Paper</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
-      <p>&copy; 2025 EuraGovQA Team. Released under CC BY 4.0 License.</p>
-    </div>
-  </div>
-</footer>
-
-<!-- ==================== RADAR MODAL ==================== -->
-<div id="radar-modal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50 p-4">
-  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-auto">
-    <div class="p-6 border-b border-slate-200 flex items-center justify-between">
-      <h2 class="text-xl font-bold text-gray-900">Performance by Nation</h2>
-      <div class="flex items-center gap-4">
-        <div class="flex items-center gap-2">
-          <label class="text-sm font-medium text-gray-600">Top N:</label>
-          <select id="top-n-select" class="border border-slate-300 rounded-lg px-3 py-1.5 text-sm">
-            <option value="3">3</option>
-            <option value="5" selected>5</option>
-            <option value="10">10</option>
-            <option value="all">All</option>
-          </select>
-        </div>
-        <button id="close-radar" class="p-2 hover:bg-slate-100 rounded-lg transition">
-          <i data-lucide="x" class="w-5 h-5 text-gray-500"></i>
-        </button>
-      </div>
-    </div>
-    <div class="p-6">
-      <canvas id="radar-canvas"></canvas>
     </div>
   </div>
 </div>
 
-<!-- ==================== SCRIPTS ==================== -->
-<script>
-  // Initialize Lucide icons
-  lucide.createIcons();
+<!-- ===== OVERVIEW ===== -->
+<section id="overview">
+  <div class="container">
+    <div class="overview-grid">
+      <div>
+        <div class="section-label">Overview</div>
+        <h2 class="section-title">Abstract</h2>
+        <div class="overview-text">
+          <p>
+            We introduce <strong>EuraGovQA</strong>, a comprehensive multilingual multimodal benchmark
+            designed to evaluate vision-language models on real-world government examination questions
+            across Eurasian countries.
+          </p>
+          <p>
+            Our benchmark comprises <strong>15,234 questions</strong> spanning <strong>17 subject areas</strong>
+            from official civil service examinations in <strong>India, the European Union, Japan, Taiwan,
+            and South Korea</strong>.
+          </p>
+          <p>
+            Unlike existing benchmarks that focus primarily on English or academic contexts,
+            EuraGovQA captures the diverse linguistic, cultural, and administrative knowledge
+            required for government positions across different nations.
+          </p>
+          <p>
+            We evaluate <strong>13 state-of-the-art vision-language models</strong> and reveal
+            significant performance gaps across languages and domains, highlighting the need for
+            more culturally-aware multimodal AI systems.
+          </p>
+        </div>
+      </div>
+      <div class="overview-figure">
+        <canvas id="overview-radar"></canvas>
+        <p class="figure-caption">Figure 1: Model performance across five countries</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-  // Copy citation
-  document.getElementById('copy-citation').addEventListener('click', () => {
-    const citation = document.querySelector('.citation-box code').textContent;
-    navigator.clipboard.writeText(citation).then(() => {
-      const feedback = document.getElementById('copy-feedback');
-      feedback.classList.remove('opacity-0');
-      setTimeout(() => feedback.classList.add('opacity-0'), 2000);
-    });
-  });
-</script>
+<!-- ===== KEY RESULTS ===== -->
+<section id="results">
+  <div class="container">
+    <div class="section-label">Key Findings</div>
+    <h2 class="section-title">Results at a Glance</h2>
+    <div class="results-grid">
+      <div class="result-card">
+        <div class="number gold">85.3%</div>
+        <div class="label">Best Model (GPT-4o)</div>
+        <div class="detail">Highest overall accuracy</div>
+      </div>
+      <div class="result-card">
+        <div class="number green">94.2%</div>
+        <div class="label">Human Expert</div>
+        <div class="detail">Professional baseline</div>
+      </div>
+      <div class="result-card">
+        <div class="number red">-8.9%</div>
+        <div class="label">Performance Gap</div>
+        <div class="detail">Room for improvement</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LEADERBOARD ===== -->
+<section id="leaderboard">
+  <div class="container">
+    <div class="section-label">Evaluation</div>
+    <h2 class="section-title">Leaderboard</h2>
+
+    <div class="leaderboard-tabs">
+      <button class="tab-btn active" data-view="overall">Overall</button>
+      <button class="tab-btn" data-view="nation">By Country</button>
+      <button class="tab-btn" data-view="task">By Subject</button>
+    </div>
+
+    <div class="table-wrapper">
+      <table id="lb-table">
+        <thead>
+          <tr>
+            <th class="center" style="width:60px">Rank</th>
+            <th>Model</th>
+            <th class="center">Overall</th>
+            <th class="center">India</th>
+            <th class="center">EU</th>
+            <th class="center">Japan</th>
+            <th class="center">Taiwan</th>
+            <th class="center">S.Korea</th>
+            <th class="center">Paper</th>
+          </tr>
+        </thead>
+        <tbody id="lb-body">
+          <!-- Filled by JS -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DATASET ===== -->
+<section id="dataset">
+  <div class="container">
+    <div class="section-label">Data</div>
+    <h2 class="section-title">Dataset Statistics</h2>
+
+    <div class="dataset-grid">
+      <div class="chart-card">
+        <h4>Distribution by Country</h4>
+        <canvas id="country-chart"></canvas>
+      </div>
+      <div class="chart-card">
+        <h4>Distribution by Subject</h4>
+        <canvas id="subject-chart"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXAMPLES ===== -->
+<section id="examples">
+  <div class="container">
+    <div class="section-label">Samples</div>
+    <h2 class="section-title">Example Questions</h2>
+
+    <div class="examples-grid">
+      <div class="example-card">
+        <div class="example-header">
+          India · UPSC Civil Services · Geography
+        </div>
+        <div class="example-body">
+          <div class="example-image">
+            <img src="assets/img/example1.png" alt="Map of India">
+          </div>
+          <div class="example-question">
+            Which of the following rivers does NOT originate from the Western Ghats?
+          </div>
+          <div class="example-options">
+            <div class="option">A) Krishna</div>
+            <div class="option">B) Godavari</div>
+            <div class="option correct">C) Mahanadi ✓</div>
+            <div class="option">D) Cauvery</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="example-card">
+        <div class="example-header">
+          South Korea · 공무원시험 · Law
+        </div>
+        <div class="example-body">
+          <div class="example-image">
+            <img src="assets/img/example2.png" alt="Legal document">
+          </div>
+          <div class="example-question">
+            다음 중 헌법재판소의 권한에 해당하지 않는 것은?
+          </div>
+          <div class="example-options">
+            <div class="option">A) 위헌법률심판</div>
+            <div class="option">B) 탄핵심판</div>
+            <div class="option correct">C) 명령·규칙 심사 ✓</div>
+            <div class="option">D) 권한쟁의심판</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CITATION ===== -->
+<section id="citation">
+  <div class="container">
+    <div class="section-label">Reference</div>
+    <h2 class="section-title">Citation</h2>
+    <p style="color: var(--slate-600); margin-bottom: 20px;">
+      If you use EuraGovQA in your research, please cite our paper:
+    </p>
+    <div class="citation-box">
+      <button class="copy-btn" onclick="copyBibtex()">Copy BibTeX</button>
+      <pre id="bibtex">@inproceedings{euragovqa2025,
+  title     = {EuraGovQA: A Multilingual Multimodal Benchmark for
+               Government Examinations across Eurasia},
+  author    = {Author One and Author Two and Author Three and Author Four},
+  booktitle = {Advances in Neural Information Processing Systems},
+  year      = {2025},
+  url       = {https://euragovqa.github.io}
+}</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="logo">Eura<span>Gov</span>QA</div>
+    <p>
+      Released under <a href="#">CC BY 4.0</a> ·
+      <a href="#">GitHub</a> ·
+      <a href="#">HuggingFace</a>
+    </p>
+    <p style="margin-top: 8px;">© 2025 EuraGovQA Team</p>
+  </div>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
 <script src="assets/js/leaderboard.js"></script>
+<script>
+function copyBibtex() {
+  const text = document.getElementById('bibtex').textContent;
+  navigator.clipboard.writeText(text);
+  const btn = document.querySelector('.copy-btn');
+  btn.textContent = 'Copied!';
+  setTimeout(() => btn.textContent = 'Copy BibTeX', 2000);
+}
+</script>
 </body>
 </html>
