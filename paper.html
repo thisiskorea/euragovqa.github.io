@@ -1,26 +1,223 @@
-    <!doctype html>
-    <html lang="en">
-    <head>
-      <meta charset="utf-8">
-      <title>EuraGovQA Paper</title>
-      <script src="https://cdn.tailwindcss.com"></script>
-    </head>
-    <body class="bg-slate-50 text-gray-800">
-      <div class="max-w-3xl mx-auto py-12 px-4">
-        <h1 class="text-3xl font-bold mb-4">Paper</h1>
-        <p>
-          <a href="https://arxiv.org/abs/xxxx.xxxxx" class="text-blue-600 underline">[PDF] EuraGovQA: A Multimodal Benchmark from Eurasian Government Exams</a>
-        </p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paper | EuraGovQA</title>
+  <meta name="description" content="EuraGovQA paper and citation information">
 
-        <h2 class="text-2xl font-semibold mt-8 mb-2">BibTeX</h2>
-        <pre class="bg-white p-4 rounded-md shadow"><code>
-@article{euragovqa2025,
-  title   = {EuraGovQA: A Multimodal Benchmark from Eurasian Government Exams},
-  author  = {Your Name and Others},
-  journal = {arXiv preprint arXiv:xxxx.xxxxx},
-  year    = {2025}
-}
-        </code></pre>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e40af',
+            secondary: '#3b82f6',
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    code, .mono { font-family: 'JetBrains Mono', monospace; }
+    .hero-gradient {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #2563eb 50%, #3b82f6 75%, #60a5fa 100%);
+    }
+    .citation-box {
+      background: #1e293b;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+      overflow-x: auto;
+    }
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #3b82f6;
+      transition: width 0.3s;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-gray-800">
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+        <span class="text-white font-bold text-sm">E</span>
       </div>
-    </body>
-    </html>
+      <span class="font-bold text-xl text-gray-900">EuraGovQA</span>
+    </a>
+    <div class="flex items-center gap-8">
+      <a href="index.html#leaderboard" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Leaderboard</a>
+      <a href="index.html#features" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Features</a>
+      <a href="paper.html" class="nav-link text-blue-600 font-semibold">Paper</a>
+      <a href="dataset.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Dataset</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero-gradient pt-28 pb-16 text-white">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Paper</h1>
+    <p class="text-xl text-blue-100">Research paper and citation information</p>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-16">
+  <div class="max-w-4xl mx-auto px-4">
+
+    <!-- Paper Card -->
+    <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 mb-12">
+      <div class="flex items-start gap-6">
+        <div class="hidden md:flex w-20 h-24 bg-gradient-to-br from-red-500 to-red-700 rounded-lg items-center justify-center flex-shrink-0">
+          <i data-lucide="file-text" class="w-10 h-10 text-white"></i>
+        </div>
+        <div class="flex-1">
+          <h2 class="text-2xl font-bold text-gray-900 mb-2">
+            EuraGovQA: A Multilingual Multimodal Benchmark for Government Examinations across Eurasia
+          </h2>
+          <p class="text-gray-600 mb-4">
+            Anonymous Authors
+          </p>
+          <p class="text-gray-700 mb-6">
+            We introduce EuraGovQA, a comprehensive multilingual multimodal benchmark designed to evaluate vision-language models on real-world government examination questions across Eurasian countries. Our benchmark comprises 15,234 questions spanning 17 subject areas from official civil service examinations in India, the European Union, Japan, Taiwan, and South Korea.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank"
+               class="inline-flex items-center gap-2 bg-red-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-red-700 transition">
+              <i data-lucide="file-text" class="w-4 h-4"></i>
+              arXiv PDF
+            </a>
+            <a href="https://github.com/euragovqa/euragovqa" target="_blank"
+               class="inline-flex items-center gap-2 bg-gray-900 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-gray-800 transition">
+              <i data-lucide="github" class="w-4 h-4"></i>
+              Code
+            </a>
+            <a href="https://huggingface.co/datasets/euragovqa/euragovqa" target="_blank"
+               class="inline-flex items-center gap-2 bg-yellow-500 text-gray-900 px-5 py-2.5 rounded-lg font-semibold hover:bg-yellow-400 transition">
+              🤗 Dataset
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Citation -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-bold text-gray-900 mb-6">Citation</h3>
+      <p class="text-gray-600 mb-4">If you use EuraGovQA in your research, please cite our paper:</p>
+
+      <div class="relative">
+        <pre class="citation-box"><code>@article{euragovqa2025,
+  title     = {EuraGovQA: A Multilingual Multimodal Benchmark for
+               Government Examinations across Eurasia},
+  author    = {Anonymous Authors},
+  journal   = {Advances in Neural Information Processing Systems},
+  year      = {2025},
+  url       = {https://arxiv.org/abs/xxxx.xxxxx}
+}</code></pre>
+        <button id="copy-citation"
+                class="absolute top-3 right-3 p-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition"
+                title="Copy to clipboard">
+          <i data-lucide="copy" class="w-4 h-4 text-slate-300"></i>
+        </button>
+      </div>
+      <p id="copy-feedback" class="text-green-600 font-medium mt-3 opacity-0 transition-opacity">
+        Copied to clipboard!
+      </p>
+    </div>
+
+    <!-- Key Contributions -->
+    <div>
+      <h3 class="text-2xl font-bold text-gray-900 mb-6">Key Contributions</h3>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+          <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center mb-3">
+            <i data-lucide="database" class="w-5 h-5 text-blue-600"></i>
+          </div>
+          <h4 class="font-semibold text-gray-900 mb-2">Large-scale Dataset</h4>
+          <p class="text-gray-600 text-sm">15,234 questions from real government examinations across 5 countries and 17 subject areas.</p>
+        </div>
+        <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+          <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center mb-3">
+            <i data-lucide="bar-chart-3" class="w-5 h-5 text-emerald-600"></i>
+          </div>
+          <h4 class="font-semibold text-gray-900 mb-2">Comprehensive Evaluation</h4>
+          <p class="text-gray-600 text-sm">Systematic evaluation of 13 state-of-the-art vision-language models with fine-grained analysis.</p>
+        </div>
+        <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+          <div class="w-10 h-10 rounded-lg bg-purple-100 flex items-center justify-center mb-3">
+            <i data-lucide="globe" class="w-5 h-5 text-purple-600"></i>
+          </div>
+          <h4 class="font-semibold text-gray-900 mb-2">Cultural Diversity</h4>
+          <p class="text-gray-600 text-sm">Questions in multiple languages reflecting authentic cultural and administrative contexts.</p>
+        </div>
+        <div class="bg-slate-50 rounded-xl p-6 border border-slate-200">
+          <div class="w-10 h-10 rounded-lg bg-orange-100 flex items-center justify-center mb-3">
+            <i data-lucide="image" class="w-5 h-5 text-orange-600"></i>
+          </div>
+          <h4 class="font-semibold text-gray-900 mb-2">Multimodal Content</h4>
+          <p class="text-gray-600 text-sm">Over 55% of questions include images, diagrams, charts, and figures essential for solving.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-900 text-white py-12">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+          <span class="text-white font-bold text-sm">E</span>
+        </div>
+        <span class="font-bold text-xl">EuraGovQA</span>
+      </div>
+      <p class="text-slate-400 text-sm">&copy; 2025 EuraGovQA Team. Released under CC BY 4.0 License.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+
+  document.getElementById('copy-citation').addEventListener('click', () => {
+    const citation = document.querySelector('.citation-box code').textContent;
+    navigator.clipboard.writeText(citation).then(() => {
+      const feedback = document.getElementById('copy-feedback');
+      feedback.classList.remove('opacity-0');
+      setTimeout(() => feedback.classList.add('opacity-0'), 2000);
+    });
+  });
+</script>
+</body>
+</html>

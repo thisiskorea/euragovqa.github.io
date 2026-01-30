@@ -2,110 +2,601 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>EuraGovQA • Leaderboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EuraGovQA: A Multilingual Multimodal Benchmark for Government Examinations</title>
+  <meta name="description" content="EuraGovQA is a comprehensive multimodal benchmark dataset based on government examinations across Eurasian countries.">
 
   <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e40af',
+            secondary: '#3b82f6',
+            accent: '#0ea5e9',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- DataTables core -->
-  <link rel="stylesheet"
-        href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
 
   <!-- DataTables Buttons (colVis) & Responsive -->
-  <link rel="stylesheet"
-        href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
   <script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.colVis.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
 
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    code, .mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Gradient backgrounds */
+    .hero-gradient {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #2563eb 50%, #3b82f6 75%, #60a5fa 100%);
+    }
+
+    .stat-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Table styling */
+    #lb-table th, #lb-table td {
+      text-align: center;
+      vertical-align: middle;
+    }
+    #lb-table thead th {
+      background: #1e40af !important;
+      color: white !important;
+      font-weight: 600;
+      padding: 12px 8px;
+    }
+    #lb-table tbody tr:hover {
+      background: #eff6ff !important;
+    }
+    #lb-table tbody tr:first-child td {
+      background: linear-gradient(90deg, #fef3c7 0%, #fde68a 100%);
+      font-weight: 600;
+    }
+    #lb-table tbody tr:nth-child(2) td {
+      background: linear-gradient(90deg, #f3f4f6 0%, #e5e7eb 100%);
+    }
+    #lb-table tbody tr:nth-child(3) td {
+      background: linear-gradient(90deg, #fed7aa 0%, #fdba74 100%);
+    }
+
+    /* Citation box */
+    .citation-box {
+      background: #1e293b;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+      overflow-x: auto;
+    }
+
+    /* Smooth scroll */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Feature cards */
+    .feature-card {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #e2e8f0;
+      border-radius: 1rem;
+      padding: 2rem;
+      transition: all 0.3s;
+    }
+    .feature-card:hover {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    /* Nav active state */
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #3b82f6;
+      transition: width 0.3s;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* Button styles */
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px -1px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #1e40af;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      border: 2px solid #1e40af;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      background: #1e40af;
+      color: white;
+    }
+  </style>
 </head>
+
 <body class="bg-slate-50 text-gray-800">
 
-<!-- ░░░ Navbar ░░░ -->
-<nav class="w-full bg-white shadow-md">
-  <div class="max-w-screen-lg mx-auto px-4 py-3 flex gap-6">
-    <a href="index.html" class="font-bold text-blue-600">EuraGovQA</a>
-    <a href="index.html" class="font-semibold">Leaderboard</a>
-    <a href="paper.html">Paper</a>
-    <a href="dataset.html">Dataset</a>
+<!-- ==================== NAVIGATION ==================== -->
+<nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+        <span class="text-white font-bold text-sm">E</span>
+      </div>
+      <span class="font-bold text-xl text-gray-900">EuraGovQA</span>
+    </a>
+    <div class="flex items-center gap-8">
+      <a href="#leaderboard" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Leaderboard</a>
+      <a href="#features" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Features</a>
+      <a href="#citation" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Citation</a>
+      <a href="paper.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Paper</a>
+      <a href="dataset.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Dataset</a>
+    </div>
   </div>
 </nav>
 
-<!-- ░░░ Main ░░░ -->
-<div class="max-w-screen-lg mx-auto py-12 px-2">
-
-  <h1 class="text-4xl font-extrabold mb-6 text-center">Leaderboard</h1>
-
-  <!-- ▼ 탭 버튼 -->
-  <div id="view-tabs" class="flex gap-2 justify-center mb-4">
-    <button data-view="task"
-            class="tab-btn px-4 py-2 rounded bg-blue-600 text-white shadow active">
-      Task
-    </button>
-    <button data-view="nation"
-            class="tab-btn px-4 py-2 rounded bg-gray-200 hover:bg-gray-300">
-      Nation
-    </button>
-  </div>
-
-  <!-- ▼ Radar 버튼 -->
-  <button id="radar-btn"
-          class="mb-4 px-4 py-2 bg-emerald-600 text-white rounded shadow hover:bg-emerald-700 transition">
-    Show Nation Radar
-  </button>
-
-  <!-- ▼ 표 영역 -->
-  <div class="overflow-x-auto">
-    <table id="lb-table" class="stripe hover w-full"></table>
-  </div>
-
-  <p class="text-sm text-gray-500 mt-4 text-center">
-    Last updated: <span id="timestamp"></span>
-  </p>
-
-  <!-- ▼ Bar 그래프 -->
-  <div class="my-10 space-y-4">
-    <div class="text-center">
-      <label class="font-medium mr-2">Metric :</label>
-      <select id="metric-select" class="border rounded px-2 py-1"></select>
+<!-- ==================== HERO SECTION ==================== -->
+<section class="hero-gradient pt-32 pb-20 text-white">
+  <div class="max-w-5xl mx-auto px-4 text-center">
+    <!-- Badge -->
+    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-6">
+      <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+      <span class="text-sm font-medium">NeurIPS 2025 Datasets and Benchmarks Track</span>
     </div>
-    <canvas id="metric-chart" class="w-full max-w-screen-lg mx-auto"></canvas>
-  </div>
-</div>
 
-<!-- ░░░ Radar 모달 ░░░ -->
-<div id="radar-modal"
-     class="fixed inset-0 bg-black/50 hidden place-items-center z-50">
-  <div class="bg-white p-6 rounded-xl shadow-xl w-full max-w-xl mx-auto">
-    <div class="flex justify-between items-center mb-4">
-      <h2 class="text-xl font-bold">Nation Radar</h2>
-      <div class="flex items-center gap-2">
-        <label class="text-sm font-medium">Top&nbsp;N:</label>
-        <select id="top-n-select" class="border rounded px-2 py-1 text-sm">
-          <option value="3">3</option>
-          <option value="5" selected>5</option>
-          <option value="10">10</option>
-          <option value="all">All</option>
-        </select>
+    <!-- Title -->
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+      EuraGovQA
+    </h1>
+    <p class="text-2xl md:text-3xl font-light text-blue-100 mb-4">
+      A Multilingual Multimodal Benchmark for<br>Government Examinations
+    </p>
+
+    <!-- Authors -->
+    <p class="text-blue-200 mb-8 text-lg">
+      Anonymous Authors<sup>*</sup>
+    </p>
+
+    <!-- Action Buttons -->
+    <div class="flex flex-wrap justify-center gap-4 mb-12">
+      <a href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank"
+         class="inline-flex items-center gap-2 bg-white text-blue-800 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition shadow-lg">
+        <i data-lucide="file-text" class="w-5 h-5"></i>
+        arXiv Paper
+      </a>
+      <a href="https://github.com/euragovqa/euragovqa" target="_blank"
+         class="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition shadow-lg">
+        <i data-lucide="github" class="w-5 h-5"></i>
+        GitHub
+      </a>
+      <a href="https://huggingface.co/datasets/euragovqa/euragovqa" target="_blank"
+         class="inline-flex items-center gap-2 bg-yellow-500 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition shadow-lg">
+        🤗 Dataset
+      </a>
+      <a href="#leaderboard"
+         class="inline-flex items-center gap-2 bg-emerald-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-emerald-600 transition shadow-lg">
+        <i data-lucide="trophy" class="w-5 h-5"></i>
+        Leaderboard
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== STATS SECTION ==================== -->
+<section class="relative -mt-12 z-10 mb-16">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="stat-card text-center">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-blue-100 flex items-center justify-center">
+          <i data-lucide="file-question" class="w-6 h-6 text-blue-600"></i>
+        </div>
+        <div class="text-3xl font-bold text-gray-900">15,234</div>
+        <div class="text-sm text-gray-500 font-medium">Questions</div>
+      </div>
+      <div class="stat-card text-center">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-emerald-100 flex items-center justify-center">
+          <i data-lucide="globe" class="w-6 h-6 text-emerald-600"></i>
+        </div>
+        <div class="text-3xl font-bold text-gray-900">5</div>
+        <div class="text-sm text-gray-500 font-medium">Countries</div>
+      </div>
+      <div class="stat-card text-center">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-purple-100 flex items-center justify-center">
+          <i data-lucide="layers" class="w-6 h-6 text-purple-600"></i>
+        </div>
+        <div class="text-3xl font-bold text-gray-900">17</div>
+        <div class="text-sm text-gray-500 font-medium">Subject Areas</div>
+      </div>
+      <div class="stat-card text-center">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-orange-100 flex items-center justify-center">
+          <i data-lucide="image" class="w-6 h-6 text-orange-600"></i>
+        </div>
+        <div class="text-3xl font-bold text-gray-900">8,421</div>
+        <div class="text-sm text-gray-500 font-medium">Images</div>
       </div>
     </div>
-    <canvas id="radar-canvas"></canvas>
-    <button id="close-radar"
-            class="mt-6 px-4 py-2 bg-gray-700 text-white rounded hover:bg-gray-800 transition">
-      Close
-    </button>
+  </div>
+</section>
+
+<!-- ==================== ABSTRACT ==================== -->
+<section class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-8 text-gray-900">Abstract</h2>
+    <div class="bg-gradient-to-br from-slate-50 to-blue-50 rounded-2xl p-8 border border-slate-200">
+      <p class="text-lg text-gray-700 leading-relaxed">
+        We introduce <strong>EuraGovQA</strong>, a comprehensive multilingual multimodal benchmark
+        designed to evaluate vision-language models on real-world government examination questions
+        across Eurasian countries. Our benchmark comprises <strong>15,234 questions</strong> spanning
+        <strong>17 subject areas</strong> from official civil service examinations in
+        <strong>India, the European Union, Japan, Taiwan, and South Korea</strong>.
+        Unlike existing benchmarks that focus primarily on English or academic contexts,
+        EuraGovQA captures the diverse linguistic, cultural, and administrative knowledge
+        required for government positions across different nations. We evaluate
+        <strong>13 state-of-the-art vision-language models</strong> and reveal significant
+        performance gaps across languages and domains, highlighting the need for more
+        culturally-aware multimodal AI systems.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FEATURES ==================== -->
+<section id="features" class="py-16 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-4 text-gray-900">Key Features</h2>
+    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+      EuraGovQA provides a rigorous evaluation framework for assessing vision-language models on real-world governmental knowledge.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="feature-card">
+        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center mb-4">
+          <i data-lucide="languages" class="w-7 h-7 text-white"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900">Multilingual</h3>
+        <p class="text-gray-600">
+          Questions in English, Hindi, Japanese, Traditional Chinese, and Korean, reflecting authentic examination formats.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-500 to-emerald-700 flex items-center justify-center mb-4">
+          <i data-lucide="scan-eye" class="w-7 h-7 text-white"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900">Multimodal</h3>
+        <p class="text-gray-600">
+          Over 55% of questions include images such as diagrams, charts, maps, and figures essential for solving the problems.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 flex items-center justify-center mb-4">
+          <i data-lucide="landmark" class="w-7 h-7 text-white"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900">Real Examinations</h3>
+        <p class="text-gray-600">
+          Sourced from actual government civil service examinations, ensuring practical relevance and difficulty calibration.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-orange-500 to-orange-700 flex items-center justify-center mb-4">
+          <i data-lucide="book-open" class="w-7 h-7 text-white"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900">17 Subject Areas</h3>
+        <p class="text-gray-600">
+          Comprehensive coverage including Law, Medicine, Administration, Economics, Science, and Humanities.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-rose-500 to-rose-700 flex items-center justify-center mb-4">
+          <i data-lucide="bar-chart-3" class="w-7 h-7 text-white"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900">Fine-grained Analysis</h3>
+        <p class="text-gray-600">
+          Detailed performance breakdown by country, language, subject, and question type for comprehensive evaluation.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-700 flex items-center justify-center mb-4">
+          <i data-lucide="scale" class="w-7 h-7 text-white"></i>
+        </div>
+        <h3 class="text-xl font-bold mb-2 text-gray-900">Human Baseline</h3>
+        <p class="text-gray-600">
+          Includes expert human performance data collected from qualified professionals for meaningful comparison.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== LEADERBOARD ==================== -->
+<section id="leaderboard" class="py-16 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-4 text-gray-900">Leaderboard</h2>
+    <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+      Performance comparison of vision-language models on EuraGovQA. All scores are accuracy percentages.
+    </p>
+
+    <!-- Tab buttons -->
+    <div class="flex justify-center gap-4 mb-6">
+      <div id="view-tabs" class="inline-flex bg-slate-100 rounded-lg p-1">
+        <button data-view="task"
+                class="tab-btn px-6 py-2 rounded-md text-sm font-semibold transition-all bg-white text-blue-600 shadow active">
+          By Task
+        </button>
+        <button data-view="nation"
+                class="tab-btn px-6 py-2 rounded-md text-sm font-semibold transition-all text-gray-600 hover:text-gray-900">
+          By Nation
+        </button>
+      </div>
+
+      <button id="radar-btn"
+              class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 text-white rounded-lg font-medium hover:bg-emerald-700 transition shadow">
+        <i data-lucide="radar" class="w-4 h-4"></i>
+        Show Radar Chart
+      </button>
+    </div>
+
+    <!-- Leaderboard Table -->
+    <div class="bg-white rounded-xl shadow-lg border border-slate-200 overflow-hidden">
+      <div class="overflow-x-auto">
+        <table id="lb-table" class="stripe hover w-full"></table>
+      </div>
+    </div>
+
+    <p class="text-sm text-gray-500 mt-4 text-center">
+      Last updated: <span id="timestamp"></span>
+    </p>
+
+    <!-- Bar Chart -->
+    <div class="mt-12 bg-slate-50 rounded-xl p-6 border border-slate-200">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-lg font-semibold text-gray-900">Performance Visualization</h3>
+        <select id="metric-select" class="border border-slate-300 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></select>
+      </div>
+      <canvas id="metric-chart" class="w-full"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== EXAMPLES ==================== -->
+<section class="py-16 bg-slate-50">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-4 text-gray-900">Example Questions</h2>
+    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+      Sample questions from EuraGovQA demonstrating the diversity and complexity of government examinations.
+    </p>
+
+    <div class="grid md:grid-cols-2 gap-6">
+      <!-- Example 1 -->
+      <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2">
+          <span class="text-white text-sm font-medium">India • UPSC Civil Services • Geography</span>
+        </div>
+        <div class="p-6">
+          <div class="bg-slate-100 rounded-lg p-4 mb-4">
+            <img src="assets/img/example1.png" alt="Example question" class="w-full rounded">
+          </div>
+          <p class="text-gray-700 mb-4">
+            Which of the following rivers does NOT originate from the Western Ghats?
+          </p>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center gap-2 p-2 rounded bg-slate-50">A) Krishna</div>
+            <div class="flex items-center gap-2 p-2 rounded bg-slate-50">B) Godavari</div>
+            <div class="flex items-center gap-2 p-2 rounded bg-green-100 border border-green-300">C) Mahanadi ✓</div>
+            <div class="flex items-center gap-2 p-2 rounded bg-slate-50">D) Cauvery</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Example 2 -->
+      <div class="bg-white rounded-xl shadow-md border border-slate-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-rose-600 to-rose-700 px-4 py-2">
+          <span class="text-white text-sm font-medium">South Korea • 공무원시험 • Law</span>
+        </div>
+        <div class="p-6">
+          <div class="bg-slate-100 rounded-lg p-4 mb-4">
+            <img src="assets/img/example2.png" alt="Example question" class="w-full rounded">
+          </div>
+          <p class="text-gray-700 mb-4">
+            다음 중 헌법재판소의 권한에 해당하지 않는 것은?
+          </p>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center gap-2 p-2 rounded bg-slate-50">A) 위헌법률심판</div>
+            <div class="flex items-center gap-2 p-2 rounded bg-slate-50">B) 탄핵심판</div>
+            <div class="flex items-center gap-2 p-2 rounded bg-green-100 border border-green-300">C) 명령·규칙 심사 ✓</div>
+            <div class="flex items-center gap-2 p-2 rounded bg-slate-50">D) 권한쟁의심판</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="examples.html" class="btn-primary inline-flex items-center gap-2">
+        View More Examples
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CITATION ==================== -->
+<section id="citation" class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto px-4">
+    <h2 class="text-3xl font-bold text-center mb-4 text-gray-900">Citation</h2>
+    <p class="text-center text-gray-600 mb-8">
+      If you use EuraGovQA in your research, please cite our paper.
+    </p>
+
+    <div class="relative">
+      <pre class="citation-box"><code>@article{euragovqa2025,
+  title     = {EuraGovQA: A Multilingual Multimodal Benchmark for
+               Government Examinations across Eurasia},
+  author    = {Anonymous Authors},
+  journal   = {Advances in Neural Information Processing Systems},
+  year      = {2025},
+  url       = {https://arxiv.org/abs/xxxx.xxxxx}
+}</code></pre>
+      <button id="copy-citation"
+              class="absolute top-3 right-3 p-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition"
+              title="Copy to clipboard">
+        <i data-lucide="copy" class="w-4 h-4 text-slate-300"></i>
+      </button>
+    </div>
+
+    <p id="copy-feedback" class="text-center text-green-600 font-medium mt-4 opacity-0 transition-opacity">
+      Copied to clipboard!
+    </p>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="bg-slate-900 text-white py-12">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="grid md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+            <span class="text-white font-bold text-sm">E</span>
+          </div>
+          <span class="font-bold text-xl">EuraGovQA</span>
+        </div>
+        <p class="text-slate-400 text-sm">
+          A comprehensive multilingual multimodal benchmark for evaluating AI systems on government examination questions.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-semibold mb-4">Quick Links</h4>
+        <ul class="space-y-2 text-slate-400">
+          <li><a href="#leaderboard" class="hover:text-white transition">Leaderboard</a></li>
+          <li><a href="paper.html" class="hover:text-white transition">Paper</a></li>
+          <li><a href="dataset.html" class="hover:text-white transition">Dataset</a></li>
+          <li><a href="submission.html" class="hover:text-white transition">Submit Results</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-semibold mb-4">Resources</h4>
+        <ul class="space-y-2 text-slate-400">
+          <li><a href="https://github.com/euragovqa/euragovqa" class="hover:text-white transition">GitHub Repository</a></li>
+          <li><a href="https://huggingface.co/datasets/euragovqa" class="hover:text-white transition">HuggingFace Dataset</a></li>
+          <li><a href="https://arxiv.org/abs/xxxx.xxxxx" class="hover:text-white transition">arXiv Paper</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-800 pt-8 text-center text-slate-500 text-sm">
+      <p>&copy; 2025 EuraGovQA Team. Released under CC BY 4.0 License.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== RADAR MODAL ==================== -->
+<div id="radar-modal" class="fixed inset-0 bg-black/60 hidden items-center justify-center z-50 p-4">
+  <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-auto">
+    <div class="p-6 border-b border-slate-200 flex items-center justify-between">
+      <h2 class="text-xl font-bold text-gray-900">Performance by Nation</h2>
+      <div class="flex items-center gap-4">
+        <div class="flex items-center gap-2">
+          <label class="text-sm font-medium text-gray-600">Top N:</label>
+          <select id="top-n-select" class="border border-slate-300 rounded-lg px-3 py-1.5 text-sm">
+            <option value="3">3</option>
+            <option value="5" selected>5</option>
+            <option value="10">10</option>
+            <option value="all">All</option>
+          </select>
+        </div>
+        <button id="close-radar" class="p-2 hover:bg-slate-100 rounded-lg transition">
+          <i data-lucide="x" class="w-5 h-5 text-gray-500"></i>
+        </button>
+      </div>
+    </div>
+    <div class="p-6">
+      <canvas id="radar-canvas"></canvas>
+    </div>
   </div>
 </div>
 
-<!-- ░░░ Custom JS ░░░ -->
+<!-- ==================== SCRIPTS ==================== -->
+<script>
+  // Initialize Lucide icons
+  lucide.createIcons();
+
+  // Copy citation
+  document.getElementById('copy-citation').addEventListener('click', () => {
+    const citation = document.querySelector('.citation-box code').textContent;
+    navigator.clipboard.writeText(citation).then(() => {
+      const feedback = document.getElementById('copy-feedback');
+      feedback.classList.remove('opacity-0');
+      setTimeout(() => feedback.classList.add('opacity-0'), 2000);
+    });
+  });
+</script>
 <script src="assets/js/leaderboard.js"></script>
 </body>
 </html>
-
