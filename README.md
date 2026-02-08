@@ -12,11 +12,11 @@ EuraGovExam is a benchmark that evaluates Vision-Language Models (VLMs) on authe
 
 ### Key Features
 
-- **8,000 authentic exam questions** from government exams
+- **8,000 authentic exam questions** from government civil service exams
 - **5 regions** with diverse languages and scripts (Korean, Japanese, Chinese, English, European languages)
 - **17 domains** covering STEM, humanities, and social sciences
-- **Three-track evaluation** to isolate visual perception from reasoning
-- **Standardized evaluation protocol** for reproducible results
+- **Image-only evaluation** with minimal instruction (no external OCR)
+- **Standardized protocol** for reproducible results
 
 ## Dataset
 
@@ -50,99 +50,45 @@ pip install -r experiment/requirements.txt
 ### Basic Usage
 
 ```bash
-# Run standardized evaluation on full benchmark
-python experiment/evaluate.py --model gemini-2.0-flash --setting image-only
+# Run evaluation on full benchmark (default: image-only)
+python experiment/evaluate.py --model gemini-2.0-flash
 
 # Evaluate on specific nation
-python experiment/evaluate.py --model gemini-2.0-flash --nation japan
+python experiment/evaluate.py --nation japan
 
 # Evaluate on specific domain
-python experiment/evaluate.py --model gemini-2.0-flash --domain mathematics
+python experiment/evaluate.py --domain mathematics
 
 # Combine filters
-python experiment/evaluate.py --model gemini-2.0-flash --nation korea --domain law
+python experiment/evaluate.py --nation korea --domain law
 ```
 
-For detailed usage, see [`experiment/EVALUATE_README.md`](experiment/EVALUATE_README.md).
+### Evaluation Protocol
 
-## Three-Track Evaluation Protocol
-
-EuraGovExam uses three evaluation tracks to isolate VLM capabilities:
-
-### Track A: Image-Only (Primary)
-- **What it measures**: Combined visual perception + reasoning
-- **Input**: Exam image only (no external OCR)
-- **Use case**: Standard benchmark evaluation
+**Image-Only Evaluation** (default)
+- Model receives only the exam image
+- No external OCR or text extraction
+- Minimal standardized instruction
+- Measures combined visual perception + reasoning
 
 ```bash
-python experiment/evaluate.py --setting image-only
+python experiment/evaluate.py --model gemini-2.0-flash
 ```
 
-### Track B: Text-Only
-- **What it measures**: Pure language reasoning on noisy OCR text
-- **Input**: Extracted OCR text only (no image)
-- **Use case**: Isolate reasoning capability
+For advanced multi-track analysis (text-only, multimodal, VCE), see [`experiment/EVALUATE_README.md`](experiment/EVALUATE_README.md).
 
-```bash
-python experiment/evaluate.py --setting text-only
-```
+## Random Baseline
 
-### Track C: Multimodal
-- **What it measures**: Multimodal fusion capability
-- **Input**: Both image and OCR text
-- **Use case**: Measure fusion benefit/interference
-
-```bash
-python experiment/evaluate.py --setting multimodal
-```
-
-### Visual Causal Effect (VCE)
-
-**VCE = Acc(Track C) - Acc(Track B)**
-
-- **Positive VCE**: Visual input helps (fusion benefit)
-- **Negative VCE**: Visual input hurts (fusion interference)
-- **Zero VCE**: No fusion effect
-
-## Evaluation Results
-
-### Random Baseline
 The benchmark's random baseline is **23.7%** (weighted average of 4-choice and 5-choice questions).
 
-### Sample Results
+## Files
 
-| Model | Overall | Korea | Japan | Taiwan | India | EU |
-|-------|---------|-------|-------|--------|-------|-----|
-| GPT-4o | 67.5% | 65.2% | 68.9% | 71.2% | 64.8% | 69.3% |
-| Claude-3.5 | 65.3% | 63.1% | 66.8% | 69.5% | 62.7% | 67.2% |
-| Gemini 2.0 Flash | 63.8% | 61.5% | 65.2% | 68.1% | 60.9% | 65.7% |
-
-*Note: These are example results. Run experiments to get actual numbers.*
-
-## Experiment Scripts
-
-The `experiment/` directory contains various scripts for running experiments:
-
-### Core Scripts
-- **`evaluate.py`**: Standardized evaluation script (recommended)
-- **`config.py`**: Configuration (API keys, model settings, prompts)
-- **`requirements.txt`**: Python dependencies
-
-### Experiment Scripts
-- `quick_test.py`: Quick validation with 5 samples
-- `large_scale_experiment.py`: Large-scale 3-track experiment
-- `multi_model_experiment.py`: Multi-model comparison
-- `vce_analysis.py`: Visual Causal Effect analysis
-
-### Analysis Scripts (`experiment/analysis/`)
-- `phase1_statistical_analysis.py`: Bootstrap CI, significance tests
-- `phase2_failure_taxonomy.py`: Qualitative failure categorization
-- `phase3_clean_text_experiment.py`: Oracle text experiments
-- `mixed_effects_anova.py`: Track × Region interaction analysis
-
-### Figure Generation
-- `generate_figures.py`: Generate publication figures
-- `paper_figures_tables.py`: Generate tables for paper
+- **`experiment/evaluate.py`**: Main evaluation script
+- **`experiment/EVALUATE_README.md`**: Detailed usage guide
+- **`experiment/config.py`**: Configuration (API keys, model settings)
+- **`experiment/requirements.txt`**: Python dependencies
+- **`experiment/analysis/`**: Statistical analysis scripts
+- **`experiment/figures/`**: Generated figures
 
 ## Configuration
 
