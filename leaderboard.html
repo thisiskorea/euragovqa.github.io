@@ -2,25 +2,83 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Leaderboard • EuraGovQA</title>
+  <title>Leaderboard • EuraGovExam</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-50 text-gray-800">
-  <div class="max-w-5xl mx-auto py-12 px-4">
-    <h1 class="text-3xl font-bold mb-6">Leaderboard</h1>
-    <table class="min-w-full bg-white shadow rounded-lg">
-      <thead class="bg-slate-100 text-left">
-        <tr>
-          <th class="px-4 py-2">Model</th>
-          <th class="px-4 py-2 text-center">Overall</th>
-          <th class="px-4 py-2 text-center">Law</th>
-          <th class="px-4 py-2 text-center">Biology</th>
-        </tr>
-      </thead>
-      <tbody id="lb-body"></tbody>
-    </table>
-    <p class="text-sm text-gray-500 mt-4">Submit your results via Pull Request.</p>
+  <div class="max-w-7xl mx-auto py-12 px-4">
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold mb-2">EuraGovExam Leaderboard</h1>
+      <p class="text-gray-600">Performance of 28 vision-language models across 5 regions. All numbers are accuracy (%).</p>
+      <p class="text-sm text-gray-500 mt-2">
+        <a href="index.html" class="text-blue-600 hover:underline">← Back to main page</a>
+      </p>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="min-w-full bg-white shadow rounded-lg" id="lb-table">
+        <thead class="bg-slate-100">
+          <tr>
+            <th class="px-4 py-3 text-left font-semibold">Rank</th>
+            <th class="px-4 py-3 text-left font-semibold">Model</th>
+            <th class="px-4 py-3 text-center font-semibold">Overall</th>
+            <th class="px-4 py-3 text-center font-semibold">India</th>
+            <th class="px-4 py-3 text-center font-semibold">EU</th>
+            <th class="px-4 py-3 text-center font-semibold">Japan</th>
+            <th class="px-4 py-3 text-center font-semibold">Taiwan</th>
+            <th class="px-4 py-3 text-center font-semibold">S.Korea</th>
+            <th class="px-4 py-3 text-center font-semibold">Paper</th>
+          </tr>
+        </thead>
+        <tbody id="lb-body"></tbody>
+      </table>
+    </div>
+
+    <div class="mt-8 text-center">
+      <p class="text-sm text-gray-500">Submit your results via Pull Request on <a href="https://github.com/thisiskorea/EuraGovExam" class="text-blue-600 hover:underline">GitHub</a>.</p>
+    </div>
   </div>
-  <script src="assets/js/leaderboard.js"></script>
+
+  <script>
+    // Load and render leaderboard
+    fetch('./data/leaderboard.json')
+      .then(r => r.json())
+      .then(data => {
+        const tbody = document.getElementById('lb-body');
+        data.sort((a, b) => b.overall - a.overall);
+
+        tbody.innerHTML = data.map((row, i) => {
+          const rank = i + 1;
+          const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : rank;
+          const rowClass = rank <= 3 ? 'bg-yellow-50' : '';
+
+          const scoreClass = (score) => {
+            if (score >= 80) return 'text-green-600 font-semibold';
+            if (score >= 60) return 'text-yellow-600 font-semibold';
+            return 'text-red-600 font-semibold';
+          };
+
+          return `
+            <tr class="${rowClass} border-b hover:bg-gray-50">
+              <td class="px-4 py-3">${medal}</td>
+              <td class="px-4 py-3 font-medium">${row.model}</td>
+              <td class="px-4 py-3 text-center ${scoreClass(row.overall)}">${row.overall.toFixed(2)}</td>
+              <td class="px-4 py-3 text-center ${scoreClass(row.nation.india)}">${row.nation.india.toFixed(2)}</td>
+              <td class="px-4 py-3 text-center ${scoreClass(row.nation.eu)}">${row.nation.eu.toFixed(2)}</td>
+              <td class="px-4 py-3 text-center ${scoreClass(row.nation.japan)}">${row.nation.japan.toFixed(2)}</td>
+              <td class="px-4 py-3 text-center ${scoreClass(row.nation.taiwan)}">${row.nation.taiwan.toFixed(2)}</td>
+              <td class="px-4 py-3 text-center ${scoreClass(row.nation.south_korea)}">${row.nation.south_korea.toFixed(2)}</td>
+              <td class="px-4 py-3 text-center">
+                ${row.paper ? `<a href="${row.paper}" target="_blank" class="text-blue-600 hover:underline">Link</a>` : '—'}
+              </td>
+            </tr>
+          `;
+        }).join('');
+      })
+      .catch(err => {
+        console.error('Failed to load leaderboard:', err);
+        document.getElementById('lb-body').innerHTML = '<tr><td colspan="9" class="px-4 py-8 text-center text-red-600">Failed to load leaderboard data</td></tr>';
+      });
+  </script>
 </body>
 </html>
