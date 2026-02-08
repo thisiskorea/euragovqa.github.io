@@ -269,165 +269,6 @@ def evaluate_image_only(
     return results
 
 
-def evaluate_text_only(
-    model,
-    dataset_items: List[Tuple[int, dict]],
-    sample_size: Optional[int] = None,
-    seed: int = 42,
-    verbose: bool = False,
-) -> List[dict]:
-    """
-    Track B: OCR-Text-Only Setting (for research comparisons).
-
-    Steps:
-    1. Extract OCR text from image
-    2. LLM reasoning on text only (no image)
-
-    Args:
-        model: Gemini model instance
-        dataset_items: List of (index, item) tuples
-        sample_size: Sample size override
-        seed: Random seed
-        verbose: Verbose logging
-
-    Returns:
-        List of result dictionaries
-    """
-    random.seed(seed)
-
-    if sample_size is not None and sample_size < len(dataset_items):
-        dataset_items = random.sample(dataset_items, sample_size)
-
-    results = []
-    total = len(dataset_items)
-
-    # OCR extraction prompt
-    PROMPT_OCR = """Extract ALL text from this image exactly as written.
-Preserve the structure, including:
-- Question number and text
-- All answer options (A, B, C, D, E) with their full text
-- Any tables, diagrams descriptions, or additional context
-- Maintain the original formatting and line breaks where meaningful
-
-Output only the extracted text, nothing else."""
-
-    for i, (idx, item) in enumerate(dataset_items):
-        image = item["img"]
-        correct = item["correct answer"].strip().upper()
-        nation = item["nation"]
-        task = item["task"]
-
-        if verbose or (i + 1) % 10 == 0:
-            print(f"[{i+1}/{total}] Index={idx}, Nation={nation}, Task={task}")
-
-        # Step 1: OCR extraction
-        ocr_text = api_call_with_retry(model, [PROMPT_OCR, image])
-        time.sleep(API_DELAY_SECONDS)
-
-        # Step 2: Text reasoning
-        prompt = PROMPT_TRACK_B.format(ocr_text=ocr_text)
-        response = api_call_with_retry(model, prompt)
-        predicted = extract_answer(response)
-        is_correct = (predicted == correct)
-
-        if verbose:
-            print(f"  OCR: {len(ocr_text)} chars")
-            print(f"  Predicted: {predicted} {'✓' if is_correct else '✗'}")
-
-        results.append({
-            "index": idx,
-            "nation": nation,
-            "task": task,
-            "correct_answer": correct,
-            "predicted_answer": predicted,
-            "is_correct": is_correct,
-            "ocr_text": ocr_text[:1000] if len(ocr_text) > 1000 else ocr_text,
-            "response": response[:500] if len(response) > 500 else response,
-        })
-
-        time.sleep(API_DELAY_SECONDS)
-
-    return results
-
-
-def evaluate_multimodal(
-    model,
-    dataset_items: List[Tuple[int, dict]],
-    sample_size: Optional[int] = None,
-    seed: int = 42,
-    verbose: bool = False,
-) -> List[dict]:
-    """
-    Track C: Multimodal Setting (Image + OCR Text).
-
-    Steps:
-    1. Extract OCR text from image
-    2. VLM reasoning with both image and text
-
-    Args:
-        model: Gemini model instance
-        dataset_items: List of (index, item) tuples
-        sample_size: Sample size override
-        seed: Random seed
-        verbose: Verbose logging
-
-    Returns:
-        List of result dictionaries
-    """
-    random.seed(seed)
-
-    if sample_size is not None and sample_size < len(dataset_items):
-        dataset_items = random.sample(dataset_items, sample_size)
-
-    results = []
-    total = len(dataset_items)
-
-    PROMPT_OCR = """Extract ALL text from this image exactly as written.
-Preserve the structure, including:
-- Question number and text
-- All answer options (A, B, C, D, E) with their full text
-- Any tables, diagrams descriptions, or additional context
-- Maintain the original formatting and line breaks where meaningful
-
-Output only the extracted text, nothing else."""
-
-    for i, (idx, item) in enumerate(dataset_items):
-        image = item["img"]
-        correct = item["correct answer"].strip().upper()
-        nation = item["nation"]
-        task = item["task"]
-
-        if verbose or (i + 1) % 10 == 0:
-            print(f"[{i+1}/{total}] Index={idx}, Nation={nation}, Task={task}")
-
-        # Step 1: OCR extraction
-        ocr_text = api_call_with_retry(model, [PROMPT_OCR, image])
-        time.sleep(API_DELAY_SECONDS)
-
-        # Step 2: Multimodal reasoning
-        prompt = PROMPT_TRACK_C.format(ocr_text=ocr_text)
-        response = api_call_with_retry(model, [prompt, image])
-        predicted = extract_answer(response)
-        is_correct = (predicted == correct)
-
-        if verbose:
-            print(f"  OCR: {len(ocr_text)} chars")
-            print(f"  Predicted: {predicted} {'✓' if is_correct else '✗'}")
-
-        results.append({
-            "index": idx,
-            "nation": nation,
-            "task": task,
-            "correct_answer": correct,
-            "predicted_answer": predicted,
-            "is_correct": is_correct,
-            "ocr_text": ocr_text[:1000] if len(ocr_text) > 1000 else ocr_text,
-            "response": response[:500] if len(response) > 500 else response,
-        })
-
-        time.sleep(API_DELAY_SECONDS)
-
-    return results
 
 
 def calculate_metrics(results: List[dict]) -> dict:
@@ -610,13 +451,6 @@ Examples:
         help=f"Dataset split (default: {DATASET_SPLIT})"
     )
     parser.add_argument(
-        "--setting",
-        type=str,
-        default="image-only",
-        choices=["image-only", "text-only", "multimodal"],
-        help="Evaluation setting (default: image-only)"
-    )
-    parser.add_argument(
         "--nation",
         type=str,
         default=None,
@@ -661,7 +495,6 @@ Examples:
     print("EuraGovExam Standardized Evaluation")
     print("=" * 70)
     print(f"Model:       {args.model}")
-    print(f"Setting:     {args.setting}")
     print(f"Split:       {args.split}")
     print(f"Nation:      {args.nation or 'all'}")
     print(f"Domain:      {args.domain or 'all'}")
@@ -687,22 +520,12 @@ Examples:
         return
 
     # Run evaluation
-    print(f"\n[3/4] Running evaluation ({args.setting} setting)...")
     print("-" * 70)
 
     if args.setting == "image-only":
-        results = evaluate_image_only(
-            model, dataset_items, args.sample_size, args.seed, args.verbose
-        )
-    elif args.setting == "text-only":
-        results = evaluate_text_only(
-            model, dataset_items, args.sample_size, args.seed, args.verbose
-        )
-    elif args.setting == "multimodal":
-        results = evaluate_multimodal(
-            model, dataset_items, args.sample_size, args.seed, args.verbose
-        )
-
+    results = evaluate_image_only(
+        model, dataset_items, args.sample_size, args.seed, args.verbose
+    )
     # Calculate metrics
     print("\n[4/4] Calculating metrics...")
     metrics = calculate_metrics(results)
