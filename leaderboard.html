@@ -27,7 +27,6 @@
             <th class="px-4 py-3 text-center font-semibold">Japan</th>
             <th class="px-4 py-3 text-center font-semibold">Taiwan</th>
             <th class="px-4 py-3 text-center font-semibold">S.Korea</th>
-            <th class="px-4 py-3 text-center font-semibold">Paper</th>
           </tr>
         </thead>
         <tbody id="lb-body"></tbody>
@@ -68,16 +67,13 @@
               <td class="px-4 py-3 text-center ${scoreClass(row.nation.japan)}">${row.nation.japan.toFixed(2)}</td>
               <td class="px-4 py-3 text-center ${scoreClass(row.nation.taiwan)}">${row.nation.taiwan.toFixed(2)}</td>
               <td class="px-4 py-3 text-center ${scoreClass(row.nation.south_korea)}">${row.nation.south_korea.toFixed(2)}</td>
-              <td class="px-4 py-3 text-center">
-                ${row.paper ? `<a href="${row.paper}" target="_blank" class="text-blue-600 hover:underline">Link</a>` : '—'}
-              </td>
             </tr>
           `;
         }).join('');
       })
       .catch(err => {
         console.error('Failed to load leaderboard:', err);
-        document.getElementById('lb-body').innerHTML = '<tr><td colspan="9" class="px-4 py-8 text-center text-red-600">Failed to load leaderboard data</td></tr>';
+        document.getElementById('lb-body').innerHTML = '<tr><td colspan="8" class="px-4 py-8 text-center text-red-600">Failed to load leaderboard data</td></tr>';
       });
   </script>
 </body>
