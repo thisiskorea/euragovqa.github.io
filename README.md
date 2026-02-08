@@ -2,7 +2,7 @@
 
 **A Multilingual Multimodal Benchmark from Real-World Civil Service Exams**
 
-[![Website]([https://img.shields.io/badge/Paper-arXiv-red](https://thisiskorea.github.io/EuraGovExam/index.html))]
+[![Website](https://img.shields.io/badge/Paper-arXiv-red)](https://thisiskorea.github.io/EuraGovExam/index.html)
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow)](https://huggingface.co/datasets/EuraGovExam/EuraGovExam)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-blue)](LICENSE)
 
