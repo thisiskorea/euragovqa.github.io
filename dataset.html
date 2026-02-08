@@ -98,7 +98,7 @@
         <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-blue-100 flex items-center justify-center">
           <i data-lucide="file-question" class="w-6 h-6 text-blue-600"></i>
         </div>
-        <div class="text-3xl font-bold text-gray-900">15,234</div>
+        <div class="text-3xl font-bold text-gray-900">8,000</div>
         <div class="text-sm text-gray-500 font-medium">Total Questions</div>
       </div>
       <div class="stat-card text-center">
@@ -137,11 +137,11 @@
         EuraGovQA is available for research purposes. The dataset includes questions, images, and annotations in JSON format.
       </p>
       <div class="flex flex-wrap gap-4">
-        <a href="https://huggingface.co/datasets/euragovqa/euragovqa" target="_blank"
+        <a href="https://huggingface.co/datasets/EuraGovExam/EuraGovExam" target="_blank"
            class="inline-flex items-center gap-2 bg-yellow-500 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition shadow">
           🤗 HuggingFace Datasets
         </a>
-        <a href="https://github.com/euragovqa/euragovqa" target="_blank"
+        <a href="https://github.com/thisiskorea/EuraGovExam" target="_blank"
            class="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition shadow">
           <i data-lucide="github" class="w-5 h-5"></i>
           GitHub Repository
@@ -273,7 +273,7 @@
     data: {
       labels: ['India', 'EU', 'Japan', 'Taiwan', 'South Korea'],
       datasets: [{
-        data: [4521, 2134, 2876, 2543, 3160],
+        data: [1027, 1922, 2048, 558, 2445],
         backgroundColor: [
           '#f97316', // orange
           '#3b82f6', // blue
@@ -305,10 +305,10 @@
   new Chart(taskCtx, {
     type: 'bar',
     data: {
-      labels: ['Law', 'Admin', 'Econ', 'History', 'Geo', 'Math', 'Physics', 'Chem', 'Bio', 'CS', 'Med', 'Lang', 'Eng', 'Politics', 'Psych', 'Earth', 'Phil'],
+      labels: ['Math', 'Admin', 'Bio', 'Law', 'Lang', 'Eng', 'Physics', 'Econ', 'CS', 'Med'],
       datasets: [{
         label: 'Questions',
-        data: [1423, 1287, 1156, 1089, 1034, 987, 923, 876, 845, 812, 789, 756, 723, 698, 654, 612, 570],
+        data: [1042, 931, 901, 812, 740, 688, 540, 461, 441, 238],
         backgroundColor: '#3b82f6',
         borderRadius: 4
       }]

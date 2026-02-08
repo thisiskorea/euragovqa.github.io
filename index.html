@@ -62,19 +62,19 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                <a href="https://github.com/thisiskorea/EuraGovExam" target="_blank" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-github"></i></span>
                   <span>Code</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                <a href="#" class="external-link button is-normal is-rounded is-dark is-disabled" disabled>
                   <span class="icon"><i class="ai ai-arxiv"></i></span>
-                  <span>arXiv</span>
+                  <span>arXiv (Coming Soon)</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                <a href="https://huggingface.co/datasets/EuraGovExam/EuraGovExam" target="_blank" class="external-link button is-normal is-rounded is-dark">
                   <span>🤗</span>
                   <span>Dataset</span>
                 </a>
@@ -92,7 +92,7 @@
     <div class="hero-body">
       <img src="assets/img/teaser.png" alt="EuraGovQA Overview" style="width: 100%; border-radius: 8px;">
       <h2 class="subtitle has-text-centered">
-        EuraGovQA contains <b>15,234</b> questions from government examinations across <b>5 countries</b> (India, EU, Japan, Taiwan, South Korea) spanning <b>17 subject areas</b>.
+        EuraGovQA contains <b>8,000</b> questions from government examinations across <b>5 countries</b> (India, EU, Japan, Taiwan, South Korea) spanning <b>17 subject areas</b>.
       </h2>
     </div>
   </div>
@@ -107,7 +107,7 @@
           <p>
             We introduce <b>EuraGovQA</b>, a comprehensive multilingual multimodal benchmark
             designed to evaluate vision-language models on real-world government examination questions
-            across Eurasian countries. Our benchmark comprises <b>15,234 questions</b> spanning
+            across Eurasian countries. Our benchmark comprises <b>8,000 questions</b> spanning
             <b>17 subject areas</b> from official civil service examinations in
             India, the European Union, Japan, Taiwan, and South Korea.
           </p>
@@ -115,7 +115,7 @@
             Unlike existing benchmarks that focus primarily on English or academic contexts,
             EuraGovQA captures the diverse linguistic, cultural, and administrative knowledge
             required for government positions across different nations. We evaluate
-            <b>13 state-of-the-art vision-language models</b> and reveal significant
+            <b>28 state-of-the-art vision-language models</b> and reveal significant
             performance gaps across languages and domains, highlighting the need for more
             culturally-aware multimodal AI systems.
           </p>
@@ -149,68 +149,89 @@
         <tbody>
           <tr>
             <td>🥇</td>
-            <td><b>GPT-4o</b></td>
-            <td><b>85.3</b></td>
-            <td>86.0</td>
-            <td>84.1</td>
-            <td>85.9</td>
-            <td>83.8</td>
-            <td>86.5</td>
+            <td><b>Gemini-2.5-pro</b></td>
+            <td><b>86.99</b></td>
+            <td>69.23</td>
+            <td>88.08</td>
+            <td>87.59</td>
+            <td>95.51</td>
+            <td>91.12</td>
           </tr>
           <tr>
             <td>🥈</td>
-            <td><b>Gemini 1.5 Pro</b></td>
-            <td><b>80.4</b></td>
-            <td>81.2</td>
-            <td>79.8</td>
-            <td>80.5</td>
-            <td>78.9</td>
-            <td>81.6</td>
+            <td><b>GPT-5</b></td>
+            <td><b>85.8</b></td>
+            <td>68.35</td>
+            <td>83.87</td>
+            <td>87.5</td>
+            <td>94.8</td>
+            <td>91.17</td>
           </tr>
           <tr>
             <td>🥉</td>
-            <td><b>Claude 3.5 Sonnet</b></td>
-            <td><b>78.1</b></td>
-            <td>79.0</td>
-            <td>77.5</td>
-            <td>78.3</td>
-            <td>76.8</td>
-            <td>78.9</td>
+            <td><b>o3</b></td>
+            <td><b>84.26</b></td>
+            <td>68.64</td>
+            <td>84.49</td>
+            <td>82.37</td>
+            <td>93.72</td>
+            <td>90.06</td>
           </tr>
           <tr>
             <td>4</td>
-            <td>LLaVA-NeXT</td>
-            <td>65.2</td>
-            <td>66.1</td>
-            <td>64.5</td>
-            <td>65.8</td>
-            <td>63.2</td>
-            <td>66.4</td>
+            <td>o4-mini</td>
+            <td>79.4</td>
+            <td>63.38</td>
+            <td>76.95</td>
+            <td>82.52</td>
+            <td>92.29</td>
+            <td>82.49</td>
           </tr>
           <tr>
             <td>5</td>
-            <td>Qwen-VL-Plus</td>
-            <td>59.8</td>
-            <td>60.5</td>
-            <td>58.9</td>
-            <td>60.2</td>
-            <td>57.8</td>
-            <td>61.6</td>
+            <td>Gemini-3-flash</td>
+            <td>75.28</td>
+            <td>51.7</td>
+            <td>89.54</td>
+            <td>56.69</td>
+            <td>97.31</td>
+            <td>84.5</td>
           </tr>
           <tr>
             <td>6</td>
-            <td>InternVL 2.5</td>
-            <td>57.0</td>
-            <td>58.1</td>
-            <td>56.2</td>
-            <td>57.5</td>
-            <td>55.3</td>
-            <td>57.9</td>
+            <td>GPT-5.2</td>
+            <td>69.94</td>
+            <td>53.46</td>
+            <td>68.05</td>
+            <td>73.83</td>
+            <td>78.67</td>
+            <td>73.09</td>
           </tr>
         </tbody>
       </table>
     </div>
     <p class="has-text-centered is-size-7">Human expert performance: <b>94.2%</b></p>
+    <p class="has-text-centered is-size-7 mt-2">See full leaderboard with all 28 models: <a href="leaderboard.html">Detailed Leaderboard →</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Key Findings</h2>
+    <div class="columns">
+      <div class="column">
+        <figure class="image">
+          <img src="assets/img/main_performance.png" alt="Model Performance">
+        </figure>
+        <p class="has-text-centered mt-2">Performance across 28 VLMs</p>
+      </div>
+      <div class="column">
+        <figure class="image">
+          <img src="assets/img/main_regional.png" alt="Regional Breakdown">
+        </figure>
+        <p class="has-text-centered mt-2">Cross-regional performance gaps</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -218,29 +239,44 @@
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Example Questions</h2>
 
-    <div class="columns">
-      <div class="column">
+    <div class="columns is-multiline">
+      <!-- Japan Physics -->
+      <div class="column is-half">
         <div class="box">
-          <p class="is-size-7 has-text-grey"><b>India</b> · UPSC Civil Services · Geography</p>
-          <figure class="image" style="margin: 1rem 0;">
-            <img src="assets/img/example1.png" alt="Example 1" style="max-height: 200px; object-fit: contain;">
+          <p class="is-size-7 has-text-grey"><b>Japan</b> · Physics · Contains equations and diagrams</p>
+          <figure class="image">
+            <img src="assets/img/examples/japan_physics.png" alt="Japan Physics Example">
           </figure>
-          <p class="is-size-6">Which of the following rivers does NOT originate from the Western Ghats?</p>
-          <div class="content is-size-7" style="margin-top: 0.5rem;">
-            <p>A) Krishna &nbsp; B) Godavari &nbsp; <span style="background: #c6f6d5; padding: 2px 6px; border-radius: 4px;"><b>C) Mahanadi ✓</b></span> &nbsp; D) Cauvery</p>
-          </div>
         </div>
       </div>
-      <div class="column">
+
+      <!-- South Korea Biology -->
+      <div class="column is-half">
         <div class="box">
-          <p class="is-size-7 has-text-grey"><b>South Korea</b> · 공무원시험 · Law</p>
-          <figure class="image" style="margin: 1rem 0;">
-            <img src="assets/img/example2.png" alt="Example 2" style="max-height: 200px; object-fit: contain;">
+          <p class="is-size-7 has-text-grey"><b>South Korea</b> · Biology · Multimodal content</p>
+          <figure class="image">
+            <img src="assets/img/examples/korea_biology.png" alt="Korea Biology Example">
           </figure>
-          <p class="is-size-6">다음 중 헌법재판소의 권한에 해당하지 않는 것은?</p>
-          <div class="content is-size-7" style="margin-top: 0.5rem;">
-            <p>A) 위헌법률심판 &nbsp; B) 탄핵심판 &nbsp; <span style="background: #c6f6d5; padding: 2px 6px; border-radius: 4px;"><b>C) 명령·규칙 심사 ✓</b></span> &nbsp; D) 권한쟁의심판</p>
-          </div>
+        </div>
+      </div>
+
+      <!-- Taiwan Biology -->
+      <div class="column is-half">
+        <div class="box">
+          <p class="is-size-7 has-text-grey"><b>Taiwan</b> · Biology · Traditional Chinese</p>
+          <figure class="image">
+            <img src="assets/img/examples/taiwan_biology.png" alt="Taiwan Biology Example">
+          </figure>
+        </div>
+      </div>
+
+      <!-- EU Law -->
+      <div class="column is-half">
+        <div class="box">
+          <p class="is-size-7 has-text-grey"><b>EU</b> · Law · Complex verbal reasoning</p>
+          <figure class="image">
+            <img src="assets/img/examples/eu_law.png" alt="EU Law Example">
+          </figure>
         </div>
       </div>
     </div>
