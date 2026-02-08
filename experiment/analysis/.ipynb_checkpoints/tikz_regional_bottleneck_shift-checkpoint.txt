@@ -1,0 +1,194 @@
+%% ===========================================
+%% Regional Bottleneck Shift - 핵심 Figure
+%% TikZ 코드
+%% ===========================================
+
+%% 필요한 패키지 (preamble에 추가)
+%% -------------------------------------------
+% \usepackage{tikz}
+% \usetikzlibrary{patterns, calc, positioning, arrows.meta, shapes.geometric}
+% \usepackage{pgfplots}
+% \pgfplotsset{compat=1.18}
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+    >=Stealth,
+    node distance=0.8cm,
+    every node/.style={font=\small},
+    perception/.style={fill=orange!70, draw=orange!90!black, thick},
+    reasoning/.style={fill=blue!50, draw=blue!90!black, thick},
+    other/.style={fill=gray!30, draw=gray!60, thick},
+    nation_label/.style={font=\bfseries\small, align=center},
+    legend_box/.style={draw, thick, minimum width=0.4cm, minimum height=0.3cm},
+    arrow_style/.style={->, thick, >=Stealth, line width=1.2pt}
+]
+
+% ===== 왼쪽: 국가별 실패 원인 Stacked Bar =====
+\begin{scope}[shift={(0,0)}]
+    
+    % 제목
+    \node[font=\bfseries\large] at (3.5, 6.8) {(a) 국가별 실패 원인 분포};
+    
+    % Y축 레이블
+    \node[rotate=90, font=\small] at (-1.2, 3) {실패 원인 비율 (\%)};
+    
+    % X축 레이블
+    \node[font=\small] at (3.5, -0.8) {국가};
+    
+    % Y축 눈금
+    \foreach \y/\label in {0/0, 1.2/20, 2.4/40, 3.6/60, 4.8/80, 6/100} {
+        \draw[gray!50] (0, \y) -- (7, \y);
+        \node[left, font=\scriptsize] at (-0.1, \y) {\label};
+    }
+    
+    % ===== Japan (n=65) =====
+    % Script: 43.1%, OCR: 4.6%, Math: 27.7%, Reasoning: 3.1%, Other: 21.5%
+    \fill[perception] (0.2, 0) rectangle (1.2, 2.586);  % Script 43.1%
+    \fill[orange!40] (0.2, 2.586) rectangle (1.2, 2.862);  % OCR 4.6%
+    \fill[purple!60] (0.2, 2.862) rectangle (1.2, 4.524);  % Math 27.7%
+    \fill[reasoning] (0.2, 4.524) rectangle (1.2, 4.71);  % Reasoning 3.1%
+    \fill[other] (0.2, 4.71) rectangle (1.2, 6);  % Other 21.5%
+    \node[nation_label, below] at (0.7, -0.1) {Japan\\{\scriptsize(n=65)}};
+    
+    % ===== India (n=32) =====
+    % Script: 56.3%, OCR: 40.6%, Math: 3.1%, Reasoning: 0%, Other: 0%
+    \fill[perception] (1.6, 0) rectangle (2.6, 3.378);  % Script 56.3%
+    \fill[orange!40] (1.6, 3.378) rectangle (2.6, 5.814);  % OCR 40.6%
+    \fill[purple!60] (1.6, 5.814) rectangle (2.6, 6);  % Math 3.1%
+    \node[nation_label, below] at (2.1, -0.1) {India\\{\scriptsize(n=32)}};
+    
+    % ===== S.Korea (n=47) =====
+    % Script: 51.1%, OCR: 10.6%, Math: 12.8%, Reasoning: 10.6%, Other: 14.9%
+    \fill[perception] (3.0, 0) rectangle (4.0, 3.066);  % Script 51.1%
+    \fill[orange!40] (3.0, 3.066) rectangle (4.0, 3.702);  % OCR 10.6%
+    \fill[purple!60] (3.0, 3.702) rectangle (4.0, 4.47);  % Math 12.8%
+    \fill[reasoning] (3.0, 4.47) rectangle (4.0, 5.106);  % Reasoning 10.6%
+    \fill[other] (3.0, 5.106) rectangle (4.0, 6);  % Other 14.9%
+    \node[nation_label, below] at (3.5, -0.1) {S.Korea\\{\scriptsize(n=47)}};
+    
+    % ===== EU (n=25) =====
+    % Script: 0%, OCR: 24%, Math: 0%, Reasoning: 48%, Other: 28%
+    \fill[orange!40] (4.4, 0) rectangle (5.4, 1.44);  % OCR 24%
+    \fill[reasoning] (4.4, 1.44) rectangle (5.4, 4.32);  % Reasoning 48%
+    \fill[other] (4.4, 4.32) rectangle (5.4, 6);  % Other 28%
+    \node[nation_label, below] at (4.9, -0.1) {EU\\{\scriptsize(n=25)}};
+    
+    % ===== Taiwan (n=7) =====
+    % Script: 14.3%, OCR: 57.1%, Math: 0%, Reasoning: 14.3%, Other: 14.3%
+    \fill[perception] (5.8, 0) rectangle (6.8, 0.858);  % Script 14.3%
+    \fill[orange!40] (5.8, 0.858) rectangle (6.8, 4.284);  % OCR 57.1%
+    \fill[reasoning] (5.8, 4.284) rectangle (6.8, 5.142);  % Reasoning 14.3%
+    \fill[other] (5.8, 5.142) rectangle (6.8, 6);  % Other 14.3%
+    \node[nation_label, below] at (6.3, -0.1) {Taiwan\\{\scriptsize(n=7)}};
+    
+    % 테두리
+    \draw[thick] (0, 0) rectangle (7, 6);
+    
+\end{scope}
+
+% ===== 오른쪽: Bottleneck Shift 다이어그램 =====
+\begin{scope}[shift={(9, 0)}]
+    
+    % 제목
+    \node[font=\bfseries\large] at (3.5, 6.8) {(b) Regional Bottleneck Shift};
+    
+    % ----- 상단: CJK + India -----
+    \node[draw, thick, rounded corners, fill=orange!20, minimum width=5cm, minimum height=2.2cm, align=center] 
+        (cjk_box) at (3.5, 4.8) {};
+    \node[font=\bfseries, anchor=north] at (3.5, 5.75) {CJK + India};
+    \node[font=\small, align=center, text width=4.5cm] at (3.5, 4.5) {
+        비라틴 스크립트\\
+        세로쓰기, 한자, 데바나가리
+    };
+    
+    % Perception Bottleneck 표시
+    \node[draw, very thick, rounded corners, fill=orange!70, 
+          minimum width=3.5cm, minimum height=0.8cm, 
+          font=\bfseries\small, text=white] 
+        (perception_label) at (3.5, 3.2) {Perception Bottleneck};
+    
+    % 화살표와 설명
+    \draw[arrow_style, orange!80!black] (cjk_box.south) -- (perception_label.north);
+    \node[right, font=\scriptsize, text width=2.5cm, align=left] at (5.5, 4) {
+        ``글자를 읽지 못해서''\\실패 (50-97\%)
+    };
+    
+    % ----- 하단: EU -----
+    \node[draw, thick, rounded corners, fill=blue!20, minimum width=5cm, minimum height=2.2cm, align=center] 
+        (eu_box) at (3.5, 1.2) {};
+    \node[font=\bfseries, anchor=north] at (3.5, 2.15) {EU (라틴 스크립트)};
+    \node[font=\small, align=center, text width=4.5cm] at (3.5, 0.9) {
+        라틴 알파벳\\
+        시각적 인식 문제 없음
+    };
+    
+    % Reasoning Bottleneck 표시
+    \node[draw, very thick, rounded corners, fill=blue!60, 
+          minimum width=3.5cm, minimum height=0.8cm, 
+          font=\bfseries\small, text=white] 
+        (reasoning_label) at (3.5, -0.4) {Reasoning Bottleneck};
+    
+    % 화살표와 설명
+    \draw[arrow_style, blue!80!black] (eu_box.south) -- (reasoning_label.north);
+    \node[right, font=\scriptsize, text width=2.5cm, align=left] at (5.5, 0.4) {
+        ``읽었지만 답을 몰라서''\\실패 (48\%)
+    };
+    
+    % 중앙 VS 표시
+    \node[font=\Huge\bfseries, gray!50] at (3.5, 2.65) {VS};
+    
+\end{scope}
+
+% ===== 범례 (하단) =====
+\begin{scope}[shift={(4, -2.2)}]
+    \node[legend_box, perception] at (0, 0) {};
+    \node[right, font=\scriptsize] at (0.3, 0) {Non-Latin Script};
+    
+    \node[legend_box, fill=orange!40, draw=orange!60] at (2.5, 0) {};
+    \node[right, font=\scriptsize] at (2.8, 0) {OCR/Text};
+    
+    \node[legend_box, fill=purple!60, draw=purple!80] at (4.5, 0) {};
+    \node[right, font=\scriptsize] at (4.8, 0) {Math/Symbol};
+    
+    \node[legend_box, reasoning] at (6.8, 0) {};
+    \node[right, font=\scriptsize] at (7.1, 0) {Pure Reasoning};
+    
+    \node[legend_box, other] at (9.3, 0) {};
+    \node[right, font=\scriptsize] at (9.6, 0) {Others};
+\end{scope}
+
+\end{tikzpicture}
+\caption{\textbf{Regional Bottleneck Shift.} (a) 국가별 1차 실패 원인 분포. CJK 국가들(Japan, S.Korea)과 India에서는 비라틴 스크립트와 OCR 실패가 지배적인 반면, EU에서는 순수 추론/지식 부족이 주요 원인이다. (b) 이 결과는 VLM의 실패 모드가 국가에 따라 근본적으로 다름을 보여준다: 비라틴 스크립트 국가에서는 \textbf{Perception Bottleneck}, 라틴 스크립트 국가에서는 \textbf{Reasoning Bottleneck}이 지배적이다.}
+\label{fig:regional_bottleneck_shift}
+\end{figure*}
+
+
+%% ===========================================
+%% 단일 컬럼 버전 (필요시 사용)
+%% ===========================================
+
+% \begin{figure}[t]
+% \centering
+% \begin{tikzpicture}[scale=0.85, transform shape]
+% % ... (위 코드와 동일, scale 조정)
+% \end{tikzpicture}
+% \caption{...}
+% \end{figure}
+
+
+%% ===========================================
+%% 컴파일 테스트용 최소 문서
+%% ===========================================
+%
+% \documentclass{article}
+% \usepackage{tikz}
+% \usetikzlibrary{patterns, calc, positioning, arrows.meta, shapes.geometric}
+% \usepackage{pgfplots}
+% \pgfplotsset{compat=1.18}
+% 
+% \begin{document}
+% 
+% % 위의 figure 코드 삽입
+% 
+% \end{document}

@@ -1,0 +1,657 @@
+{
+  "within_model": {
+    "per_model": [
+      {
+        "model": "o3",
+        "overall": 84.26,
+        "nation_variance": 73.98,
+        "task_variance": 35.34,
+        "ratio": 2.09,
+        "nation_dominates": true
+      },
+      {
+        "model": "o4-mini",
+        "overall": 79.4,
+        "nation_variance": 89.6,
+        "task_variance": 73.27,
+        "ratio": 1.22,
+        "nation_dominates": true
+      },
+      {
+        "model": "GPT-4o",
+        "overall": 42.04,
+        "nation_variance": 266.0,
+        "task_variance": 92.3,
+        "ratio": 2.88,
+        "nation_dominates": true
+      },
+      {
+        "model": "GPT-4.1",
+        "overall": 54.73,
+        "nation_variance": 98.8,
+        "task_variance": 94.07,
+        "ratio": 1.05,
+        "nation_dominates": true
+      },
+      {
+        "model": "GPT-4.1-mini",
+        "overall": 56.27,
+        "nation_variance": 162.42,
+        "task_variance": 135.33,
+        "ratio": 1.2,
+        "nation_dominates": true
+      },
+      {
+        "model": "Gemini-2.5-pro",
+        "overall": 86.99,
+        "nation_variance": 80.85,
+        "task_variance": 29.65,
+        "ratio": 2.73,
+        "nation_dominates": true
+      },
+      {
+        "model": "Gemini-2.5-flash",
+        "overall": 68.33,
+        "nation_variance": 217.45,
+        "task_variance": 78.83,
+        "ratio": 2.76,
+        "nation_dominates": true
+      },
+      {
+        "model": "Gemini-2.5-flash-lite",
+        "overall": 25.94,
+        "nation_variance": 702.09,
+        "task_variance": 127.43,
+        "ratio": 5.51,
+        "nation_dominates": true
+      },
+      {
+        "model": "Claude-Sonnet-4",
+        "overall": 63.29,
+        "nation_variance": 197.74,
+        "task_variance": 76.59,
+        "ratio": 2.58,
+        "nation_dominates": true
+      },
+      {
+        "model": "Llama-3.2-11B-Vision",
+        "overall": 12.75,
+        "nation_variance": 40.41,
+        "task_variance": 16.56,
+        "ratio": 2.44,
+        "nation_dominates": true
+      },
+      {
+        "model": "Qwen2-VL-2B-Instruct",
+        "overall": 25.54,
+        "nation_variance": 66.22,
+        "task_variance": 26.55,
+        "ratio": 2.49,
+        "nation_dominates": true
+      },
+      {
+        "model": "Qwen2-VL-7B-Instruct",
+        "overall": 31.38,
+        "nation_variance": 184.79,
+        "task_variance": 77.9,
+        "ratio": 2.37,
+        "nation_dominates": true
+      },
+      {
+        "model": "Qwen2.5-VL-7B-Instruct",
+        "overall": 32.3,
+        "nation_variance": 107.07,
+        "task_variance": 41.8,
+        "ratio": 2.56,
+        "nation_dominates": true
+      },
+      {
+        "model": "Phi-3.5-vision-instruct",
+        "overall": 15.67,
+        "nation_variance": 4.15,
+        "task_variance": 7.01,
+        "ratio": 0.59,
+        "nation_dominates": false
+      },
+      {
+        "model": "Qwen2-VL-72B-Instruct",
+        "overall": 44.65,
+        "nation_variance": 287.22,
+        "task_variance": 78.08,
+        "ratio": 3.68,
+        "nation_dominates": true
+      },
+      {
+        "model": "InternVL2.5-38B-MPO",
+        "overall": 39.34,
+        "nation_variance": 189.4,
+        "task_variance": 90.59,
+        "ratio": 2.09,
+        "nation_dominates": true
+      },
+      {
+        "model": "Ovis2-8B",
+        "overall": 28.31,
+        "nation_variance": 63.38,
+        "task_variance": 34.36,
+        "ratio": 1.84,
+        "nation_dominates": true
+      },
+      {
+        "model": "Ovis2-16B",
+        "overall": 32.73,
+        "nation_variance": 142.12,
+        "task_variance": 42.28,
+        "ratio": 3.36,
+        "nation_dominates": true
+      },
+      {
+        "model": "Ovis2-32B",
+        "overall": 35.5,
+        "nation_variance": 170.57,
+        "task_variance": 72.05,
+        "ratio": 2.37,
+        "nation_dominates": true
+      },
+      {
+        "model": "llama3-llava-next-8b",
+        "overall": 14.28,
+        "nation_variance": 13.23,
+        "task_variance": 11.0,
+        "ratio": 1.2,
+        "nation_dominates": true
+      },
+      {
+        "model": "llava-1.5-13b",
+        "overall": 18.99,
+        "nation_variance": 2.93,
+        "task_variance": 4.26,
+        "ratio": 0.69,
+        "nation_dominates": false
+      },
+      {
+        "model": "llava-1.5-7b",
+        "overall": 14.49,
+        "nation_variance": 0.37,
+        "task_variance": 3.46,
+        "ratio": 0.11,
+        "nation_dominates": false
+      },
+      {
+        "model": "LLaVA-NeXT-Video-7B-DPO-hf",
+        "overall": 13.63,
+        "nation_variance": 0.37,
+        "task_variance": 3.46,
+        "ratio": 0.11,
+        "nation_dominates": false
+      }
+    ],
+    "summary": {
+      "n_models": 23,
+      "n_nation_dominates": 19,
+      "percentage": 82.6,
+      "mean_ratio": 2.08,
+      "median_ratio": 2.37,
+      "binomial_p_value": 0.0013,
+      "significant": true
+    }
+  },
+  "paired_comparisons": {
+    "pairwise_comparisons": [
+      {
+        "nation_1": "taiwan",
+        "nation_2": "japan",
+        "mean_diff": 22.4,
+        "std_diff": 17.05,
+        "t_statistic": 6.164,
+        "p_value": 0.0,
+        "significant": true,
+        "consistent_direction": true
+      },
+      {
+        "nation_1": "india",
+        "nation_2": "taiwan",
+        "mean_diff": -22.36,
+        "std_diff": 14.4,
+        "t_statistic": -7.282,
+        "p_value": 0.0,
+        "significant": true,
+        "consistent_direction": true
+      },
+      {
+        "nation_1": "eu",
+        "nation_2": "japan",
+        "mean_diff": 17.33,
+        "std_diff": 13.8,
+        "t_statistic": 5.891,
+        "p_value": 0.0,
+        "significant": true,
+        "consistent_direction": true
+      },
+      {
+        "nation_1": "india",
+        "nation_2": "eu",
+        "mean_diff": -17.29,
+        "std_diff": 10.04,
+        "t_statistic": -8.079,
+        "p_value": 0.0,
+        "significant": true,
+        "consistent_direction": true
+      },
+      {
+        "nation_1": "taiwan",
+        "nation_2": "south_korea",
+        "mean_diff": 16.32,
+        "std_diff": 13.98,
+        "t_statistic": 5.476,
+        "p_value": 0.0,
+        "significant": true,
+        "consistent_direction": true
+      },
+      {
+        "nation_1": "eu",
+        "nation_2": "south_korea",
+        "mean_diff": 11.25,
+        "std_diff": 11.12,
+        "t_statistic": 4.744,
+        "p_value": 0.0001,
+        "significant": true,
+        "consistent_direction": true
+      },
+      {
+        "nation_1": "japan",
+        "nation_2": "south_korea",
+        "mean_diff": -6.08,
+        "std_diff": 5.71,
+        "t_statistic": -4.991,
+        "p_value": 0.0001,
+        "significant": true,
+        "consistent_direction": true
+      },
+      {
+        "nation_1": "india",
+        "nation_2": "south_korea",
+        "mean_diff": -6.04,
+        "std_diff": 8.34,
+        "t_statistic": -3.398,
+        "p_value": 0.0026,
+        "significant": true,
+        "consistent_direction": false
+      },
+      {
+        "nation_1": "eu",
+        "nation_2": "taiwan",
+        "mean_diff": -5.07,
+        "std_diff": 6.49,
+        "t_statistic": -3.66,
+        "p_value": 0.0014,
+        "significant": true,
+        "consistent_direction": false
+      },
+      {
+        "nation_1": "india",
+        "nation_2": "japan",
+        "mean_diff": 0.04,
+        "std_diff": 9.51,
+        "t_statistic": 0.02,
+        "p_value": 0.9844,
+        "significant": false,
+        "consistent_direction": false
+      }
+    ],
+    "n_significant": 9,
+    "n_total": 10
+  },
+  "by_model_type": {
+    "closed_models": {
+      "n": 9,
+      "mean_ratio": 2.45,
+      "median_ratio": 2.58
+    },
+    "open_models": {
+      "n": 14,
+      "mean_ratio": 1.85,
+      "median_ratio": 2.23
+    },
+    "comparison": {
+      "t_statistic": 1.135,
+      "p_value": 0.2693,
+      "interpretation": "Closed and open models show similar nation effect"
+    }
+  },
+  "paper_stats": {
+    "headline_stats": {
+      "nation_dominates_in_X_of_Y_models": "19/23",
+      "percentage_nation_dominates": 82.6,
+      "mean_nation_task_ratio": 2.08,
+      "binomial_test_p": 0.0013,
+      "hardest_nation": "japan",
+      "hardest_nation_acc": 32.5,
+      "easiest_nation": "taiwan",
+      "easiest_nation_acc": 54.9,
+      "performance_gap": 22.4
+    },
+    "detailed_analysis": {
+      "within_model": {
+        "per_model": [
+          {
+            "model": "o3",
+            "overall": 84.26,
+            "nation_variance": 73.98,
+            "task_variance": 35.34,
+            "ratio": 2.09,
+            "nation_dominates": true
+          },
+          {
+            "model": "o4-mini",
+            "overall": 79.4,
+            "nation_variance": 89.6,
+            "task_variance": 73.27,
+            "ratio": 1.22,
+            "nation_dominates": true
+          },
+          {
+            "model": "GPT-4o",
+            "overall": 42.04,
+            "nation_variance": 266.0,
+            "task_variance": 92.3,
+            "ratio": 2.88,
+            "nation_dominates": true
+          },
+          {
+            "model": "GPT-4.1",
+            "overall": 54.73,
+            "nation_variance": 98.8,
+            "task_variance": 94.07,
+            "ratio": 1.05,
+            "nation_dominates": true
+          },
+          {
+            "model": "GPT-4.1-mini",
+            "overall": 56.27,
+            "nation_variance": 162.42,
+            "task_variance": 135.33,
+            "ratio": 1.2,
+            "nation_dominates": true
+          },
+          {
+            "model": "Gemini-2.5-pro",
+            "overall": 86.99,
+            "nation_variance": 80.85,
+            "task_variance": 29.65,
+            "ratio": 2.73,
+            "nation_dominates": true
+          },
+          {
+            "model": "Gemini-2.5-flash",
+            "overall": 68.33,
+            "nation_variance": 217.45,
+            "task_variance": 78.83,
+            "ratio": 2.76,
+            "nation_dominates": true
+          },
+          {
+            "model": "Gemini-2.5-flash-lite",
+            "overall": 25.94,
+            "nation_variance": 702.09,
+            "task_variance": 127.43,
+            "ratio": 5.51,
+            "nation_dominates": true
+          },
+          {
+            "model": "Claude-Sonnet-4",
+            "overall": 63.29,
+            "nation_variance": 197.74,
+            "task_variance": 76.59,
+            "ratio": 2.58,
+            "nation_dominates": true
+          },
+          {
+            "model": "Llama-3.2-11B-Vision",
+            "overall": 12.75,
+            "nation_variance": 40.41,
+            "task_variance": 16.56,
+            "ratio": 2.44,
+            "nation_dominates": true
+          },
+          {
+            "model": "Qwen2-VL-2B-Instruct",
+            "overall": 25.54,
+            "nation_variance": 66.22,
+            "task_variance": 26.55,
+            "ratio": 2.49,
+            "nation_dominates": true
+          },
+          {
+            "model": "Qwen2-VL-7B-Instruct",
+            "overall": 31.38,
+            "nation_variance": 184.79,
+            "task_variance": 77.9,
+            "ratio": 2.37,
+            "nation_dominates": true
+          },
+          {
+            "model": "Qwen2.5-VL-7B-Instruct",
+            "overall": 32.3,
+            "nation_variance": 107.07,
+            "task_variance": 41.8,
+            "ratio": 2.56,
+            "nation_dominates": true
+          },
+          {
+            "model": "Phi-3.5-vision-instruct",
+            "overall": 15.67,
+            "nation_variance": 4.15,
+            "task_variance": 7.01,
+            "ratio": 0.59,
+            "nation_dominates": false
+          },
+          {
+            "model": "Qwen2-VL-72B-Instruct",
+            "overall": 44.65,
+            "nation_variance": 287.22,
+            "task_variance": 78.08,
+            "ratio": 3.68,
+            "nation_dominates": true
+          },
+          {
+            "model": "InternVL2.5-38B-MPO",
+            "overall": 39.34,
+            "nation_variance": 189.4,
+            "task_variance": 90.59,
+            "ratio": 2.09,
+            "nation_dominates": true
+          },
+          {
+            "model": "Ovis2-8B",
+            "overall": 28.31,
+            "nation_variance": 63.38,
+            "task_variance": 34.36,
+            "ratio": 1.84,
+            "nation_dominates": true
+          },
+          {
+            "model": "Ovis2-16B",
+            "overall": 32.73,
+            "nation_variance": 142.12,
+            "task_variance": 42.28,
+            "ratio": 3.36,
+            "nation_dominates": true
+          },
+          {
+            "model": "Ovis2-32B",
+            "overall": 35.5,
+            "nation_variance": 170.57,
+            "task_variance": 72.05,
+            "ratio": 2.37,
+            "nation_dominates": true
+          },
+          {
+            "model": "llama3-llava-next-8b",
+            "overall": 14.28,
+            "nation_variance": 13.23,
+            "task_variance": 11.0,
+            "ratio": 1.2,
+            "nation_dominates": true
+          },
+          {
+            "model": "llava-1.5-13b",
+            "overall": 18.99,
+            "nation_variance": 2.93,
+            "task_variance": 4.26,
+            "ratio": 0.69,
+            "nation_dominates": false
+          },
+          {
+            "model": "llava-1.5-7b",
+            "overall": 14.49,
+            "nation_variance": 0.37,
+            "task_variance": 3.46,
+            "ratio": 0.11,
+            "nation_dominates": false
+          },
+          {
+            "model": "LLaVA-NeXT-Video-7B-DPO-hf",
+            "overall": 13.63,
+            "nation_variance": 0.37,
+            "task_variance": 3.46,
+            "ratio": 0.11,
+            "nation_dominates": false
+          }
+        ],
+        "summary": {
+          "n_models": 23,
+          "n_nation_dominates": 19,
+          "percentage": 82.6,
+          "mean_ratio": 2.08,
+          "median_ratio": 2.37,
+          "binomial_p_value": 0.0013,
+          "significant": true
+        }
+      },
+      "paired_comparisons": {
+        "pairwise_comparisons": [
+          {
+            "nation_1": "taiwan",
+            "nation_2": "japan",
+            "mean_diff": 22.4,
+            "std_diff": 17.05,
+            "t_statistic": 6.164,
+            "p_value": 0.0,
+            "significant": true,
+            "consistent_direction": true
+          },
+          {
+            "nation_1": "india",
+            "nation_2": "taiwan",
+            "mean_diff": -22.36,
+            "std_diff": 14.4,
+            "t_statistic": -7.282,
+            "p_value": 0.0,
+            "significant": true,
+            "consistent_direction": true
+          },
+          {
+            "nation_1": "eu",
+            "nation_2": "japan",
+            "mean_diff": 17.33,
+            "std_diff": 13.8,
+            "t_statistic": 5.891,
+            "p_value": 0.0,
+            "significant": true,
+            "consistent_direction": true
+          },
+          {
+            "nation_1": "india",
+            "nation_2": "eu",
+            "mean_diff": -17.29,
+            "std_diff": 10.04,
+            "t_statistic": -8.079,
+            "p_value": 0.0,
+            "significant": true,
+            "consistent_direction": true
+          },
+          {
+            "nation_1": "taiwan",
+            "nation_2": "south_korea",
+            "mean_diff": 16.32,
+            "std_diff": 13.98,
+            "t_statistic": 5.476,
+            "p_value": 0.0,
+            "significant": true,
+            "consistent_direction": true
+          },
+          {
+            "nation_1": "eu",
+            "nation_2": "south_korea",
+            "mean_diff": 11.25,
+            "std_diff": 11.12,
+            "t_statistic": 4.744,
+            "p_value": 0.0001,
+            "significant": true,
+            "consistent_direction": true
+          },
+          {
+            "nation_1": "japan",
+            "nation_2": "south_korea",
+            "mean_diff": -6.08,
+            "std_diff": 5.71,
+            "t_statistic": -4.991,
+            "p_value": 0.0001,
+            "significant": true,
+            "consistent_direction": true
+          },
+          {
+            "nation_1": "india",
+            "nation_2": "south_korea",
+            "mean_diff": -6.04,
+            "std_diff": 8.34,
+            "t_statistic": -3.398,
+            "p_value": 0.0026,
+            "significant": true,
+            "consistent_direction": false
+          },
+          {
+            "nation_1": "eu",
+            "nation_2": "taiwan",
+            "mean_diff": -5.07,
+            "std_diff": 6.49,
+            "t_statistic": -3.66,
+            "p_value": 0.0014,
+            "significant": true,
+            "consistent_direction": false
+          },
+          {
+            "nation_1": "india",
+            "nation_2": "japan",
+            "mean_diff": 0.04,
+            "std_diff": 9.51,
+            "t_statistic": 0.02,
+            "p_value": 0.9844,
+            "significant": false,
+            "consistent_direction": false
+          }
+        ],
+        "n_significant": 9,
+        "n_total": 10
+      },
+      "by_model_type": {
+        "closed_models": {
+          "n": 9,
+          "mean_ratio": 2.45,
+          "median_ratio": 2.58
+        },
+        "open_models": {
+          "n": 14,
+          "mean_ratio": 1.85,
+          "median_ratio": 2.23
+        },
+        "comparison": {
+          "t_statistic": 1.135,
+          "p_value": 0.2693,
+          "interpretation": "Closed and open models show similar nation effect"
+        }
+      }
+    }
+  }
+}

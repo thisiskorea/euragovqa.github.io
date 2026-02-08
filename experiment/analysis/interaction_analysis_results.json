@@ -1,0 +1,942 @@
+{
+  "model_nation_interaction": [
+    {
+      "model": "Gemini-2.5-pro",
+      "nation": "india",
+      "nation_accuracy": 69.23,
+      "overall_accuracy": 86.99,
+      "delta": -17.76,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "nation": "eu",
+      "nation_accuracy": 88.08,
+      "overall_accuracy": 86.99,
+      "delta": 1.09,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "nation": "taiwan",
+      "nation_accuracy": 95.51,
+      "overall_accuracy": 86.99,
+      "delta": 8.52,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "nation": "japan",
+      "nation_accuracy": 87.59,
+      "overall_accuracy": 86.99,
+      "delta": 0.6,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "nation": "south_korea",
+      "nation_accuracy": 91.12,
+      "overall_accuracy": 86.99,
+      "delta": 4.13,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "nation": "india",
+      "nation_accuracy": 68.64,
+      "overall_accuracy": 84.26,
+      "delta": -15.62,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "o3",
+      "nation": "eu",
+      "nation_accuracy": 84.49,
+      "overall_accuracy": 84.26,
+      "delta": 0.23,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "nation": "taiwan",
+      "nation_accuracy": 93.72,
+      "overall_accuracy": 84.26,
+      "delta": 9.46,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "nation": "japan",
+      "nation_accuracy": 82.37,
+      "overall_accuracy": 84.26,
+      "delta": -1.89,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "nation": "south_korea",
+      "nation_accuracy": 90.06,
+      "overall_accuracy": 84.26,
+      "delta": 5.8,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "nation": "india",
+      "nation_accuracy": 63.38,
+      "overall_accuracy": 79.4,
+      "delta": -16.02,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "o4-mini",
+      "nation": "eu",
+      "nation_accuracy": 76.95,
+      "overall_accuracy": 79.4,
+      "delta": -2.45,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "nation": "taiwan",
+      "nation_accuracy": 92.29,
+      "overall_accuracy": 79.4,
+      "delta": 12.89,
+      "relative_strength": "strong"
+    },
+    {
+      "model": "o4-mini",
+      "nation": "japan",
+      "nation_accuracy": 82.52,
+      "overall_accuracy": 79.4,
+      "delta": 3.12,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "nation": "south_korea",
+      "nation_accuracy": 82.49,
+      "overall_accuracy": 79.4,
+      "delta": 3.09,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "nation": "india",
+      "nation_accuracy": 62.32,
+      "overall_accuracy": 68.33,
+      "delta": -6.01,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "nation": "eu",
+      "nation_accuracy": 83.3,
+      "overall_accuracy": 68.33,
+      "delta": 14.97,
+      "relative_strength": "strong"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "nation": "taiwan",
+      "nation_accuracy": 92.65,
+      "overall_accuracy": 68.33,
+      "delta": 24.32,
+      "relative_strength": "strong"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "nation": "japan",
+      "nation_accuracy": 51.46,
+      "overall_accuracy": 68.33,
+      "delta": -16.87,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "nation": "south_korea",
+      "nation_accuracy": 67.65,
+      "overall_accuracy": 68.33,
+      "delta": -0.68,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "nation": "india",
+      "nation_accuracy": 62.51,
+      "overall_accuracy": 63.29,
+      "delta": -0.78,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "nation": "eu",
+      "nation_accuracy": 76.43,
+      "overall_accuracy": 63.29,
+      "delta": 13.14,
+      "relative_strength": "strong"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "nation": "taiwan",
+      "nation_accuracy": 87.28,
+      "overall_accuracy": 63.29,
+      "delta": 23.99,
+      "relative_strength": "strong"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "nation": "japan",
+      "nation_accuracy": 45.85,
+      "overall_accuracy": 63.29,
+      "delta": -17.44,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "nation": "south_korea",
+      "nation_accuracy": 62.41,
+      "overall_accuracy": 63.29,
+      "delta": -0.88,
+      "relative_strength": "neutral"
+    }
+  ],
+  "model_task_interaction": [
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "chemistry",
+      "task_accuracy": 87.92,
+      "overall_accuracy": 86.99,
+      "delta": 0.93,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "philosophy",
+      "task_accuracy": 93.7,
+      "overall_accuracy": 86.99,
+      "delta": 6.71,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "earth_science",
+      "task_accuracy": 85.98,
+      "overall_accuracy": 86.99,
+      "delta": -1.01,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "psychology",
+      "task_accuracy": 95.8,
+      "overall_accuracy": 86.99,
+      "delta": 8.81,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "economics",
+      "task_accuracy": 88.29,
+      "overall_accuracy": 86.99,
+      "delta": 1.3,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "biology",
+      "task_accuracy": 88.9,
+      "overall_accuracy": 86.99,
+      "delta": 1.91,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "geography",
+      "task_accuracy": 74.03,
+      "overall_accuracy": 86.99,
+      "delta": -12.96,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "physics",
+      "task_accuracy": 84.26,
+      "overall_accuracy": 86.99,
+      "delta": -2.73,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "politics",
+      "task_accuracy": 79.43,
+      "overall_accuracy": 86.99,
+      "delta": -7.56,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "history",
+      "task_accuracy": 87.5,
+      "overall_accuracy": 86.99,
+      "delta": 0.51,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "administration",
+      "task_accuracy": 83.57,
+      "overall_accuracy": 86.99,
+      "delta": -3.42,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "language",
+      "task_accuracy": 91.49,
+      "overall_accuracy": 86.99,
+      "delta": 4.5,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "medicine",
+      "task_accuracy": 95.8,
+      "overall_accuracy": 86.99,
+      "delta": 8.81,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "engineering",
+      "task_accuracy": 86.19,
+      "overall_accuracy": 86.99,
+      "delta": -0.8,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "computer_science",
+      "task_accuracy": 92.06,
+      "overall_accuracy": 86.99,
+      "delta": 5.07,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "law",
+      "task_accuracy": 84.24,
+      "overall_accuracy": 86.99,
+      "delta": -2.75,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-pro",
+      "task": "mathematics",
+      "task_accuracy": 86.28,
+      "overall_accuracy": 86.99,
+      "delta": -0.71,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "chemistry",
+      "task_accuracy": 85.51,
+      "overall_accuracy": 84.26,
+      "delta": 1.25,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "philosophy",
+      "task_accuracy": 90.55,
+      "overall_accuracy": 84.26,
+      "delta": 6.29,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "earth_science",
+      "task_accuracy": 73.83,
+      "overall_accuracy": 84.26,
+      "delta": -10.43,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "o3",
+      "task": "psychology",
+      "task_accuracy": 92.44,
+      "overall_accuracy": 84.26,
+      "delta": 8.18,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "economics",
+      "task_accuracy": 87.2,
+      "overall_accuracy": 84.26,
+      "delta": 2.94,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "biology",
+      "task_accuracy": 89.23,
+      "overall_accuracy": 84.26,
+      "delta": 4.97,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "geography",
+      "task_accuracy": 74.03,
+      "overall_accuracy": 84.26,
+      "delta": -10.23,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "o3",
+      "task": "physics",
+      "task_accuracy": 81.85,
+      "overall_accuracy": 84.26,
+      "delta": -2.41,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "politics",
+      "task_accuracy": 79.9,
+      "overall_accuracy": 84.26,
+      "delta": -4.36,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "history",
+      "task_accuracy": 86.33,
+      "overall_accuracy": 84.26,
+      "delta": 2.07,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "administration",
+      "task_accuracy": 81.53,
+      "overall_accuracy": 84.26,
+      "delta": -2.73,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "language",
+      "task_accuracy": 91.49,
+      "overall_accuracy": 84.26,
+      "delta": 7.23,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "medicine",
+      "task_accuracy": 91.18,
+      "overall_accuracy": 84.26,
+      "delta": 6.92,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "engineering",
+      "task_accuracy": 84.16,
+      "overall_accuracy": 84.26,
+      "delta": -0.1,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "computer_science",
+      "task_accuracy": 90.93,
+      "overall_accuracy": 84.26,
+      "delta": 6.67,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "law",
+      "task_accuracy": 78.08,
+      "overall_accuracy": 84.26,
+      "delta": -6.18,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o3",
+      "task": "mathematics",
+      "task_accuracy": 78.98,
+      "overall_accuracy": 84.26,
+      "delta": -5.28,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "task": "chemistry",
+      "task_accuracy": 85.02,
+      "overall_accuracy": 79.4,
+      "delta": 5.62,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "task": "philosophy",
+      "task_accuracy": 85.83,
+      "overall_accuracy": 79.4,
+      "delta": 6.43,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "task": "earth_science",
+      "task_accuracy": 75.7,
+      "overall_accuracy": 79.4,
+      "delta": -3.7,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "task": "psychology",
+      "task_accuracy": 85.71,
+      "overall_accuracy": 79.4,
+      "delta": 6.31,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "task": "economics",
+      "task_accuracy": 82.86,
+      "overall_accuracy": 79.4,
+      "delta": 3.46,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "task": "biology",
+      "task_accuracy": 83.02,
+      "overall_accuracy": 79.4,
+      "delta": 3.62,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "task": "geography",
+      "task_accuracy": 64.09,
+      "overall_accuracy": 79.4,
+      "delta": -15.31,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "o4-mini",
+      "task": "physics",
+      "task_accuracy": 89.63,
+      "overall_accuracy": 79.4,
+      "delta": 10.23,
+      "relative_strength": "strong"
+    },
+    {
+      "model": "o4-mini",
+      "task": "politics",
+      "task_accuracy": 73.21,
+      "overall_accuracy": 79.4,
+      "delta": -6.19,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "task": "history",
+      "task_accuracy": 67.97,
+      "overall_accuracy": 79.4,
+      "delta": -11.43,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "o4-mini",
+      "task": "administration",
+      "task_accuracy": 71.21,
+      "overall_accuracy": 79.4,
+      "delta": -8.19,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "task": "language",
+      "task_accuracy": 84.19,
+      "overall_accuracy": 79.4,
+      "delta": 4.79,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "task": "medicine",
+      "task_accuracy": 88.24,
+      "overall_accuracy": 79.4,
+      "delta": 8.84,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "task": "engineering",
+      "task_accuracy": 81.98,
+      "overall_accuracy": 79.4,
+      "delta": 2.58,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "o4-mini",
+      "task": "computer_science",
+      "task_accuracy": 92.52,
+      "overall_accuracy": 79.4,
+      "delta": 13.12,
+      "relative_strength": "strong"
+    },
+    {
+      "model": "o4-mini",
+      "task": "law",
+      "task_accuracy": 63.92,
+      "overall_accuracy": 79.4,
+      "delta": -15.48,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "o4-mini",
+      "task": "mathematics",
+      "task_accuracy": 80.61,
+      "overall_accuracy": 79.4,
+      "delta": 1.21,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "chemistry",
+      "task_accuracy": 72.95,
+      "overall_accuracy": 68.33,
+      "delta": 4.62,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "philosophy",
+      "task_accuracy": 77.17,
+      "overall_accuracy": 68.33,
+      "delta": 8.84,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "earth_science",
+      "task_accuracy": 48.6,
+      "overall_accuracy": 68.33,
+      "delta": -19.73,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "psychology",
+      "task_accuracy": 66.39,
+      "overall_accuracy": 68.33,
+      "delta": -1.94,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "economics",
+      "task_accuracy": 55.97,
+      "overall_accuracy": 68.33,
+      "delta": -12.36,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "biology",
+      "task_accuracy": 73.36,
+      "overall_accuracy": 68.33,
+      "delta": 5.03,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "geography",
+      "task_accuracy": 54.7,
+      "overall_accuracy": 68.33,
+      "delta": -13.63,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "physics",
+      "task_accuracy": 59.26,
+      "overall_accuracy": 68.33,
+      "delta": -9.07,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "politics",
+      "task_accuracy": 62.2,
+      "overall_accuracy": 68.33,
+      "delta": -6.13,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "history",
+      "task_accuracy": 66.02,
+      "overall_accuracy": 68.33,
+      "delta": -2.31,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "administration",
+      "task_accuracy": 68.53,
+      "overall_accuracy": 68.33,
+      "delta": 0.2,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "language",
+      "task_accuracy": 75.68,
+      "overall_accuracy": 68.33,
+      "delta": 7.35,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "medicine",
+      "task_accuracy": 83.19,
+      "overall_accuracy": 68.33,
+      "delta": 14.86,
+      "relative_strength": "strong"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "engineering",
+      "task_accuracy": 64.83,
+      "overall_accuracy": 68.33,
+      "delta": -3.5,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "computer_science",
+      "task_accuracy": 75.28,
+      "overall_accuracy": 68.33,
+      "delta": 6.95,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "law",
+      "task_accuracy": 63.18,
+      "overall_accuracy": 68.33,
+      "delta": -5.15,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Gemini-2.5-flash",
+      "task": "mathematics",
+      "task_accuracy": 73.13,
+      "overall_accuracy": 68.33,
+      "delta": 4.8,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "chemistry",
+      "task_accuracy": 67.63,
+      "overall_accuracy": 63.29,
+      "delta": 4.34,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "philosophy",
+      "task_accuracy": 70.87,
+      "overall_accuracy": 63.29,
+      "delta": 7.58,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "earth_science",
+      "task_accuracy": 40.19,
+      "overall_accuracy": 63.29,
+      "delta": -23.1,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "psychology",
+      "task_accuracy": 64.71,
+      "overall_accuracy": 63.29,
+      "delta": 1.42,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "economics",
+      "task_accuracy": 56.83,
+      "overall_accuracy": 63.29,
+      "delta": -6.46,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "biology",
+      "task_accuracy": 68.81,
+      "overall_accuracy": 63.29,
+      "delta": 5.52,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "geography",
+      "task_accuracy": 55.8,
+      "overall_accuracy": 63.29,
+      "delta": -7.49,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "physics",
+      "task_accuracy": 51.67,
+      "overall_accuracy": 63.29,
+      "delta": -11.62,
+      "relative_strength": "weak"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "politics",
+      "task_accuracy": 63.16,
+      "overall_accuracy": 63.29,
+      "delta": -0.13,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "history",
+      "task_accuracy": 66.02,
+      "overall_accuracy": 63.29,
+      "delta": 2.73,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "administration",
+      "task_accuracy": 64.12,
+      "overall_accuracy": 63.29,
+      "delta": 0.83,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "language",
+      "task_accuracy": 72.3,
+      "overall_accuracy": 63.29,
+      "delta": 9.01,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "medicine",
+      "task_accuracy": 78.99,
+      "overall_accuracy": 63.29,
+      "delta": 15.7,
+      "relative_strength": "strong"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "engineering",
+      "task_accuracy": 56.4,
+      "overall_accuracy": 63.29,
+      "delta": -6.89,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "computer_science",
+      "task_accuracy": 69.39,
+      "overall_accuracy": 63.29,
+      "delta": 6.1,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "law",
+      "task_accuracy": 60.84,
+      "overall_accuracy": 63.29,
+      "delta": -2.45,
+      "relative_strength": "neutral"
+    },
+    {
+      "model": "Claude-Sonnet-4",
+      "task": "mathematics",
+      "task_accuracy": 61.61,
+      "overall_accuracy": 63.29,
+      "delta": -1.68,
+      "relative_strength": "neutral"
+    }
+  ],
+  "rank_reversals": [
+    {
+      "type": "task",
+      "condition": "biology",
+      "model_higher_overall": "Gemini-2.5-pro",
+      "model_lower_overall": "o3",
+      "higher_model_score": 88.9,
+      "lower_model_score": 89.23,
+      "reversal_magnitude": 0.33
+    },
+    {
+      "type": "nation",
+      "condition": "japan",
+      "model_higher_overall": "o3",
+      "model_lower_overall": "o4-mini",
+      "higher_model_score": 82.37,
+      "lower_model_score": 82.52,
+      "reversal_magnitude": 0.15
+    },
+    {
+      "type": "task",
+      "condition": "mathematics",
+      "model_higher_overall": "o3",
+      "model_lower_overall": "o4-mini",
+      "higher_model_score": 78.98,
+      "lower_model_score": 80.61,
+      "reversal_magnitude": 1.63
+    },
+    {
+      "type": "nation",
+      "condition": "eu",
+      "model_higher_overall": "o4-mini",
+      "model_lower_overall": "Gemini-2.5-flash",
+      "higher_model_score": 76.95,
+      "lower_model_score": 83.3,
+      "reversal_magnitude": 6.35
+    },
+    {
+      "type": "nation",
+      "condition": "taiwan",
+      "model_higher_overall": "o4-mini",
+      "model_lower_overall": "Gemini-2.5-flash",
+      "higher_model_score": 92.29,
+      "lower_model_score": 92.65,
+      "reversal_magnitude": 0.36
+    },
+    {
+      "type": "nation",
+      "condition": "india",
+      "model_higher_overall": "Gemini-2.5-flash",
+      "model_lower_overall": "Claude-Sonnet-4",
+      "higher_model_score": 62.32,
+      "lower_model_score": 62.51,
+      "reversal_magnitude": 0.19
+    }
+  ]
+}

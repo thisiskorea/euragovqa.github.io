@@ -1,0 +1,4 @@
+Loading dataset...
+Total: 8000 questions
+Sampled 100 questions
+[1/100] Japan/geography[2/100] South Korea/engineering[3/100] Japan/engineering[4/100] Taiwan/medicine[5/100] South Korea/medicine[6/100] South Korea/biology[7/100] South Korea/law[8/100] Japan/mathematics[9/100] Japan/philosophy[10/100] South Korea/engineering[11/100] South Korea/computer_science[12/100] India/geography[13/100] South Korea/administration[14/100] Japan/physics[15/100] Taiwan/biology[16/100] India/politics[17/100] Taiwan/medicine

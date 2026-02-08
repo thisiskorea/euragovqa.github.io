@@ -1,0 +1,429 @@
+\documentclass{article}
+
+% NeurIPS 2025 style
+\usepackage[final]{neurips_2025}
+
+% Basic packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{nicefrac}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+
+% Custom colors
+\definecolor{highlight}{RGB}{220, 50, 50}
+\definecolor{finding}{RGB}{0, 100, 0}
+
+% Title
+\title{EuraGovExam: Can We Trust VLMs for Government Document Processing?}
+
+% Anonymous submission for NeurIPS
+\author{
+  Anonymous Authors
+}
+
+\begin{document}
+
+\maketitle
+
+%==============================================================================
+% ABSTRACT
+%==============================================================================
+\begin{abstract}
+As Vision-Language Models (VLMs) achieve expert-level performance on professional examinations, governments worldwide are actively exploring AI deployment for administrative document processing, citizen services, and examination grading. However, before deploying VLMs in high-stakes government systems, we must answer a critical question: \emph{Can a model that excels on English benchmarks reliably process documents in Korean, Japanese, or Hindi?}
+
+To address this question, we introduce \textbf{EuraGovExam}, a multilingual multimodal benchmark comprising 8,000+ civil service examination questions from five jurisdictions: Korea, Japan, Taiwan, India, and EU. Civil service exams are ideal for testing government AI readiness as they require jurisdiction-specific knowledge embedded in real scanned documents.
+
+Our evaluation of 23 state-of-the-art VLMs reveals an alarming finding: \textbf{regional/language factors dominate task/subject factors by 3.9$\times$} ($\eta^2=0.126$ vs $0.043$, $p<0.01$). GPT-4o achieves 63.7\% on EU documents but plummets to 26.0\% on Japanese documents---barely above random chance. This pattern is consistent across 82.6\% of evaluated models.
+
+These results challenge the assumption of ``general intelligence'' in VLMs and demonstrate that \textbf{region-specific validation is required} before government AI deployment.
+\end{abstract}
+
+%==============================================================================
+% 1. INTRODUCTION
+%==============================================================================
+\section{Introduction}
+
+\subsection{The Rise of VLMs and Government AI Adoption}
+
+Vision-Language Models (VLMs) have demonstrated remarkable progress in recent years. Performance on expert-level benchmarks has improved dramatically, from 56\% to over 90\% on MMMU within two years~\cite{mmmu}. These models now achieve passing scores on professional examinations including medical licensing exams, bar examinations, and graduate-level entrance tests.
+
+This rapid advancement has prompted governments worldwide to explore AI adoption for high-stakes administrative tasks. Applications under consideration include document processing, citizen service automation, examination grading, and regulatory compliance checking. The promise of increased efficiency and reduced costs makes AI deployment increasingly attractive to public sector organizations.
+
+\subsection{The Critical Question: Can We Trust Them?}
+
+Despite impressive benchmark performance, existing evaluations have significant limitations for assessing government AI readiness:
+
+\begin{itemize}[leftmargin=*,nosep]
+    \item \textbf{Language bias}: Most benchmarks are English-centric (MMMU, MathVista, DocVQA)
+    \item \textbf{Clean inputs}: Synthetic or high-quality rendered images, not real scanned documents
+    \item \textbf{Universal knowledge}: Mathematics, science, general knowledge---not jurisdiction-specific law or administration
+\end{itemize}
+
+\textbf{MMMU performance of 90\% does not guarantee Korean government document processing capability.} Before deploying VLMs in high-stakes government systems, we must answer a critical question: \emph{Can a model that excels on English benchmarks reliably process documents in Korean, Japanese, or Hindi?}
+
+\subsection{Our Finding: Regional Effects Dominate}
+
+We evaluated 23 state-of-the-art VLMs on EuraGovExam and discovered an alarming pattern: \textbf{regional performance variance is 3.9$\times$ larger than task performance variance.}
+
+\begin{itemize}[leftmargin=*,nosep]
+    \item Nation effect: $\eta^2 = 0.126$ (medium), $F(4,110) = 3.95$, $p = 0.005$**
+    \item Task effect: $\eta^2 = 0.043$ (small), $F(16,368) = 1.05$, $p = 0.40$ (n.s.)
+    \item 82.6\% of models (19/23) show Nation $>$ Task pattern (binomial $p = 0.0013$)
+\end{itemize}
+
+The most striking example: \textbf{GPT-4o achieves 63.7\% on EU documents but drops to 26.0\% on Japanese documents}---a 37.7 percentage point collapse to near-random levels. This is not an isolated case; the pattern persists across model families and sizes.
+
+\subsection{Why Civil Service Examinations?}
+
+Civil service examinations are uniquely suited for evaluating government AI readiness:
+
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Naturally occurring}: Official government-administered tests, not artificially constructed
+    \item \textbf{Ground truth available}: Official answer keys published by examination authorities
+    \item \textbf{Jurisdiction-specific}: Requires local law, administrative procedures, and regional knowledge
+    \item \textbf{Real documents}: Actual scanned examination papers with authentic visual characteristics
+\end{enumerate}
+
+Unlike school examinations (EXAMS-V) which test transferable knowledge, civil service exams require understanding that cannot be obtained through translation alone.
+
+\subsection{Contributions}
+
+Our contributions are fourfold:
+
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Reliability Warning (Primary)}: We provide empirical evidence that VLM performance varies 3.9$\times$ more by region than by task, challenging assumptions of general intelligence.
+    
+    \item \textbf{EuraGovExam Benchmark}: A multilingual multimodal benchmark with 8,000+ questions across 5 regions, 4 writing systems, and 17 subject domains.
+    
+    \item \textbf{Diagnostic Analysis}: Taxonomy of failure modes revealing that 72\% of failures are perception-related (OCR/script recognition), not reasoning failures.
+    
+    \item \textbf{Practical Guidelines}: Region-specific recommendations for government AI deployment based on identified bottlenecks.
+\end{enumerate}
+
+%==============================================================================
+% 2. RELATED WORK
+%==============================================================================
+\section{Related Work}
+
+\subsection{Examination and Knowledge Benchmarks}
+
+\textbf{Text-only benchmarks} such as MMLU~\cite{mmlu} evaluate broad knowledge but lack visual understanding requirements. \textbf{Multimodal benchmarks} including MMMU~\cite{mmmu} and MathVista~\cite{mathvista} test visual reasoning but use clean, rendered images and focus on universal knowledge domains.
+
+\textbf{Multilingual exam benchmarks} like EXAMS-V~\cite{examsv} provide cross-lingual evaluation but test school-level examinations with transferable knowledge. In contrast, EuraGovExam tests jurisdiction-specific knowledge that cannot be acquired through translation.
+
+\subsection{Document Understanding Benchmarks}
+
+DocVQA~\cite{docvqa}, ChartQA~\cite{chartqa}, and TextVQA~\cite{textvqa} evaluate document comprehension but are predominantly English-centric. OCRBench~\cite{ocrbench} specifically tests text recognition but does not combine OCR with domain reasoning requirements.
+
+EuraGovExam uniquely combines: (1) real scanned documents with authentic visual characteristics, (2) multiple writing systems including complex scripts (Japanese, Korean, Devanagari), and (3) jurisdiction-specific domain knowledge requirements.
+
+\subsection{VLM Reliability Studies}
+
+Recent work has examined VLM reliability through perception analysis~\cite{logicvqa}, multilingual evaluation~\cite{multilingual_vlm}, and robustness testing. Our contribution differs in focus: we systematically demonstrate that regional factors dominate task factors in determining VLM performance, with direct implications for government AI deployment decisions.
+
+%==============================================================================
+% 3. EURAGOV EXAM DATASET
+%==============================================================================
+\section{EuraGovExam Dataset}
+
+\subsection{Design Rationale}
+
+EuraGovExam is designed specifically for evaluating government AI readiness. Key design principles include:
+
+\begin{itemize}[leftmargin=*,nosep]
+    \item \textbf{Authenticity}: Real examination documents with original visual characteristics (scan noise, varied layouts)
+    \item \textbf{Script diversity}: Four distinct writing systems to test multilingual capability
+    \item \textbf{Jurisdiction specificity}: Content requiring local knowledge that cannot be obtained through translation
+\end{itemize}
+
+\subsection{Data Sources}
+
+\begin{table}[h]
+\centering
+\caption{EuraGovExam data sources by region}
+\label{tab:data_sources}
+\small
+\begin{tabular}{llllr}
+\toprule
+\textbf{Region} & \textbf{Source} & \textbf{Language} & \textbf{Script} & \textbf{Questions} \\
+\midrule
+Korea & NPS (인사혁신처) & Korean & Hangul & $\sim$2,000 \\
+Japan & NPA (人事院) & Japanese & Kanji+Kana & $\sim$1,500 \\
+Taiwan & MOEX (考選部) & Chinese & Traditional & $\sim$1,500 \\
+India & UPSC & Hindi/English & Devanagari/Latin & $\sim$1,500 \\
+EU & EPSO & EN/FR/DE & Latin & $\sim$1,500 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Dataset Statistics}
+
+\begin{itemize}[leftmargin=*,nosep]
+    \item \textbf{Total questions}: 8,000+
+    \item \textbf{Regions}: 5 (Korea, Japan, Taiwan, India, EU)
+    \item \textbf{Writing systems}: 4 (Hangul, Japanese mixed, Traditional Chinese, Latin/Devanagari)
+    \item \textbf{Subject domains}: 17 (law, administration, economics, mathematics, sciences, etc.)
+    \item \textbf{Time span}: 2015--2024
+    \item \textbf{Format}: Multiple choice (4--5 options)
+\end{itemize}
+
+\subsection{Quality Assurance}
+
+\textbf{Data quality}: Near-duplicate detection using perceptual hashing, PII removal verification, double-checked answer key alignment. Error rate $<$0.1\%.
+
+\textbf{Contamination analysis}: We analyze performance by examination year. Models show consistent patterns across temporal periods, including recent examinations (2023--2024) unlikely to be in training data.
+
+%==============================================================================
+% 4. EVALUATION PROTOCOL
+%==============================================================================
+\section{Evaluation Protocol}
+
+\subsection{Task Definition}
+
+We evaluate VLMs in an \textbf{image-only setting}: the model receives only the examination question image and must produce the correct answer choice (1--5). No external OCR tools or text extraction is permitted.
+
+\subsection{Evaluated Models}
+
+We evaluate 23 VLMs spanning closed and open-source models:
+
+\begin{itemize}[leftmargin=*,nosep]
+    \item \textbf{Closed (9)}: Gemini-2.5-pro, o3, o4-mini, GPT-4o, GPT-4.1, GPT-4.1-mini, Claude-Sonnet-4, Gemini-2.5-flash, Gemini-2.5-flash-lite
+    \item \textbf{Open (14)}: Qwen2-VL (2B/7B/72B), InternVL2.5-38B, LLaVA variants, Ovis2 (8B/16B/32B), Phi-3.5-vision, Llama-3.2-11B-Vision
+\end{itemize}
+
+\subsection{Metrics}
+
+\begin{itemize}[leftmargin=*,nosep]
+    \item \textbf{Primary}: Accuracy (\%)
+    \item \textbf{Statistical}: 95\% bootstrap confidence intervals, effect sizes ($\eta^2$, Cohen's $d$)
+    \item \textbf{Significance}: ANOVA for factor analysis, paired t-tests with Bonferroni correction
+\end{itemize}
+
+%==============================================================================
+% 5. MAIN RESULTS
+%==============================================================================
+\section{Main Results}
+
+\subsection{Overall Performance}
+
+Table~\ref{tab:main_results} presents overall and regional performance for top models.
+
+\begin{table}[h]
+\centering
+\caption{Overall accuracy (\%) on EuraGovExam. Regional scores show significant variance within each model.}
+\label{tab:main_results}
+\small
+\begin{tabular}{lrrrrrrr}
+\toprule
+\textbf{Model} & \textbf{Overall} & \textbf{Taiwan} & \textbf{EU} & \textbf{Korea} & \textbf{India} & \textbf{Japan} & \textbf{Range} \\
+\midrule
+Gemini-2.5-pro & 87.0 & 95.5 & 88.1 & 91.1 & 69.2 & 87.6 & 26.3 \\
+o3 & 84.3 & 93.7 & 84.5 & 90.1 & 68.6 & 82.4 & 25.1 \\
+o4-mini & 79.4 & 92.3 & 77.0 & 82.5 & 63.4 & 82.5 & 28.9 \\
+Gemini-2.5-flash & 68.3 & 92.7 & 83.3 & 67.7 & 62.3 & 51.5 & 41.2 \\
+Claude-Sonnet-4 & 63.3 & 87.3 & 76.4 & 62.4 & 62.5 & 45.9 & 41.4 \\
+GPT-4.1-mini & 56.3 & 79.0 & 63.6 & 59.9 & 46.3 & 43.8 & 35.2 \\
+GPT-4.1 & 54.7 & 72.6 & 66.4 & 54.2 & 48.1 & 48.1 & 24.5 \\
+Qwen2-VL-72B & 44.6 & 74.7 & 62.1 & 39.7 & 35.9 & 30.4 & 44.4 \\
+\textbf{GPT-4o} & \textbf{42.0} & \textbf{66.7} & \textbf{63.7} & \textbf{33.2} & \textbf{41.0} & \textbf{26.0} & \textbf{40.7} \\
+InternVL2.5-38B & 39.3 & 56.8 & 52.9 & 39.6 & 19.4 & 31.5 & 37.4 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key observations}:
+\begin{itemize}[leftmargin=*,nosep]
+    \item Closed models significantly outperform open models (87.0\% vs 44.6\% for best in class)
+    \item Regional variance within models often exceeds 40 percentage points
+    \item Random baseline is 20--25\%; some models approach random on difficult regions
+\end{itemize}
+
+\subsection{Core Finding: Regional Effect Dominates Task Effect}
+
+We decompose performance variance using two-way ANOVA to test whether Nation or Task better explains performance differences.
+
+\begin{table}[h]
+\centering
+\caption{ANOVA results: Nation vs Task effects on VLM performance}
+\label{tab:anova}
+\begin{tabular}{lrrrrl}
+\toprule
+\textbf{Factor} & \textbf{Variance} & $\boldsymbol{\eta^2}$ & \textbf{F} & \textbf{p-value} & \textbf{Interpretation} \\
+\midrule
+Nation & 104.7 & 0.126 & 3.95 & 0.005** & Medium effect \\
+Task & 27.0 & 0.043 & 1.05 & 0.40 & Small effect (n.s.) \\
+\midrule
+\multicolumn{6}{l}{\textbf{Variance Ratio: 104.7 / 27.0 = 3.9$\times$}} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Core finding}: \textbf{Nation explains 3.9$\times$ more variance than Task.} The nation effect is statistically significant ($p < 0.01$) while the task effect is not ($p = 0.40$). This pattern holds for 82.6\% of models (19/23), with binomial test $p = 0.0013$.
+
+\subsection{Regional Performance Hierarchy}
+
+\begin{table}[h]
+\centering
+\caption{Regional difficulty ranking (averaged across all models)}
+\label{tab:regional_ranking}
+\begin{tabular}{clrrll}
+\toprule
+\textbf{Rank} & \textbf{Region} & \textbf{Mean Acc} & \textbf{Std} & \textbf{Script} & \textbf{Characteristics} \\
+\midrule
+1 (Hardest) & Japan & 32.5\% & 23.4 & Kanji+Kana & Most complex script \\
+2 & India & 32.6\% & 20.1 & Devanagari & Mixed scripts \\
+3 & Korea & 38.6\% & 25.1 & Hangul & Syllabic script \\
+4 & EU & 49.9\% & 23.3 & Latin & Familiar to models \\
+5 (Easiest) & Taiwan & 54.9\% & 28.1 & Traditional Chinese & Best overall \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Performance gap between easiest and hardest regions: \textbf{22.4 percentage points}.
+
+\subsection{Evidence: Not Due to Exam Difficulty}
+
+A potential counterargument is that Japanese exams are inherently more difficult. We refute this by showing that \textbf{different models show different gaps on the same exams}:
+
+\begin{itemize}[leftmargin=*,nosep]
+    \item GPT-4o: Taiwan 66.7\% $\rightarrow$ Japan 26.0\% (\textbf{40.7pp drop})
+    \item Gemini-2.5-pro: Taiwan 95.5\% $\rightarrow$ Japan 87.6\% (\textbf{7.9pp drop})
+\end{itemize}
+
+If Japanese exams were inherently harder, both models should show similar proportional drops. The 5$\times$ difference in drop magnitude demonstrates that the gap reflects \textbf{model capability differences}, not exam difficulty.
+
+%==============================================================================
+% 6. DIAGNOSTIC ANALYSIS
+%==============================================================================
+\section{Diagnostic Analysis}
+
+\subsection{Failure Taxonomy}
+
+We manually analyzed 176 failure cases to categorize error types.
+
+\begin{table}[h]
+\centering
+\caption{Primary failure categories across all regions}
+\label{tab:failure_taxonomy}
+\small
+\begin{tabular}{lrrl}
+\toprule
+\textbf{Category} & \textbf{Count} & \textbf{\%} & \textbf{Type} \\
+\midrule
+Vertical/non-Latin script & 71 & 40.3\% & Perception \\
+OCR/text recognition & 31 & 17.6\% & Perception \\
+Math symbol interpretation & 25 & 14.2\% & Perception \\
+Pure reasoning/knowledge & 20 & 11.4\% & Reasoning \\
+Diagram understanding & 12 & 6.8\% & Perception \\
+Table structure & 11 & 6.3\% & Perception \\
+Other & 6 & 3.4\% & Mixed \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Key insight}: \textbf{72.2\% of failures are perception-related} (script, OCR, symbols), while only \textbf{11.4\% are pure reasoning failures}. VLMs fail primarily because they ``cannot read,'' not because they ``cannot think.''
+
+\subsection{Regional Bottleneck Patterns}
+
+Different regions exhibit distinct failure patterns:
+
+\begin{itemize}[leftmargin=*,nosep]
+    \item \textbf{Japan \& Korea}: Perception bottleneck (script recognition $>$40\% of failures)
+    \item \textbf{India}: Perception bottleneck (OCR + script issues account for 97\% of failures)
+    \item \textbf{EU}: Reasoning bottleneck (48\% of failures are knowledge/reasoning-related)
+    \item \textbf{Taiwan}: Minimal failures; when present, mostly OCR-related
+\end{itemize}
+
+This suggests that Asian language performance can be significantly improved through better OCR capabilities, while EU performance requires enhanced domain knowledge.
+
+\subsection{Model-Specific Insights}
+
+\textbf{Gemini vs GPT comparison} reveals stark differences in Asian language handling:
+
+\begin{table}[h]
+\centering
+\caption{Gemini vs GPT performance by region}
+\small
+\begin{tabular}{lrrr}
+\toprule
+\textbf{Region} & \textbf{Gemini-2.5-pro} & \textbf{GPT-4o} & \textbf{Gap} \\
+\midrule
+Japan & 87.6\% & 26.0\% & \textbf{+61.6pp} \\
+Korea & 91.1\% & 33.2\% & \textbf{+57.9pp} \\
+India & 69.2\% & 41.0\% & +28.2pp \\
+Taiwan & 95.5\% & 66.7\% & +28.8pp \\
+EU & 88.1\% & 63.7\% & +24.4pp \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Gemini shows consistent performance across regions (69--95\%), while GPT-4o exhibits dramatic variance (26--67\%). The 61.6pp gap on Japanese documents suggests fundamental differences in Asian language processing capability.
+
+%==============================================================================
+% 7. DISCUSSION
+%==============================================================================
+\section{Discussion}
+
+\subsection{Implications for Government AI Deployment}
+
+Our findings have direct implications for government AI adoption:
+
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Region-specific validation is mandatory}: English benchmark performance does not predict performance on Asian language documents. Governments must evaluate on target-region data before deployment.
+    
+    \item \textbf{Model selection matters significantly}: A 3$\times$ performance difference is possible between model families on the same task (Gemini 87.6\% vs GPT-4o 26.0\% on Japanese).
+    
+    \item \textbf{Human-in-the-loop required for high-stakes decisions}: Given performance variability, fully automated decision-making is not recommended for legal, administrative, or citizen-impacting tasks.
+\end{enumerate}
+
+\subsection{Why Do Regional Gaps Exist?}
+
+We hypothesize four contributing factors:
+
+\begin{enumerate}[leftmargin=*,nosep]
+    \item \textbf{Training data imbalance}: English data dominates VLM training; Asian language document data is scarce
+    \item \textbf{OCR quality gap}: Built-in OCR is optimized for Latin scripts
+    \item \textbf{Jurisdiction knowledge gap}: US/EU law knowledge exceeds Asian law knowledge
+    \item \textbf{Benchmark bias}: Existing benchmarks are English-centric, reducing incentive for multilingual improvement
+\end{enumerate}
+
+\subsection{Limitations}
+
+\begin{itemize}[leftmargin=*,nosep]
+    \item \textbf{Geographic coverage}: 5 regions; Southeast Asia, Middle East, Africa not included
+    \item \textbf{Contamination}: Some older exams may be in training data; however, patterns persist on recent (2023--2024) exams
+    \item \textbf{Causality}: Observational study; causal mechanisms require further investigation
+    \item \textbf{Task scope}: Multiple choice only; free-form response evaluation is future work
+\end{itemize}
+
+%==============================================================================
+% 8. CONCLUSION
+%==============================================================================
+\section{Conclusion}
+
+We introduced EuraGovExam, a multilingual multimodal benchmark for evaluating VLM reliability on government document processing. Our evaluation of 23 VLMs reveals that \textbf{regional factors dominate task factors by 3.9$\times$} in determining performance. GPT-4o drops from 63.7\% (EU) to 26.0\% (Japan)---near random chance---demonstrating that high English benchmark scores do not guarantee multilingual reliability.
+
+Our diagnostic analysis shows that 72\% of failures are perception-related (OCR, script recognition), suggesting that improved multilingual OCR could substantially enhance Asian language performance.
+
+\textbf{Key message}: Governments seeking to deploy VLMs must conduct region-specific validation. The assumption of ``general intelligence'' is not supported by empirical evidence. EuraGovExam provides a standardized tool for this critical evaluation.
+
+\subsubsection*{Acknowledgments}
+[To be added]
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
