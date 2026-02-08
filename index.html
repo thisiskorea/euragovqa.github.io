@@ -4,25 +4,15 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="title" content="EuraGovQA: A Multilingual Multimodal Benchmark for Government Examinations">
-  <meta name="description" content="A comprehensive benchmark for evaluating vision-language models on real-world government examination questions across Eurasian countries.">
+  <meta name="description" content="EuraGovQA: A Multilingual Multimodal Benchmark for Government Examinations across Eurasia">
   <meta name="keywords" content="benchmark, multimodal, multilingual, VLM, vision-language model, government exam, QA, dataset">
-  <meta name="author" content="EuraGovQA Team">
-
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="EuraGovQA">
-  <meta property="og:title" content="EuraGovQA: A Multilingual Multimodal Benchmark">
-  <meta property="og:description" content="15K+ questions from government exams across 5 countries and 17 subjects.">
+  <meta property="og:title" content="EuraGovQA">
+  <meta property="og:description" content="A Multilingual Multimodal Benchmark for Government Examinations across Eurasia">
   <meta property="og:url" content="https://euragovqa.github.io">
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="EuraGovQA: A Multilingual Multimodal Benchmark">
-  <meta name="twitter:description" content="15K+ questions from government exams across 5 countries and 17 subjects.">
-
-  <title>EuraGovQA: A Multilingual Multimodal Benchmark for Government Examinations</title>
+  <title>EuraGovQA</title>
 
   <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
-
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="static/css/bulma-slider.min.css">
@@ -30,256 +20,61 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="static/css/index.css">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="static/js/fontawesome.all.min.js"></script>
   <script src="static/js/bulma-carousel.min.js"></script>
   <script src="static/js/bulma-slider.min.js"></script>
   <script src="static/js/index.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-  <style>
-    /* Custom styles for EuraGovQA */
-    .hero.is-primary {
-      background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
-    }
-
-    .stats-section {
-      background: #1a202c;
-      padding: 3rem 0;
-    }
-
-    .stat-box {
-      text-align: center;
-      padding: 1.5rem;
-    }
-
-    .stat-number {
-      font-size: 3rem;
-      font-weight: 800;
-      color: #f6ad55;
-      line-height: 1;
-    }
-
-    .stat-label {
-      color: #a0aec0;
-      font-size: 0.9rem;
-      margin-top: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .leaderboard-section {
-      padding: 4rem 0;
-    }
-
-    .leaderboard-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.95rem;
-    }
-
-    .leaderboard-table th {
-      background: #2d3748;
-      color: white;
-      padding: 1rem 0.75rem;
-      text-align: center;
-      font-weight: 600;
-    }
-
-    .leaderboard-table td {
-      padding: 0.875rem 0.75rem;
-      text-align: center;
-      border-bottom: 1px solid #e2e8f0;
-    }
-
-    .leaderboard-table tr:hover {
-      background: #f7fafc;
-    }
-
-    .leaderboard-table tr.rank-1 {
-      background: linear-gradient(90deg, #fef3c7 0%, #fff 50%);
-    }
-
-    .leaderboard-table tr.rank-2 {
-      background: linear-gradient(90deg, #f1f5f9 0%, #fff 50%);
-    }
-
-    .leaderboard-table tr.rank-3 {
-      background: linear-gradient(90deg, #fed7aa 0%, #fff 50%);
-    }
-
-    .model-name {
-      font-weight: 600;
-      text-align: left !important;
-    }
-
-    .score-high { color: #38a169; font-weight: 600; }
-    .score-mid { color: #d69e2e; }
-    .score-low { color: #e53e3e; }
-
-    .medal {
-      font-size: 1.25rem;
-    }
-
-    .example-card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      margin-bottom: 1.5rem;
-    }
-
-    .example-header {
-      background: #2d3748;
-      color: white;
-      padding: 0.75rem 1.25rem;
-      font-size: 0.85rem;
-      font-weight: 500;
-    }
-
-    .example-body {
-      padding: 1.25rem;
-    }
-
-    .example-image {
-      background: #f7fafc;
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    .example-image img {
-      max-height: 180px;
-      border-radius: 4px;
-    }
-
-    .example-question {
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-      line-height: 1.6;
-    }
-
-    .example-option {
-      padding: 0.6rem 1rem;
-      background: #f7fafc;
-      border-radius: 6px;
-      margin-bottom: 0.5rem;
-      font-size: 0.85rem;
-    }
-
-    .example-option.correct {
-      background: #c6f6d5;
-      color: #22543d;
-      font-weight: 500;
-    }
-
-    .chart-container {
-      background: white;
-      border-radius: 12px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-    }
-
-    .section-subtitle {
-      color: #718096;
-      font-size: 1.1rem;
-      margin-top: -0.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .country-flag {
-      font-size: 1.5rem;
-      margin-right: 0.5rem;
-    }
-
-    .tab-buttons {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .tab-btn {
-      padding: 0.6rem 1.25rem;
-      border: 1px solid #e2e8f0;
-      background: white;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-
-    .tab-btn.active {
-      background: #2d3748;
-      color: white;
-      border-color: #2d3748;
-    }
-
-    .tab-btn:hover:not(.active) {
-      border-color: #a0aec0;
-    }
-  </style>
 </head>
 <body>
 
-<section class="hero is-primary">
+<section class="hero">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <p class="is-size-7 has-text-weight-semibold mb-3" style="background: rgba(255,255,255,0.15); display: inline-block; padding: 6px 16px; border-radius: 4px;">
-            NeurIPS 2025 Datasets & Benchmarks Track
-          </p>
-          <h1 class="title is-1 publication-title" style="color: white;">
-            EuraGovQA
-          </h1>
-          <p class="subtitle is-4" style="color: rgba(255,255,255,0.9); margin-top: -0.5rem;">
-            A Multilingual Multimodal Question Answering Benchmark<br>for Government Examinations across Eurasia
-          </p>
+          <h1 class="title is-1 publication-title">EuraGovQA</h1>
+          <h2 class="subtitle is-3 publication-title">A Multilingual Multimodal Benchmark for<br>Government Examinations across Eurasia</h2>
 
-          <div class="is-size-5 publication-authors" style="color: rgba(255,255,255,0.9);">
+          <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="#" style="color: white;">Author One</a><sup>1</sup>,
-            </span>
+              <a href="#">Author One</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="#" style="color: white;">Author Two</a><sup>1</sup>,
-            </span>
+              <a href="#">Author Two</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="#" style="color: white;">Author Three</a><sup>2</sup>,
-            </span>
+              <a href="#">Author Three</a><sup>2</sup>,</span>
             <span class="author-block">
-              <a href="#" style="color: white;">Author Four</a><sup>1,2</sup>
+              <a href="#">Author Four</a><sup>1,2</sup>
             </span>
           </div>
 
-          <div class="is-size-6 publication-authors" style="color: rgba(255,255,255,0.7);">
-            <span class="author-block"><sup>1</sup>University A &nbsp;&nbsp; <sup>2</sup>Research Lab B</span>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University A,</span>
+            <span class="author-block"><sup>2</sup>Research Lab B</span>
           </div>
 
-          <div class="column has-text-centered mt-4">
+          <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-light">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fas fa-file-pdf"></i></span>
                   <span>Paper</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-light">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="fab fa-github"></i></span>
                   <span>Code</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-light">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><i class="ai ai-arxiv"></i></span>
                   <span>arXiv</span>
                 </a>
               </span>
               <span class="link-block">
-                <a href="#" class="external-link button is-normal is-rounded is-light">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
                   <span>🤗</span>
                   <span>Dataset</span>
                 </a>
@@ -292,49 +87,35 @@
   </div>
 </section>
 
-<!-- Stats Section -->
-<section class="stats-section">
+<section class="hero teaser">
   <div class="container is-max-desktop">
-    <div class="columns is-mobile">
-      <div class="column stat-box">
-        <div class="stat-number">15,234</div>
-        <div class="stat-label">Questions</div>
-      </div>
-      <div class="column stat-box">
-        <div class="stat-number">5</div>
-        <div class="stat-label">Countries</div>
-      </div>
-      <div class="column stat-box">
-        <div class="stat-number">17</div>
-        <div class="stat-label">Subjects</div>
-      </div>
-      <div class="column stat-box">
-        <div class="stat-number">55%</div>
-        <div class="stat-label">Multimodal</div>
-      </div>
+    <div class="hero-body">
+      <img src="assets/img/teaser.png" alt="EuraGovQA Overview" style="width: 100%; border-radius: 8px;">
+      <h2 class="subtitle has-text-centered">
+        EuraGovQA contains <b>15,234</b> questions from government examinations across <b>5 countries</b> (India, EU, Japan, Taiwan, South Korea) spanning <b>17 subject areas</b>.
+      </h2>
     </div>
   </div>
 </section>
 
-<!-- Abstract -->
-<section class="section">
+<section class="section hero is-light">
   <div class="container is-max-desktop">
-    <div class="columns is-centered">
+    <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3 has-text-centered">Abstract</h2>
+        <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We introduce <strong>EuraGovQA</strong>, a comprehensive multilingual multimodal benchmark
+            We introduce <b>EuraGovQA</b>, a comprehensive multilingual multimodal benchmark
             designed to evaluate vision-language models on real-world government examination questions
-            across Eurasian countries. Our benchmark comprises <strong>15,234 questions</strong> spanning
-            <strong>17 subject areas</strong> from official civil service examinations in
-            <strong>India, the European Union, Japan, Taiwan, and South Korea</strong>.
+            across Eurasian countries. Our benchmark comprises <b>15,234 questions</b> spanning
+            <b>17 subject areas</b> from official civil service examinations in
+            India, the European Union, Japan, Taiwan, and South Korea.
           </p>
           <p>
             Unlike existing benchmarks that focus primarily on English or academic contexts,
             EuraGovQA captures the diverse linguistic, cultural, and administrative knowledge
             required for government positions across different nations. We evaluate
-            <strong>13 state-of-the-art vision-language models</strong> and reveal significant
+            <b>13 state-of-the-art vision-language models</b> and reveal significant
             performance gaps across languages and domains, highlighting the need for more
             culturally-aware multimodal AI systems.
           </p>
@@ -344,137 +125,121 @@
   </div>
 </section>
 
-<!-- Key Results -->
-<section class="section" style="background: #f7fafc;">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Key Results</h2>
-    <p class="section-subtitle has-text-centered">Performance comparison of leading vision-language models</p>
-
-    <div class="columns is-centered">
-      <div class="column is-4">
-        <div class="chart-container has-text-centered">
-          <p style="font-size: 3.5rem; font-weight: 800; color: #d69e2e; margin-bottom: 0;">85.3%</p>
-          <p style="font-weight: 600; color: #2d3748;">Best Model (GPT-4o)</p>
-          <p style="color: #718096; font-size: 0.85rem;">Highest overall accuracy</p>
-        </div>
-      </div>
-      <div class="column is-4">
-        <div class="chart-container has-text-centered">
-          <p style="font-size: 3.5rem; font-weight: 800; color: #38a169; margin-bottom: 0;">94.2%</p>
-          <p style="font-weight: 600; color: #2d3748;">Human Expert</p>
-          <p style="color: #718096; font-size: 0.85rem;">Professional baseline</p>
-        </div>
-      </div>
-      <div class="column is-4">
-        <div class="chart-container has-text-centered">
-          <p style="font-size: 3.5rem; font-weight: 800; color: #e53e3e; margin-bottom: 0;">-8.9%</p>
-          <p style="font-weight: 600; color: #2d3748;">Performance Gap</p>
-          <p style="color: #718096; font-size: 0.85rem;">Room for improvement</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Leaderboard -->
-<section class="section leaderboard-section">
+<section class="section">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Leaderboard</h2>
-    <p class="section-subtitle has-text-centered">Model performance on EuraGovQA benchmark</p>
-
-    <div class="tab-buttons">
-      <button class="tab-btn active" onclick="switchTab('overall')">Overall</button>
-      <button class="tab-btn" onclick="switchTab('nation')">By Country</button>
+    <div class="content">
+      <p class="has-text-centered">Performance of vision-language models on EuraGovQA. All numbers are accuracy (%).</p>
     </div>
 
-    <div style="overflow-x: auto;">
-      <table class="leaderboard-table" id="leaderboard">
+    <div class="table-container">
+      <table class="table is-bordered is-striped is-hoverable is-fullwidth">
         <thead>
           <tr>
-            <th style="width: 60px;">Rank</th>
-            <th style="text-align: left;">Model</th>
+            <th>Rank</th>
+            <th>Model</th>
             <th>Overall</th>
-            <th><span class="country-flag">🇮🇳</span>India</th>
-            <th><span class="country-flag">🇪🇺</span>EU</th>
-            <th><span class="country-flag">🇯🇵</span>Japan</th>
-            <th><span class="country-flag">🇹🇼</span>Taiwan</th>
-            <th><span class="country-flag">🇰🇷</span>Korea</th>
+            <th>India</th>
+            <th>EU</th>
+            <th>Japan</th>
+            <th>Taiwan</th>
+            <th>S.Korea</th>
           </tr>
         </thead>
-        <tbody id="leaderboard-body">
-          <!-- Filled by JS -->
+        <tbody>
+          <tr>
+            <td>🥇</td>
+            <td><b>GPT-4o</b></td>
+            <td><b>85.3</b></td>
+            <td>86.0</td>
+            <td>84.1</td>
+            <td>85.9</td>
+            <td>83.8</td>
+            <td>86.5</td>
+          </tr>
+          <tr>
+            <td>🥈</td>
+            <td><b>Gemini 1.5 Pro</b></td>
+            <td><b>80.4</b></td>
+            <td>81.2</td>
+            <td>79.8</td>
+            <td>80.5</td>
+            <td>78.9</td>
+            <td>81.6</td>
+          </tr>
+          <tr>
+            <td>🥉</td>
+            <td><b>Claude 3.5 Sonnet</b></td>
+            <td><b>78.1</b></td>
+            <td>79.0</td>
+            <td>77.5</td>
+            <td>78.3</td>
+            <td>76.8</td>
+            <td>78.9</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>LLaVA-NeXT</td>
+            <td>65.2</td>
+            <td>66.1</td>
+            <td>64.5</td>
+            <td>65.8</td>
+            <td>63.2</td>
+            <td>66.4</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Qwen-VL-Plus</td>
+            <td>59.8</td>
+            <td>60.5</td>
+            <td>58.9</td>
+            <td>60.2</td>
+            <td>57.8</td>
+            <td>61.6</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>InternVL 2.5</td>
+            <td>57.0</td>
+            <td>58.1</td>
+            <td>56.2</td>
+            <td>57.5</td>
+            <td>55.3</td>
+            <td>57.9</td>
+          </tr>
         </tbody>
       </table>
     </div>
+    <p class="has-text-centered is-size-7">Human expert performance: <b>94.2%</b></p>
   </div>
 </section>
 
-<!-- Dataset Distribution -->
-<section class="section" style="background: #f7fafc;">
-  <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Dataset Statistics</h2>
-    <p class="section-subtitle has-text-centered">Distribution of questions across countries and subjects</p>
-
-    <div class="columns">
-      <div class="column is-6">
-        <div class="chart-container">
-          <h4 class="title is-5 has-text-centered">By Country</h4>
-          <canvas id="country-chart"></canvas>
-        </div>
-      </div>
-      <div class="column is-6">
-        <div class="chart-container">
-          <h4 class="title is-5 has-text-centered">By Subject</h4>
-          <canvas id="subject-chart"></canvas>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Examples -->
-<section class="section">
+<section class="section hero is-light">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Example Questions</h2>
-    <p class="section-subtitle has-text-centered">Sample questions demonstrating the diversity of EuraGovQA</p>
 
     <div class="columns">
-      <div class="column is-6">
-        <div class="example-card">
-          <div class="example-header">
-            <span class="country-flag">🇮🇳</span> India · UPSC Civil Services · Geography
-          </div>
-          <div class="example-body">
-            <div class="example-image">
-              <img src="assets/img/example1.png" alt="Map question">
-            </div>
-            <div class="example-question">
-              Which of the following rivers does NOT originate from the Western Ghats?
-            </div>
-            <div class="example-option">A) Krishna</div>
-            <div class="example-option">B) Godavari</div>
-            <div class="example-option correct">C) Mahanadi ✓</div>
-            <div class="example-option">D) Cauvery</div>
+      <div class="column">
+        <div class="box">
+          <p class="is-size-7 has-text-grey"><b>India</b> · UPSC Civil Services · Geography</p>
+          <figure class="image" style="margin: 1rem 0;">
+            <img src="assets/img/example1.png" alt="Example 1" style="max-height: 200px; object-fit: contain;">
+          </figure>
+          <p class="is-size-6">Which of the following rivers does NOT originate from the Western Ghats?</p>
+          <div class="content is-size-7" style="margin-top: 0.5rem;">
+            <p>A) Krishna &nbsp; B) Godavari &nbsp; <span style="background: #c6f6d5; padding: 2px 6px; border-radius: 4px;"><b>C) Mahanadi ✓</b></span> &nbsp; D) Cauvery</p>
           </div>
         </div>
       </div>
-
-      <div class="column is-6">
-        <div class="example-card">
-          <div class="example-header">
-            <span class="country-flag">🇰🇷</span> South Korea · 공무원시험 · Law
-          </div>
-          <div class="example-body">
-            <div class="example-image">
-              <img src="assets/img/example2.png" alt="Legal document">
-            </div>
-            <div class="example-question">
-              다음 중 헌법재판소의 권한에 해당하지 않는 것은?
-            </div>
-            <div class="example-option">A) 위헌법률심판</div>
-            <div class="example-option">B) 탄핵심판</div>
-            <div class="example-option correct">C) 명령·규칙 심사 ✓</div>
-            <div class="example-option">D) 권한쟁의심판</div>
+      <div class="column">
+        <div class="box">
+          <p class="is-size-7 has-text-grey"><b>South Korea</b> · 공무원시험 · Law</p>
+          <figure class="image" style="margin: 1rem 0;">
+            <img src="assets/img/example2.png" alt="Example 2" style="max-height: 200px; object-fit: contain;">
+          </figure>
+          <p class="is-size-6">다음 중 헌법재판소의 권한에 해당하지 않는 것은?</p>
+          <div class="content is-size-7" style="margin-top: 0.5rem;">
+            <p>A) 위헌법률심판 &nbsp; B) 탄핵심판 &nbsp; <span style="background: #c6f6d5; padding: 2px 6px; border-radius: 4px;"><b>C) 명령·규칙 심사 ✓</b></span> &nbsp; D) 권한쟁의심판</p>
           </div>
         </div>
       </div>
@@ -482,146 +247,33 @@
   </div>
 </section>
 
-<!-- BibTeX -->
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
-    <h2 class="title is-3 has-text-centered">Citation</h2>
-    <p class="has-text-centered" style="color: #718096; margin-bottom: 1.5rem;">
-      If you use EuraGovQA in your research, please cite our paper:
-    </p>
-    <div style="position: relative;">
-      <button onclick="copyBibTeX()" style="position: absolute; top: 10px; right: 10px; background: #4a5568; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">
-        <i class="fas fa-copy"></i> Copy
-      </button>
-      <pre style="background: #1a202c; color: #e2e8f0; padding: 1.5rem; border-radius: 8px; overflow-x: auto;" id="bibtex-code"><code>@inproceedings{euragovqa2025,
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{euragovqa2025,
   title     = {EuraGovQA: A Multilingual Multimodal Benchmark for
                Government Examinations across Eurasia},
   author    = {Author One and Author Two and Author Three and Author Four},
   booktitle = {Advances in Neural Information Processing Systems},
-  year      = {2025},
-  url       = {https://euragovqa.github.io}
+  year      = {2025}
 }</code></pre>
-    </div>
   </div>
 </section>
 
-<!-- Footer -->
-<footer class="footer" style="background: #1a202c; color: #a0aec0;">
+<footer class="footer">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-8">
-        <div class="content has-text-centered">
+        <div class="content">
           <p>
-            <strong style="color: white;">EuraGovQA</strong> · Released under
-            <a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" style="color: #f6ad55;">CC BY-SA 4.0</a>
-          </p>
-          <p style="font-size: 0.85rem;">
-            This page uses the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" style="color: #f6ad55;">Academic Project Page Template</a>.
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+            Licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
           </p>
         </div>
       </div>
     </div>
   </div>
 </footer>
-
-<script>
-// Leaderboard data
-const leaderboardData = [
-  { rank: 1, model: "GPT-4o", overall: 85.3, india: 86.0, eu: 84.1, japan: 85.9, taiwan: 83.8, korea: 86.5 },
-  { rank: 2, model: "Gemini 1.5 Pro", overall: 80.4, india: 81.2, eu: 79.8, japan: 80.5, taiwan: 78.9, korea: 81.6 },
-  { rank: 3, model: "Claude 3.5 Sonnet", overall: 78.1, india: 79.0, eu: 77.5, japan: 78.3, taiwan: 76.8, korea: 78.9 },
-  { rank: 4, model: "LLaVA-NeXT", overall: 65.2, india: 66.1, eu: 64.5, japan: 65.8, taiwan: 63.2, korea: 66.4 },
-  { rank: 5, model: "Qwen-VL-Plus", overall: 59.8, india: 60.5, eu: 58.9, japan: 60.2, taiwan: 57.8, korea: 61.6 },
-  { rank: 6, model: "InternVL 2.5", overall: 57.0, india: 58.1, eu: 56.2, japan: 57.5, taiwan: 55.3, korea: 57.9 },
-];
-
-function getScoreClass(score) {
-  if (score >= 75) return 'score-high';
-  if (score >= 60) return 'score-mid';
-  return 'score-low';
-}
-
-function renderLeaderboard() {
-  const tbody = document.getElementById('leaderboard-body');
-  tbody.innerHTML = leaderboardData.map(row => {
-    const medal = row.rank === 1 ? '🥇' : row.rank === 2 ? '🥈' : row.rank === 3 ? '🥉' : row.rank;
-    const rankClass = row.rank <= 3 ? `rank-${row.rank}` : '';
-    return `
-      <tr class="${rankClass}">
-        <td><span class="medal">${medal}</span></td>
-        <td class="model-name">${row.model}</td>
-        <td class="${getScoreClass(row.overall)}">${row.overall.toFixed(1)}</td>
-        <td class="${getScoreClass(row.india)}">${row.india.toFixed(1)}</td>
-        <td class="${getScoreClass(row.eu)}">${row.eu.toFixed(1)}</td>
-        <td class="${getScoreClass(row.japan)}">${row.japan.toFixed(1)}</td>
-        <td class="${getScoreClass(row.taiwan)}">${row.taiwan.toFixed(1)}</td>
-        <td class="${getScoreClass(row.korea)}">${row.korea.toFixed(1)}</td>
-      </tr>
-    `;
-  }).join('');
-}
-
-function switchTab(view) {
-  document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
-}
-
-function copyBibTeX() {
-  const code = document.getElementById('bibtex-code').textContent;
-  navigator.clipboard.writeText(code);
-  event.target.innerHTML = '<i class="fas fa-check"></i> Copied!';
-  setTimeout(() => {
-    event.target.innerHTML = '<i class="fas fa-copy"></i> Copy';
-  }, 2000);
-}
-
-// Charts
-document.addEventListener('DOMContentLoaded', function() {
-  renderLeaderboard();
-
-  // Country chart
-  new Chart(document.getElementById('country-chart'), {
-    type: 'doughnut',
-    data: {
-      labels: ['India', 'EU', 'Japan', 'Taiwan', 'S. Korea'],
-      datasets: [{
-        data: [4521, 2134, 2876, 2543, 3160],
-        backgroundColor: ['#f97316', '#3b82f6', '#ef4444', '#10b981', '#8b5cf6'],
-        borderWidth: 0
-      }]
-    },
-    options: {
-      responsive: true,
-      cutout: '55%',
-      plugins: {
-        legend: { position: 'bottom', labels: { padding: 20, usePointStyle: true } }
-      }
-    }
-  });
-
-  // Subject chart
-  new Chart(document.getElementById('subject-chart'), {
-    type: 'bar',
-    data: {
-      labels: ['Law', 'Admin', 'Econ', 'History', 'Geo', 'Math', 'Physics', 'Chem'],
-      datasets: [{
-        data: [1423, 1287, 1156, 1089, 1034, 987, 923, 876],
-        backgroundColor: '#2d3748',
-        borderRadius: 4
-      }]
-    },
-    options: {
-      responsive: true,
-      indexAxis: 'y',
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { grid: { color: '#e2e8f0' } },
-        y: { grid: { display: false } }
-      }
-    }
-  });
-});
-</script>
 
 </body>
 </html>
