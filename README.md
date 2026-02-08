@@ -198,18 +198,4 @@ EuraGovExam/
 └── static/                            # Web assets
 ```
 
-## Support
 
-For questions, issues, or contributions:
-- **Issues**: https://github.com/thisiskorea/EuraGovExam/issues
-- **Dataset**: https://huggingface.co/datasets/EuraGovExam/EuraGovExam
-
-## Acknowledgments
-
-We thank the governments of South Korea, Japan, Taiwan, India, and the European Union for making their civil service exam materials publicly available for educational and research purposes.
-
----
-
-**Website**: [Coming Soon]
-**Leaderboard**: [Coming Soon]
-**Paper**: [Coming Soon]
