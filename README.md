@@ -1,6 +1,6 @@
 # EuraGovExam
 
-**A Multilingual Multimodal Benchmark for Vision-Language Models**
+**A Multilingual Multimodal Benchmark from Real-World Civil Service Exams**
 
 [![Paper](https://img.shields.io/badge/Paper-arXiv-red)](https://arxiv.org)
 [![Dataset](https://img.shields.io/badge/Dataset-HuggingFace-yellow)](https://huggingface.co/datasets/EuraGovExam/EuraGovExam)
