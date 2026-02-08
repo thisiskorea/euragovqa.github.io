@@ -1,0 +1,160 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "https://schema.org/citation",
+    "column": "http://www.w3.org/ns/csvw#column",
+    "data": {"@id": "https://schema.org/data", "@type": "@json"},
+    "dataType": {"@id": "http://www.w3.org/ns/csvw#datatype", "@type": "@vocab"},
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {"@id": "http://www.w3.org/ns/csvw#examples", "@container": "@list"},
+    "field": "http://mlcommons.org/croissant/field",
+    "fileProperty": "http://www.w3.org/ns/csvw#fileProperty",
+    "format": "http://mlcommons.org/croissant/format",
+    "includes": "http://mlcommons.org/croissant/includes",
+    "isLiveDataset": "http://mlcommons.org/croissant/isLiveDataset",
+    "jsonPath": "http://www.w3.org/ns/csvw#jsonPath",
+    "ml": "http://mlcommons.org/croissant/",
+    "parentField": "http://mlcommons.org/croissant/parentField",
+    "path": "http://www.w3.org/ns/csvw#path",
+    "recordSet": "http://mlcommons.org/croissant/recordSet",
+    "references": "http://mlcommons.org/croissant/references",
+    "regex": "http://www.w3.org/ns/csvw#regex",
+    "repeated": "http://mlcommons.org/croissant/repeated",
+    "replace": "http://www.w3.org/ns/csvw#replace",
+    "sc": "https://schema.org/",
+    "source": "http://mlcommons.org/croissant/source",
+    "subField": "http://mlcommons.org/croissant/subField",
+    "transform": "http://mlcommons.org/croissant/transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "EuraGovExam",
+  "description": "EuraGovExam is a multilingual multimodal benchmark for evaluating Vision-Language Models (VLMs) on authentic civil service examination questions. The dataset contains 8,000+ questions from five Eurasian regions (Korea, Japan, Taiwan, India, EU), covering four writing systems (Hangul, Japanese, Traditional Chinese, Devanagari, Latin) and 17 subject domains. Unlike academic exams, civil service tests require jurisdiction-specific knowledge embedded in document-like scanned images.",
+  "license": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "url": "https://huggingface.co/datasets/EuraGovExam/EuraGovExam",
+  "version": "1.0.0",
+  "distribution": [
+    {
+      "@type": "sc:FileObject",
+      "name": "data-files",
+      "description": "Main dataset files in JSON format",
+      "contentUrl": "https://huggingface.co/datasets/EuraGovExam/EuraGovExam/resolve/main/data/",
+      "encodingFormat": "application/json",
+      "sha256": "pending-upload"
+    },
+    {
+      "@type": "sc:FileObject", 
+      "name": "images",
+      "description": "Exam question images (scanned documents)",
+      "contentUrl": "https://huggingface.co/datasets/EuraGovExam/EuraGovExam/resolve/main/images/",
+      "encodingFormat": "image/png"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "ml:RecordSet",
+      "name": "exam_questions",
+      "description": "Civil service examination questions with images and metadata",
+      "field": [
+        {
+          "@type": "ml:Field",
+          "name": "id",
+          "description": "Unique identifier for each question",
+          "dataType": "sc:Text",
+          "source": {"field": "$.id"}
+        },
+        {
+          "@type": "ml:Field",
+          "name": "nation",
+          "description": "Source country/region (korea, japan, taiwan, india, eu)",
+          "dataType": "sc:Text",
+          "source": {"field": "$.nation"}
+        },
+        {
+          "@type": "ml:Field",
+          "name": "task",
+          "description": "Subject domain (e.g., mathematics, law, biology, history)",
+          "dataType": "sc:Text",
+          "source": {"field": "$.task"}
+        },
+        {
+          "@type": "ml:Field",
+          "name": "script",
+          "description": "Writing system (hangul, japanese, traditional_chinese, devanagari, latin)",
+          "dataType": "sc:Text",
+          "source": {"field": "$.script"}
+        },
+        {
+          "@type": "ml:Field",
+          "name": "year",
+          "description": "Year of the examination",
+          "dataType": "sc:Integer",
+          "source": {"field": "$.year"}
+        },
+        {
+          "@type": "ml:Field",
+          "name": "img",
+          "description": "Path to the exam question image file",
+          "dataType": "sc:Text",
+          "source": {"field": "$.img"}
+        },
+        {
+          "@type": "ml:Field",
+          "name": "correct_answer",
+          "description": "Ground truth answer (official answer key)",
+          "dataType": "sc:Text",
+          "source": {"field": "$.correct_answer"}
+        },
+        {
+          "@type": "ml:Field",
+          "name": "num_choices",
+          "description": "Number of answer choices (typically 4 or 5)",
+          "dataType": "sc:Integer",
+          "source": {"field": "$.num_choices"}
+        },
+        {
+          "@type": "ml:Field",
+          "name": "difficulty",
+          "description": "Estimated difficulty level based on historical pass rates",
+          "dataType": "sc:Text",
+          "source": {"field": "$.difficulty"}
+        }
+      ]
+    }
+  ],
+  "creator": [
+    {
+      "@type": "sc:Organization",
+      "name": "Anonymous (under review)",
+      "url": "pending"
+    }
+  ],
+  "datePublished": "2025",
+  "keywords": [
+    "multimodal",
+    "vision-language-model",
+    "VLM",
+    "benchmark",
+    "multilingual",
+    "civil-service-exam",
+    "document-understanding",
+    "OCR",
+    "Korean",
+    "Japanese",
+    "Chinese",
+    "Hindi",
+    "European-languages"
+  ],
+  "citation": "pending-publication",
+  "sameAs": "https://github.com/EuraGovExam/EuraGovExam",
+  "isAccessibleForFree": true,
+  "temporalCoverage": "2015/2024",
+  "spatialCoverage": [
+    {"@type": "sc:Place", "name": "Korea"},
+    {"@type": "sc:Place", "name": "Japan"},
+    {"@type": "sc:Place", "name": "Taiwan"},
+    {"@type": "sc:Place", "name": "India"},
+    {"@type": "sc:Place", "name": "European Union"}
+  ],
+  "ml:isLiveDataset": false
+}
