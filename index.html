@@ -70,13 +70,13 @@
 
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="mailto:kjsqp1010@semyung.ac.kr">JaeSeong Kim</a><sup>1</sup>,</span>
+              <a href="https://openreview.net/profile?id=~Jea_Sung_Kim1" target="_blank">JaeSeong Kim</a><sup>1</sup>,</span>
             <span class="author-block">
-              <a href="mailto:2024524103@semyung.ac.kr">Chaehwan Lim</a><sup>1,†</sup>,</span>
+              <a href="https://openreview.net/profile?id=~Chaehwan_Lim1" target="_blank">Chaehwan Lim</a><sup>1,†</sup>,</span>
             <span class="author-block">
-              <a href="mailto:rlftkdgus75@semyung.ac.kr">Sang Hyun Gil</a><sup>1,†</sup>,</span>
+              <a href="https://openreview.net/profile?id=~Sang_Hyun_Gil1" target="_blank">Sang Hyun Gil</a><sup>1,†</sup>,</span>
             <span class="author-block">
-              <a href="mailto:suanlee@semyung.ac.kr">Suan Lee</a><sup>1,*</sup>
+              <a href="https://openreview.net/profile?id=~Suan_Lee1" target="_blank">Suan Lee</a><sup>1,*</sup>
             </span>
           </div>
 
@@ -265,35 +265,23 @@
 
 <section class="section">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Dataset Preview</h2>
-    <div class="content has-text-centered mb-5">
-      <p>Explore the full dataset on HuggingFace with 8,000 authentic government exam questions across 5 regions and 17 subject areas.</p>
-      <a href="https://huggingface.co/datasets/EuraGovExam/EuraGovExam" target="_blank" class="button is-primary is-medium">
-        <span>🤗</span>
-        <span>View Dataset on HuggingFace</span>
-      </a>
-    </div>
-    <div class="columns is-multiline">
-      <div class="column is-one-third has-text-centered">
-        <div class="box">
-          <p class="heading">Total Questions</p>
-          <p class="title">8,000</p>
-        </div>
-      </div>
-      <div class="column is-one-third has-text-centered">
-        <div class="box">
-          <p class="heading">Regions Covered</p>
-          <p class="title">5</p>
-          <p class="subtitle is-6">India, EU, Japan, Taiwan, S.Korea</p>
-        </div>
-      </div>
-      <div class="column is-one-third has-text-centered">
-        <div class="box">
-          <p class="heading">Subject Areas</p>
-          <p class="title">17</p>
-          <p class="subtitle is-6">Law, Biology, Physics, Medicine, etc.</p>
-        </div>
-      </div>
+    <h2 class="title is-3 has-text-centered">Dataset</h2>
+    <div class="content">
+      <p>
+        <strong>EuraGovExam</strong> contains <strong>8,000 multiple-choice questions</strong> sourced from official civil service examinations across five Eurasian regions: <strong>South Korea</strong> (2,448 questions), <strong>Japan</strong> (2,048 questions), <strong>European Union</strong> (1,920 questions), <strong>India</strong> (1,024 questions), and <strong>Taiwan</strong> (560 questions). The questions span <strong>17 academic and professional domains</strong> including Law, Administration, Economics, History, Geography, Mathematics, Physics, Chemistry, Biology, Earth Science, Medicine, Computer Science, Engineering, Language, Philosophy, Psychology, and Politics.
+      </p>
+      <p>
+        All questions are presented in their <strong>original image format</strong> without text extraction, preserving authentic layout complexity including mathematical equations, scientific diagrams, tables, and multilingual scripts (Korean, Japanese, Traditional Chinese, Hindi, Catalan, and other regional languages). This image-only format tests vision-language models on real-world document understanding rather than pre-processed text.
+      </p>
+      <p>
+        The dataset was collected from publicly available government examination archives and official education portals. Each question includes the original exam image, correct answer, subject classification, and regional metadata. Questions were sampled to ensure balanced representation across difficulty levels and content domains, reflecting the authentic distribution of civil service exam topics.
+      </p>
+      <p class="has-text-centered mt-4">
+        <a href="https://huggingface.co/datasets/EuraGovExam/EuraGovExam" target="_blank" class="button is-primary is-medium">
+          <span>🤗</span>
+          <span>Access Dataset on HuggingFace</span>
+        </a>
+      </p>
     </div>
   </div>
 </section>
@@ -301,18 +289,21 @@
 <section class="section hero is-light">
   <div class="container is-max-desktop">
     <h2 class="title is-3 has-text-centered">Key Findings</h2>
+    <div class="content">
+      <p class="has-text-centered mb-5">We evaluated 28 state-of-the-art VLMs and found significant performance variations across regions and models, revealing linguistic and cultural biases in current vision-language systems.</p>
+    </div>
     <div class="columns">
       <div class="column">
         <figure class="image">
           <img src="assets/img/main_performance.png" alt="Model Performance">
         </figure>
-        <p class="has-text-centered mt-2">Performance across 28 VLMs</p>
+        <p class="has-text-centered mt-2 is-size-7">Performance across 28 VLMs</p>
       </div>
       <div class="column">
         <figure class="image">
           <img src="assets/img/main_regional.png" alt="Regional Breakdown">
         </figure>
-        <p class="has-text-centered mt-2">Cross-regional performance gaps</p>
+        <p class="has-text-centered mt-2 is-size-7">Cross-regional performance gaps</p>
       </div>
     </div>
   </div>
@@ -320,169 +311,112 @@
 
 <section class="section hero is-light">
   <div class="container is-max-desktop">
-    <h2 class="title is-3 has-text-centered">Example Questions & Model Failure Patterns</h2>
+    <h2 class="title is-3 has-text-centered">Example Questions</h2>
     <p class="subtitle is-6 has-text-centered has-text-grey mb-5">
-      Representative examples showing common VLM failure modes across regions and domains.
-      <b>VP</b>: Visual Parsing, <b>RF</b>: Reasoning, <b>KF</b>: Knowledge, <b>HC</b>: Hallucination
+      Representative examples from government examinations across different regions and domains.
     </p>
 
     <div class="columns is-multiline">
-      <!-- Taiwan Biology: Traditional Chinese Character Misreading -->
+      <!-- Taiwan Biology -->
       <div class="column is-half">
         <div class="box">
-          <div class="mb-2">
-            <span class="tag is-info is-light"><b>🇹🇼 Taiwan</b></span>
-            <span class="tag is-warning is-light">Biology</span>
-            <span class="tag is-danger">KF</span>
-            <span class="tag is-light is-small">GPT-4.1 failed</span>
-          </div>
+          <p class="is-size-7 has-text-grey mb-2"><b>Taiwan</b> · Biology</p>
           <figure class="image mb-3">
             <img src="assets/img/examples/taiwan_biology.png" alt="Taiwan Biology">
           </figure>
           <div class="content is-size-7">
-            <p><b>Challenge:</b> Traditional Chinese anatomy question requiring precise character recognition and domain knowledge.</p>
-            <p><b>Why models fail:</b> GPT-4.1 misreads the Traditional Chinese character 顳 (temporal) as 顱 (cranial), demonstrating visual parsing errors on complex CJK characters. Requires both accurate OCR and anatomical knowledge.</p>
-            <p class="has-text-grey-light mt-2"><i>Failure Type: Knowledge (KF)</i></p>
+            <p>Traditional Chinese anatomy question requiring precise character recognition and domain knowledge.</p>
           </div>
         </div>
       </div>
 
-      <!-- Japan Physics: Projectile Motion Reasoning -->
+      <!-- Japan Physics -->
       <div class="column is-half">
         <div class="box">
-          <div class="mb-2">
-            <span class="tag is-info is-light"><b>🇯🇵 Japan</b></span>
-            <span class="tag is-warning is-light">Physics</span>
-            <span class="tag is-danger">RF</span>
-            <span class="tag is-light is-small">o4-mini failed</span>
-          </div>
+          <p class="is-size-7 has-text-grey mb-2"><b>Japan</b> · Physics</p>
           <figure class="image mb-3">
             <img src="assets/img/examples/japan_physics.png" alt="Japan Physics">
           </figure>
           <div class="content is-size-7">
-            <p><b>Challenge:</b> Projectile motion along an inclined plane with Japanese text and mathematical equations.</p>
-            <p><b>Why models fail:</b> Requires decomposing gravity into incline-parallel components rather than applying standard flat-ground formulas. Models like o4-mini correctly parse the setup but apply incorrect physics reasoning, failing to account for the tilted reference frame.</p>
-            <p class="has-text-grey-light mt-2"><i>Failure Type: Reasoning (RF)</i></p>
+            <p>Projectile motion along an inclined plane with Japanese text and mathematical equations.</p>
           </div>
         </div>
       </div>
 
-      <!-- Japan Engineering: CMOS Circuit Diagram -->
+      <!-- Japan Engineering -->
       <div class="column is-half">
         <div class="box">
-          <div class="mb-2">
-            <span class="tag is-info is-light"><b>🇯🇵 Japan</b></span>
-            <span class="tag is-warning is-light">Engineering</span>
-            <span class="tag is-danger">KF+VP</span>
-            <span class="tag is-light is-small">Qwen2-VL-72B failed</span>
-          </div>
+          <p class="is-size-7 has-text-grey mb-2"><b>Japan</b> · Engineering</p>
           <figure class="image mb-3">
             <img src="assets/img/examples/japan_engineering.png" alt="Japan Engineering">
           </figure>
           <div class="content is-size-7">
-            <p><b>Challenge:</b> CMOS circuit analysis requiring transistor diagram parsing and digital logic knowledge.</p>
-            <p><b>Why models fail:</b> Compound failure: Visual parsing errors in distinguishing PMOS/NMOS symbols combined with gaps in digital circuit domain knowledge. Qwen2-VL-72B struggles to map circuit topology to boolean logic despite strong general visual capabilities.</p>
-            <p class="has-text-grey-light mt-2"><i>Failure Type: Knowledge + Visual Parsing (KF+VP)</i></p>
+            <p>CMOS circuit analysis requiring transistor diagram parsing and digital logic knowledge.</p>
           </div>
         </div>
       </div>
 
-      <!-- South Korea Administration: Library Classification -->
+      <!-- South Korea Administration -->
       <div class="column is-half">
         <div class="box">
-          <div class="mb-2">
-            <span class="tag is-info is-light"><b>🇰🇷 South Korea</b></span>
-            <span class="tag is-warning is-light">Administration</span>
-            <span class="tag is-danger">RF</span>
-            <span class="tag is-light is-small">Claude-Sonnet-4 failed</span>
-          </div>
+          <p class="is-size-7 has-text-grey mb-2"><b>South Korea</b> · Administration</p>
           <figure class="image mb-3">
             <img src="assets/img/examples/korea_admin.png" alt="Korea Administration">
           </figure>
           <div class="content is-size-7">
-            <p><b>Challenge:</b> Korean Decimal Classification (KDC) library categorization requiring rule application and hierarchical reasoning.</p>
-            <p><b>Why models fail:</b> Claude-Sonnet-4 fails to apply KDC hierarchical rules correctly despite parsing the table structure. Requires systematic reasoning about classification criteria rather than pattern matching, exposing weaknesses in procedural rule application.</p>
-            <p class="has-text-grey-light mt-2"><i>Failure Type: Reasoning (RF)</i></p>
+            <p>Korean Decimal Classification (KDC) library categorization requiring rule application.</p>
           </div>
         </div>
       </div>
 
-      <!-- EU Law: Catalan Building Ordinance -->
+      <!-- EU Law -->
       <div class="column is-half">
         <div class="box">
-          <div class="mb-2">
-            <span class="tag is-info is-light"><b>🇪🇺 EU</b></span>
-            <span class="tag is-warning is-light">Law</span>
-            <span class="tag is-danger">KF</span>
-            <span class="tag is-light is-small">Claude-Sonnet-4 failed</span>
-          </div>
+          <p class="is-size-7 has-text-grey mb-2"><b>EU</b> · Law</p>
           <figure class="image mb-3">
             <img src="assets/img/examples/eu_law.png" alt="EU Law">
           </figure>
           <div class="content is-size-7">
-            <p><b>Challenge:</b> Catalan building ordinance question requiring specific regional regulation knowledge.</p>
-            <p><b>Why models fail:</b> Requires knowledge of Catalonia-specific building codes not covered in general legal training. Claude-Sonnet-4 attempts to reason from general principles but lacks the domain-specific regulatory context needed for accurate answers.</p>
-            <p class="has-text-grey-light mt-2"><i>Failure Type: Knowledge (KF)</i></p>
+            <p>Catalan building ordinance question requiring specific regional regulation knowledge.</p>
           </div>
         </div>
       </div>
 
-      <!-- South Korea Biology: Multimodal Content -->
+      <!-- South Korea Biology -->
       <div class="column is-half">
         <div class="box">
-          <div class="mb-2">
-            <span class="tag is-info is-light"><b>🇰🇷 South Korea</b></span>
-            <span class="tag is-warning is-light">Biology</span>
-            <span class="tag is-danger">VP+RF</span>
-            <span class="tag is-light is-small">Multiple models failed</span>
-          </div>
+          <p class="is-size-7 has-text-grey mb-2"><b>South Korea</b> · Biology</p>
           <figure class="image mb-3">
             <img src="assets/img/examples/korea_biology.png" alt="Korea Biology">
           </figure>
           <div class="content is-size-7">
-            <p><b>Challenge:</b> Korean biology question with complex diagrams, tables, and equations requiring multimodal integration.</p>
-            <p><b>Why models fail:</b> Compound failure: OCR errors on Korean scientific terminology combined with difficulty integrating visual diagram information with textual explanations. Models struggle to maintain coherent reasoning across multiple modalities.</p>
-            <p class="has-text-grey-light mt-2"><i>Failure Type: Visual Parsing + Reasoning (VP+RF)</i></p>
+            <p>Korean biology question with complex diagrams, tables, and equations.</p>
           </div>
         </div>
       </div>
 
-      <!-- Taiwan Medicine: Policy Analysis -->
+      <!-- Taiwan Medicine -->
       <div class="column is-half">
         <div class="box">
-          <div class="mb-2">
-            <span class="tag is-info is-light"><b>🇹🇼 Taiwan</b></span>
-            <span class="tag is-warning is-light">Medicine</span>
-            <span class="tag is-danger">RF</span>
-            <span class="tag is-light is-small">Phi-3.5-Vision failed</span>
-          </div>
+          <p class="is-size-7 has-text-grey mb-2"><b>Taiwan</b> · Medicine</p>
           <figure class="image mb-3">
             <img src="assets/img/examples/taiwan_medicine.png" alt="Taiwan Medicine">
           </figure>
           <div class="content is-size-7">
-            <p><b>Challenge:</b> Medical policy content analysis requiring understanding of Taiwan's healthcare regulations in Traditional Chinese.</p>
-            <p><b>Why models fail:</b> Phi-3.5-Vision struggles with multi-step reasoning about policy implications despite correctly parsing the text. Requires understanding regulatory context and drawing inferences across multiple clauses.</p>
-            <p class="has-text-grey-light mt-2"><i>Failure Type: Reasoning (RF)</i></p>
+            <p>Medical policy content analysis in Traditional Chinese about Taiwan's healthcare regulations.</p>
           </div>
         </div>
       </div>
 
-      <!-- Japan Mathematics: Geometry -->
+      <!-- Japan Mathematics -->
       <div class="column is-half">
         <div class="box">
-          <div class="mb-2">
-            <span class="tag is-info is-light"><b>🇯🇵 Japan</b></span>
-            <span class="tag is-warning is-light">Mathematics</span>
-            <span class="tag is-danger">VP+RF</span>
-            <span class="tag is-light is-small">Llama-3.2-11B failed</span>
-          </div>
+          <p class="is-size-7 has-text-grey mb-2"><b>Japan</b> · Mathematics</p>
           <figure class="image mb-3">
             <img src="assets/img/examples/japan_mathematics.png" alt="Japan Mathematics">
           </figure>
           <div class="content is-size-7">
-            <p><b>Challenge:</b> Geometric problem with Japanese notation requiring spatial reasoning and equation parsing.</p>
-            <p><b>Why models fail:</b> Llama-3.2-11B misparses geometric relationships from the diagram and applies incorrect mathematical transformations. Demonstrates challenges in visual grounding for spatial reasoning tasks with non-Latin scripts.</p>
-            <p class="has-text-grey-light mt-2"><i>Failure Type: Visual Parsing + Reasoning (VP+RF)</i></p>
+            <p>Geometric problem with Japanese notation requiring spatial reasoning.</p>
           </div>
         </div>
       </div>
