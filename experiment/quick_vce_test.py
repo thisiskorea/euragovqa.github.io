@@ -11,7 +11,7 @@ import google.generativeai as genai
 from datasets import load_dataset
 from PIL import Image, ImageFilter
 
-GEMINI_API_KEY = "AIzaSyBAcnWVwzdnDvQwkM6ixIca8rpNqicOZcs"
+GEMINI_API_KEY = "API KEY"
 MODEL_NAME = "gemini-3-flash-preview"
 DATASET_NAME = "EuraGovExam/EuraGovExam"
 
