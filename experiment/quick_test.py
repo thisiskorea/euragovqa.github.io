@@ -2,7 +2,7 @@ import google.generativeai as genai
 from datasets import load_dataset
 import time
 
-GEMINI_API_KEY = ""
+GEMINI_API_KEY = "API KEY"
 MODEL_NAME = "gemini-2.0-flash"
 
 genai.configure(api_key=GEMINI_API_KEY)
