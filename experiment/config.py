@@ -1,7 +1,7 @@
 # EuraGovExam 3-Track 실험 설정
 
 # API Keys
-GEMINI_API_KEY = ""
+GEMINI_API_KEY = "API KEY"
 
 # Model settings
 MODEL_NAME = "gemini-2.0-flash"  # Gemini 2.0 Flash
