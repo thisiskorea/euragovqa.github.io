@@ -30,7 +30,7 @@ RESULTS_DIR = Path(__file__).parent / "results"
 VCE_ANALYSIS_FILE = RESULTS_DIR / "vce_analysis.json"
 OUTPUT_FILE = RESULTS_DIR / "prompt_routing_results.json"
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "API KEY")
 genai.configure(api_key=GEMINI_API_KEY)
 
 PROMPTS = {
