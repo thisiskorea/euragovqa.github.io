@@ -17,7 +17,7 @@ import google.generativeai as genai
 from datasets import load_dataset
 import easyocr
 
-GEMINI_API_KEY = ""
+GEMINI_API_KEY = "API KEY"
 MODEL_NAME = "gemini-2.0-flash"
 DATASET_NAME = "EuraGovExam/EuraGovExam"
 
