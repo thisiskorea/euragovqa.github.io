@@ -20,7 +20,7 @@ from datasets import load_dataset
 from PIL import Image, ImageFilter
 import numpy as np
 
-GEMINI_API_KEY = "AIzaSyBAcnWVwzdnDvQwkM6ixIca8rpNqicOZcs"
+GEMINI_API_KEY = ""
 MODEL_NAME = "gemini-3-flash-preview"
 DATASET_NAME = "EuraGovExam/EuraGovExam"
 

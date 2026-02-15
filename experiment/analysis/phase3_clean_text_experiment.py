@@ -14,7 +14,7 @@ from pathlib import Path
 from datasets import load_dataset
 import google.generativeai as genai
 
-GEMINI_API_KEY = "AIzaSyBAcnWVwzdnDvQwkM6ixIca8rpNqicOZcs"
+GEMINI_API_KEY = ""
 genai.configure(api_key=GEMINI_API_KEY)
 
 ocr_model = genai.GenerativeModel("gemini-2.0-flash")

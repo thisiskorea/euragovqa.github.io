@@ -26,7 +26,7 @@ from PIL import Image
 # Configuration
 # =============================================================================
 
-GEMINI_API_KEY = "API KEY"
+GEMINI_API_KEY = ""
 MODEL_NAME = "gemini-2.0-flash"
 DATASET_NAME = "EuraGovExam/EuraGovExam"
 

@@ -17,7 +17,7 @@ import re
 import google.generativeai as genai
 from datasets import load_dataset
 
-GEMINI_API_KEY = "API KEY"
+GEMINI_API_KEY = ""
 
 MODELS = [
     "gemini-2.0-flash",
