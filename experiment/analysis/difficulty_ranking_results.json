@@ -1,0 +1,142 @@
+{
+  "nation_difficulty": {
+    "japan": {
+      "mean_accuracy": 32.54,
+      "std": 23.43,
+      "min": 7.13,
+      "max": 87.59
+    },
+    "india": {
+      "mean_accuracy": 32.58,
+      "std": 20.09,
+      "min": 7.89,
+      "max": 69.23
+    },
+    "south_korea": {
+      "mean_accuracy": 38.62,
+      "std": 25.08,
+      "min": 6.29,
+      "max": 91.12
+    },
+    "eu": {
+      "mean_accuracy": 49.87,
+      "std": 23.31,
+      "min": 15.14,
+      "max": 88.08
+    },
+    "taiwan": {
+      "mean_accuracy": 54.94,
+      "std": 28.1,
+      "min": 15.05,
+      "max": 95.51
+    }
+  },
+  "task_difficulty": {
+    "earth_science": {
+      "mean_accuracy": 27.75,
+      "std": 22.14,
+      "min": 7.48,
+      "max": 85.98
+    },
+    "geography": {
+      "mean_accuracy": 34.66,
+      "std": 18.19,
+      "min": 12.71,
+      "max": 74.03
+    },
+    "history": {
+      "mean_accuracy": 34.78,
+      "std": 23.22,
+      "min": 11.72,
+      "max": 87.5
+    },
+    "economics": {
+      "mean_accuracy": 35.53,
+      "std": 23.47,
+      "min": 10.63,
+      "max": 88.29
+    },
+    "engineering": {
+      "mean_accuracy": 35.57,
+      "std": 23.82,
+      "min": 8.87,
+      "max": 86.19
+    },
+    "physics": {
+      "mean_accuracy": 36.02,
+      "std": 24.47,
+      "min": 5.74,
+      "max": 89.63
+    },
+    "politics": {
+      "mean_accuracy": 36.03,
+      "std": 21.32,
+      "min": 9.09,
+      "max": 79.9
+    },
+    "psychology": {
+      "mean_accuracy": 36.83,
+      "std": 26.31,
+      "min": 7.56,
+      "max": 95.8
+    },
+    "mathematics": {
+      "mean_accuracy": 37.74,
+      "std": 24.62,
+      "min": 6.44,
+      "max": 86.28
+    },
+    "law": {
+      "mean_accuracy": 39.62,
+      "std": 19.75,
+      "min": 14.66,
+      "max": 84.24
+    },
+    "philosophy": {
+      "mean_accuracy": 40.43,
+      "std": 26.96,
+      "min": 7.87,
+      "max": 93.7
+    },
+    "chemistry": {
+      "mean_accuracy": 42.24,
+      "std": 25.08,
+      "min": 10.63,
+      "max": 87.92
+    },
+    "biology": {
+      "mean_accuracy": 42.66,
+      "std": 23.93,
+      "min": 13.98,
+      "max": 89.23
+    },
+    "administration": {
+      "mean_accuracy": 43.16,
+      "std": 20.33,
+      "min": 15.79,
+      "max": 83.57
+    },
+    "medicine": {
+      "mean_accuracy": 46.02,
+      "std": 27.01,
+      "min": 13.45,
+      "max": 95.8
+    },
+    "language": {
+      "mean_accuracy": 46.29,
+      "std": 24.38,
+      "min": 13.11,
+      "max": 91.49
+    },
+    "computer_science": {
+      "mean_accuracy": 47.67,
+      "std": 26.41,
+      "min": 12.93,
+      "max": 92.52
+    }
+  },
+  "hardest_nation": "japan",
+  "easiest_nation": "taiwan",
+  "hardest_task": "earth_science",
+  "easiest_task": "computer_science"
+}

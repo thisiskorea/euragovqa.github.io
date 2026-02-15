@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dataset | EuraGovQA</title>
+  <meta name="description" content="EuraGovQA dataset statistics and download">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1e40af',
+            secondary: '#3b82f6',
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .hero-gradient {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #2563eb 50%, #3b82f6 75%, #60a5fa 100%);
+    }
+    .nav-link {
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #3b82f6;
+      transition: width 0.3s;
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+    .stat-card {
+      background: white;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-gray-800">
+
+<!-- Navigation -->
+<nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-sm z-50">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <a href="index.html" class="flex items-center gap-2">
+      <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+        <span class="text-white font-bold text-sm">E</span>
+      </div>
+      <span class="font-bold text-xl text-gray-900">EuraGovQA</span>
+    </a>
+    <div class="flex items-center gap-8">
+      <a href="index.html#leaderboard" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Leaderboard</a>
+      <a href="index.html#features" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Features</a>
+      <a href="paper.html" class="nav-link text-gray-700 hover:text-blue-600 font-medium">Paper</a>
+      <a href="dataset.html" class="nav-link text-blue-600 font-semibold">Dataset</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero-gradient pt-28 pb-16 text-white">
+  <div class="max-w-4xl mx-auto px-4 text-center">
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">Dataset</h1>
+    <p class="text-xl text-blue-100">Statistics and download information</p>
+  </div>
+</section>
+
+<!-- Stats Cards -->
+<section class="relative -mt-8 z-10 mb-8">
+  <div class="max-w-5xl mx-auto px-4">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div class="stat-card text-center">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-blue-100 flex items-center justify-center">
+          <i data-lucide="file-question" class="w-6 h-6 text-blue-600"></i>
+        </div>
+        <div class="text-3xl font-bold text-gray-900">8,000</div>
+        <div class="text-sm text-gray-500 font-medium">Total Questions</div>
+      </div>
+      <div class="stat-card text-center">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-emerald-100 flex items-center justify-center">
+          <i data-lucide="image" class="w-6 h-6 text-emerald-600"></i>
+        </div>
+        <div class="text-3xl font-bold text-gray-900">8,421</div>
+        <div class="text-sm text-gray-500 font-medium">With Images</div>
+      </div>
+      <div class="stat-card text-center">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-purple-100 flex items-center justify-center">
+          <i data-lucide="globe" class="w-6 h-6 text-purple-600"></i>
+        </div>
+        <div class="text-3xl font-bold text-gray-900">5</div>
+        <div class="text-sm text-gray-500 font-medium">Countries</div>
+      </div>
+      <div class="stat-card text-center">
+        <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-orange-100 flex items-center justify-center">
+          <i data-lucide="layers" class="w-6 h-6 text-orange-600"></i>
+        </div>
+        <div class="text-3xl font-bold text-gray-900">17</div>
+        <div class="text-sm text-gray-500 font-medium">Subject Areas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Main Content -->
+<section class="py-12">
+  <div class="max-w-6xl mx-auto px-4">
+
+    <!-- Download Section -->
+    <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-8 mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Download Dataset</h2>
+      <p class="text-gray-600 mb-6">
+        EuraGovQA is available for research purposes. The dataset includes questions, images, and annotations in JSON format.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="https://huggingface.co/datasets/EuraGovExam/EuraGovExam" target="_blank"
+           class="inline-flex items-center gap-2 bg-yellow-500 text-gray-900 px-6 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition shadow">
+          🤗 HuggingFace Datasets
+        </a>
+        <a href="https://github.com/thisiskorea/EuraGovExam" target="_blank"
+           class="inline-flex items-center gap-2 bg-gray-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition shadow">
+          <i data-lucide="github" class="w-5 h-5"></i>
+          GitHub Repository
+        </a>
+      </div>
+    </div>
+
+    <!-- Charts Grid -->
+    <div class="grid lg:grid-cols-2 gap-8 mb-12">
+      <!-- By Nation Chart -->
+      <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6">
+        <h3 class="text-lg font-bold text-gray-900 mb-4">Questions by Country</h3>
+        <canvas id="nation-chart"></canvas>
+      </div>
+
+      <!-- By Task Chart -->
+      <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6">
+        <h3 class="text-lg font-bold text-gray-900 mb-4">Questions by Subject</h3>
+        <canvas id="task-chart"></canvas>
+      </div>
+    </div>
+
+    <!-- Data Details -->
+    <div class="bg-white rounded-2xl shadow-lg border border-slate-200 p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Dataset Structure</h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-3">Countries Included</h3>
+          <div class="space-y-2">
+            <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
+              <span class="text-2xl">🇮🇳</span>
+              <div>
+                <div class="font-medium">India</div>
+                <div class="text-sm text-gray-500">UPSC, State PSC Exams</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
+              <span class="text-2xl">🇪🇺</span>
+              <div>
+                <div class="font-medium">European Union</div>
+                <div class="text-sm text-gray-500">EPSO Competitions</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
+              <span class="text-2xl">🇯🇵</span>
+              <div>
+                <div class="font-medium">Japan</div>
+                <div class="text-sm text-gray-500">National Public Service Exam</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
+              <span class="text-2xl">🇹🇼</span>
+              <div>
+                <div class="font-medium">Taiwan</div>
+                <div class="text-sm text-gray-500">Civil Service Examinations</div>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
+              <span class="text-2xl">🇰🇷</span>
+              <div>
+                <div class="font-medium">South Korea</div>
+                <div class="text-sm text-gray-500">공무원시험 (Gongmuwon Siheom)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-3">Data Format</h3>
+          <div class="bg-slate-900 rounded-xl p-4 text-sm">
+            <pre class="text-slate-300 overflow-x-auto"><code>{
+  "id": "india_upsc_2023_q42",
+  "question": "Which river...",
+  "options": ["A", "B", "C", "D"],
+  "answer": "C",
+  "image": "images/india_2023_42.png",
+  "country": "india",
+  "subject": "geography",
+  "year": 2023,
+  "difficulty": "medium"
+}</code></pre>
+          </div>
+
+          <h3 class="text-lg font-semibold text-gray-900 mt-6 mb-3">Subject Areas</h3>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Biology</span>
+            <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">Law</span>
+            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Chemistry</span>
+            <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">Medicine</span>
+            <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-sm font-medium">Administration</span>
+            <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium">Physics</span>
+            <span class="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-sm font-medium">Mathematics</span>
+            <span class="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium">Computer Science</span>
+            <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">Economics</span>
+            <span class="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-sm font-medium">History</span>
+            <span class="px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-medium">Geography</span>
+            <span class="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium">+ 6 more</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-slate-900 text-white py-12">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-blue-700 flex items-center justify-center">
+          <span class="text-white font-bold text-sm">E</span>
+        </div>
+        <span class="font-bold text-xl">EuraGovQA</span>
+      </div>
+      <p class="text-slate-400 text-sm">&copy; 2025 EuraGovQA Team. Released under CC BY 4.0 License.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  lucide.createIcons();
+
+  // Nation distribution chart
+  const nationCtx = document.getElementById('nation-chart').getContext('2d');
+  new Chart(nationCtx, {
+    type: 'doughnut',
+    data: {
+      labels: ['India', 'EU', 'Japan', 'Taiwan', 'South Korea'],
+      datasets: [{
+        data: [1027, 1922, 2048, 558, 2445],
+        backgroundColor: [
+          '#f97316', // orange
+          '#3b82f6', // blue
+          '#ef4444', // red
+          '#10b981', // green
+          '#8b5cf6'  // purple
+        ],
+        borderWidth: 0,
+        hoverOffset: 10
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'bottom',
+          labels: {
+            padding: 20,
+            usePointStyle: true,
+            pointStyle: 'circle'
+          }
+        }
+      }
+    }
+  });
+
+  // Task distribution chart
+  const taskCtx = document.getElementById('task-chart').getContext('2d');
+  new Chart(taskCtx, {
+    type: 'bar',
+    data: {
+      labels: ['Math', 'Admin', 'Bio', 'Law', 'Lang', 'Eng', 'Physics', 'Econ', 'CS', 'Med'],
+      datasets: [{
+        label: 'Questions',
+        data: [1042, 931, 901, 812, 740, 688, 540, 461, 441, 238],
+        backgroundColor: '#3b82f6',
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: { color: '#e2e8f0' }
+        },
+        x: {
+          grid: { display: false },
+          ticks: {
+            font: { size: 10 },
+            maxRotation: 45,
+            minRotation: 45
+          }
+        }
+      }
+    }
+  });
+</script>
+</body>
+</html>

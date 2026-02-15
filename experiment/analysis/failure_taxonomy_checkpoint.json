@@ -1,0 +1,3374 @@
+{
+  "results": [
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "table_structure"
+      ],
+      "visual_elements": [
+        "matrix",
+        "mathematical expression",
+        "numerical choices"
+      ],
+      "difficulty_factors": "The matrix is presented visually and VLMs need to correctly interpret it as a matrix and recognize that the question requires calculating the determinant. VLMs must then perform the calculation and select the correct numerical answer. Requires recognizing and applying linear algebra concepts.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 6757,
+      "nation": "Japan",
+      "task": "mathematics",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text",
+        "multiple choice questions"
+      ],
+      "difficulty_factors": "The document is written in Japanese, which is a non-Latin script. This is a significant challenge for VLMs primarily trained on Latin scripts. The text is presented horizontally, but the model still needs to understand Japanese.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5116,
+      "nation": "Japan",
+      "task": "politics",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "math_symbol_interpretation",
+        "table_structure"
+      ],
+      "visual_elements": [
+        "Japanese text",
+        "mathematical notation",
+        "table with numerical data"
+      ],
+      "difficulty_factors": "The primary challenge is the presence of Japanese text, which requires a VLM capable of handling non-Latin scripts. The equation and the table also present mathematical and structural challenges, respectively.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 1269,
+      "nation": "Japan",
+      "task": "mathematics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [
+        "multi_column_layout",
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "paragraph",
+        "multiple choice options",
+        "section header"
+      ],
+      "difficulty_factors": "The text is in Devanagari script (Hindi), which is more challenging for many VLMs than Latin-based scripts. The text is also slightly blurry, which degrades OCR performance. The question is also complex and requires some level of reasoning about the text.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 2283,
+      "nation": "India",
+      "task": "language",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "figure_text_alignment",
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "Japanese text",
+        "Answer choices",
+        "Blanks to fill in text"
+      ],
+      "difficulty_factors": "The question is in Japanese and requires understanding of biology concepts. The answer choices are arranged in columns related to the blanks in the prompt, requiring a model to match up the correct terms.  The vertical writing in the answer choices makes it harder to interpret for VLMs. Solving the question requires significant domain knowledge about early life and geological processes.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 5711,
+      "nation": "Japan",
+      "task": "biology",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text",
+        "multiple choice options"
+      ],
+      "difficulty_factors": "Korean language in vertical script is more difficult for VLMs to process compared to horizontal Latin scripts. While OCR can process the text, understanding the semantic meaning and the context within the layout is harder.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5428,
+      "nation": "South Korea",
+      "task": "language",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "diagram_understanding",
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "diagram",
+        "mathematical formulas",
+        "numerical values"
+      ],
+      "difficulty_factors": "The presence of mathematical symbols like √3 and exponents (10^3, 10^5, 10^6) requires accurate interpretation. Also, the diagram needs understanding to extract the values, for example, angle 60 degrees and distance of 2.0m and 4.0m. Slight OCR errors exist in the listed answers (1.  3.8...) that makes it difficult to interpret the numbers",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 5668,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [
+        "vertical_nonlatin_script"
+      ],
+      "visual_elements": [
+        "Korean text",
+        "Numbered options"
+      ],
+      "difficulty_factors": "The text is in Korean, which requires a VLM with Korean OCR capabilities. Furthermore, the font style resembles handwriting, making accurate OCR challenging.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 7374,
+      "nation": "South Korea",
+      "task": "engineering",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "Korean text",
+        "Mathematical expression",
+        "Subscripts and superscripts"
+      ],
+      "difficulty_factors": "The question uses Korean, which many VLMs are not trained on. Even for models trained on Korean, the vertical arrangement of Korean script poses challenges. The presence of mathematical expressions with superscripts and subscripts requires accurate recognition and interpretation of these symbols and their placement.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 5252,
+      "nation": "South Korea",
+      "task": "engineering",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "vertical text",
+        "Japanese text"
+      ],
+      "difficulty_factors": "The primary challenge is the vertical Japanese text, which is not typically handled well by VLMs trained primarily on horizontal Latin script. While OCR is generally good, downstream tasks relying on spatial relationships are still affected.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 6614,
+      "nation": "Japan",
+      "task": "psychology",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text"
+      ],
+      "difficulty_factors": "The primary difficulty lies in the fact that the text is written in Korean, a non-Latin script. Many VLMs are primarily trained on Latin script, which can lead to poorer OCR accuracy and understanding of the text's semantics. While the text isn't vertically oriented in the traditional sense, it does have a vertical flow to each character which presents a similar challenge in segmentation and recognition for models used to seeing Latin scripts.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 7172,
+      "nation": "South Korea",
+      "task": "law",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text",
+        "answer choices"
+      ],
+      "difficulty_factors": "Japanese script presents a challenge for models primarily trained on horizontal Latin scripts. Difficulty discerning question structure and answer choices.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 7206,
+      "nation": "Japan",
+      "task": "law",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "Japanese text",
+        "Mathematical symbols",
+        "Numbers",
+        "Units of measure"
+      ],
+      "difficulty_factors": "The primary visual challenge is the presence of Japanese script. While OCR can be used to extract the text, understanding the language is crucial for solving the problem. There are also mathematical symbols that need to be interpreted correctly.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 6143,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "code_switching"
+      ],
+      "visual_elements": [
+        "Korean text",
+        "English text"
+      ],
+      "difficulty_factors": "The presence of Korean (Hangul) script, which is not part of the standard Latin alphabet, is a major challenge for VLMs that are not specifically trained on Korean. Also, mixing Korean and English (code-switching) adds to the difficulty, as the model needs to recognize and process both languages.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5383,
+      "nation": "South Korea",
+      "task": "engineering",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "paragraph of text in Hindi",
+        "question with multiple choice answers"
+      ],
+      "difficulty_factors": "The image contains text in Hindi, a non-Latin script. VLMs often struggle with languages they are not specifically trained on, especially when combined with OCR challenges due to image quality. Correct answer requires understanding of economics principles in the local context.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 1576,
+      "nation": "India",
+      "task": "economics",
+      "correct_answer": "a"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [],
+      "difficulty_factors": "The question requires understanding legal concepts and applying them to the given scenario. VLMs can recognize the text, but lack the knowledge of EU law to select the right answer.",
+      "language_detected": "Catalan",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 6825,
+      "nation": "EU",
+      "task": "law",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [],
+      "visual_elements": [
+        "text in Devanagari script"
+      ],
+      "difficulty_factors": "The Devanagari script presents a challenge for OCR, especially if the font is slightly degraded or if the VLM hasn't been specifically trained on this script. While OCR is generally improving, non-Latin scripts still pose a hurdle, particularly for lower-resource languages.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5642,
+      "nation": "India",
+      "task": "physics",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [
+        "text"
+      ],
+      "difficulty_factors": "The visual elements are simple text. The challenge lies in understanding the legal concepts and choosing the correct answer based on knowledge of EU law regarding the dissolution of Congress, Senate, or General Courts.",
+      "language_detected": "Catalan",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 2381,
+      "nation": "EU",
+      "task": "law",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text",
+        "English words in parentheses",
+        "Numbered list"
+      ],
+      "difficulty_factors": "The text is in Korean, and the font style might pose some challenges for OCR, despite not being handwritten. VLMs may not have robust OCR capabilities for Korean.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 6820,
+      "nation": "South Korea",
+      "task": "computer_science",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "Hindi text",
+        "percentage sign",
+        "numbers"
+      ],
+      "difficulty_factors": "The primary challenge is the Devanagari script (Hindi). While OCR is provided, VLMs need to correctly process and understand the meaning of the Hindi text to solve the problem. The mathematical content with percentage makes interpretation harder.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 173,
+      "nation": "India",
+      "task": "mathematics",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "Question text",
+        "Multiple choice options"
+      ],
+      "difficulty_factors": "The Devanagari script used in the question text presents a challenge for OCR, particularly due to variations in font, size, and image quality. Even with accurate OCR, the question requires logical reasoning to solve.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 4044,
+      "nation": "India",
+      "task": "mathematics",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text"
+      ],
+      "difficulty_factors": "The primary challenge is the presence of Japanese script, which many VLMs, especially older ones, might not be trained to handle effectively. While many modern VLMs can handle Japanese, performance might still be lower than on Latin script, particularly for nuanced tasks.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 5142,
+      "nation": "Japan",
+      "task": "biology",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "Japanese text",
+        "numbers",
+        "physics units (m/s, Hz, m)"
+      ],
+      "difficulty_factors": "The primary challenge is the presence of Japanese text, which requires VLMs to have the capability to recognize and understand the script. Secondary challenges include the presence of numbers and physics units like m/s and Hz which need to be parsed correctly, and applying physics knowledge to solve the standing wave problem described.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 701,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [
+        "pure_reasoning_knowledge",
+        "multi_column_layout"
+      ],
+      "visual_elements": [
+        "paragraph of text",
+        "multiple choice questions"
+      ],
+      "difficulty_factors": "The text is in Hindi, and the image quality makes some characters difficult to distinguish. This impacts OCR accuracy, making it hard for VLMs to understand the content and answer the question which requires reasoning on the text.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 4532,
+      "nation": "India",
+      "task": "economics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Hindi text",
+        "Latin alphabet choices",
+        "Sequence of letters"
+      ],
+      "difficulty_factors": "The presence of Devanagari script (Hindi) in the question stem poses a challenge for VLMs not trained extensively on it. While it's typeset, many VLMs are more proficient with Latin scripts.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5258,
+      "nation": "India",
+      "task": "mathematics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [],
+      "difficulty_factors": "Requires deep understanding of the text and the ability to perform logical deduction and inference to answer the question. There are no significant visual elements that pose a specific challenge to VLMs. Answering correctly involves comparing each choice with the information provided in the text.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 2708,
+      "nation": "South Korea",
+      "task": "language",
+      "correct_answer": "B"
+    },
+    {
+      "index": 6952,
+      "nation": "India",
+      "task": "history",
+      "error": "429 Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.",
+      "primary_category": "unknown",
+      "secondary_categories": []
+    },
+    {
+      "primary_category": "table_structure",
+      "secondary_categories": [
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "table",
+        "text",
+        "numerical values",
+        "mm unit"
+      ],
+      "difficulty_factors": "The layout is implicitly tabular but not explicitly defined, which might confuse VLMs. The association of rows between '기준' and '오차 배분량' columns to select the correct answer is non-trivial. Also, matching the options with the question's constraints requires understanding spatial relationships.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": false,
+      "index": 1347,
+      "nation": "South Korea",
+      "task": "engineering",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text",
+        "Question answering format"
+      ],
+      "difficulty_factors": "The primary text is Korean, which poses a challenge for models primarily trained on Latin scripts. While OCR can help, the complex grammar and sentence structure of Korean legal text make understanding difficult. Additionally, although the text is horizontally oriented in the picture, the problem is fundamentally due to the non-Latin script. Also, the question requires domain knowledge about election law.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 3396,
+      "nation": "South Korea",
+      "task": "law",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Devanagari script",
+        "Hindi text"
+      ],
+      "difficulty_factors": "The primary challenge is the Devanagari script, which most VLMs are not trained on adequately. While OCR might be present, understanding the semantics in Devanagari is hard.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 1067,
+      "nation": "India",
+      "task": "language",
+      "correct_answer": "c"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "diagram_understanding",
+        "vertical_nonlatin_script"
+      ],
+      "visual_elements": [
+        "function diagrams",
+        "mapping arrows",
+        "Korean text",
+        "mathematical notation"
+      ],
+      "difficulty_factors": "Understanding the composite function notation (g ◦ f⁻¹)⁻¹ and how to apply it to the given diagrams representing functions. VLMs often struggle with complex mathematical notations and inverse functions.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 865,
+      "nation": "South Korea",
+      "task": "mathematics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "mathematical equation",
+        "pi symbol",
+        "Korean text",
+        "fractions"
+      ],
+      "difficulty_factors": "The mathematical notation requires understanding of trigonometric functions, exponents, and fractional expressions.  OCR struggles with the pi symbol and the positioning of the fraction bars and numerators/denominators in the answer choices can be problematic.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 3746,
+      "nation": "South Korea",
+      "task": "mathematics",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "figure_text_alignment",
+      "secondary_categories": [
+        "multi_column_layout"
+      ],
+      "visual_elements": [
+        "text blocks",
+        "ABCD options",
+        "fill-in-the-blank"
+      ],
+      "difficulty_factors": "The challenge lies in understanding the relationships between the question and the table of options. VLM must associate A, B, C, and D with their corresponding values in the table and the gaps in the question text. Requires understanding spatial relationships and matching relevant options.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": false,
+      "index": 2192,
+      "nation": "Japan",
+      "task": "engineering",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text"
+      ],
+      "difficulty_factors": "The Korean script might be difficult for some VLMs that are not specifically trained on it or have limited Korean OCR capabilities. The text is printed, but the style is similar to handwriting which makes it harder.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 6506,
+      "nation": "South Korea",
+      "task": "engineering",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "chemical equation",
+        "numerical values"
+      ],
+      "difficulty_factors": "The chemical formulas (CO, H2, CH3OH) involve subscripts which can be difficult for VLMs to interpret correctly. Additionally, the numbers are contained within the Korean text making it harder for the VLM to isolate and interpret.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 7775,
+      "nation": "South Korea",
+      "task": "chemistry",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "diagram_understanding",
+      "secondary_categories": [
+        "math_symbol_interpretation",
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "Pulleys",
+        "Belt",
+        "Diameter markings",
+        "Rotation speed markings",
+        "Arrows"
+      ],
+      "difficulty_factors": "Requires understanding the relationship between pulley diameters and rotation speeds, as well as correctly parsing the units (mm, min^-1) and mathematical representation of the answer choices. Matching values to diagram is also necessary.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 6415,
+      "nation": "Japan",
+      "task": "engineering",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "Chemical formulas (H2O, NH3, H2, CH4)",
+        "Mathematical notation (3.01 x 10^23)",
+        "Units of measure (g, mol, L, ℃)"
+      ],
+      "difficulty_factors": "VLMs struggle with interpreting the meaning and context of chemical formulas and mathematical expressions presented visually, especially when combined with Korean text. They also need domain knowledge to solve the problem.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 1883,
+      "nation": "South Korea",
+      "task": "physics",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text",
+        "numbered list"
+      ],
+      "difficulty_factors": "Japanese script can be challenging for VLMs trained primarily on Latin-based languages. While the text is horizontal in this case, many Japanese documents have vertical text, which can confuse VLMs. Understanding the relationships between characters and words in Japanese is also difficult. Also the content is very dense and context heavy.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5481,
+      "nation": "Japan",
+      "task": "engineering",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [],
+      "visual_elements": [
+        "paragraphs",
+        "multiple choice questions"
+      ],
+      "difficulty_factors": "The text is printed but not very clear, resulting in a challenge for OCR. Some characters might be misinterpreted, especially with the font style. The complex grammar and legal terms may also require very precise OCR to avoid altering the meaning.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 1049,
+      "nation": "India",
+      "task": "law",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [],
+      "difficulty_factors": "Requires understanding of Linux mail system components and the roles of MTA, MDA, MUA, and MRA. The question is fill-in-the-blank, needing knowledge about mail transfer protocols and security implications.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 10,
+      "nation": "South Korea",
+      "task": "computer_science",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [],
+      "visual_elements": [
+        "question",
+        "options"
+      ],
+      "difficulty_factors": "The text is not particularly small but the font style is not optimized for OCR. Also, the image is not perfectly clear and the presence of Hindi script presents an additional challenge.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 3855,
+      "nation": "India",
+      "task": "chemistry",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "code_switching",
+      "secondary_categories": [
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "C code",
+        "Korean text",
+        "numbers"
+      ],
+      "difficulty_factors": "The question requires understanding both Korean text and C programming code.  The VLM needs to associate the programming logic with the desired output based on the user input.  A VLM needs to understand the program logic to answer correctly which requires a deep understanding of C programming.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 1505,
+      "nation": "South Korea",
+      "task": "computer_science",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "table_structure",
+      "secondary_categories": [
+        "figure_text_alignment",
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "table",
+        "text",
+        "radio buttons"
+      ],
+      "difficulty_factors": "The question requires extracting specific data points from the table ('BDP po osobi (C)' for 'Njemačka' and 'Francuska' in the year 2000) and then performing a ratio calculation. VLMs often struggle with accurately understanding table structures, associating the correct values, and understanding the proper operations with those values. The table has column headers that require understanding, so matching figures with text is important.",
+      "language_detected": "Croatian",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 4452,
+      "nation": "EU",
+      "task": "mathematics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text",
+        "multiple choice options"
+      ],
+      "difficulty_factors": "The presence of Korean characters creates a primary challenge for models not trained on that language or not robust to it. The text is also dense.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 7800,
+      "nation": "South Korea",
+      "task": "mathematics",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text"
+      ],
+      "difficulty_factors": "The text is in Korean, which requires specific character recognition capabilities. Although it is horizontal text, VLMs still perform better when the language is Latin-based.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 3299,
+      "nation": "South Korea",
+      "task": "language",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "diagram_understanding",
+      "secondary_categories": [
+        "math_symbol_interpretation",
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "triangle diagram",
+        "coordinate axes",
+        "dimensions",
+        "mathematical expressions in text"
+      ],
+      "difficulty_factors": "Understanding the relationship between the diagram and the question, interpreting the diagram's labels and dimensions, and applying relevant engineering knowledge to solve the problem. The diagram requires spatial and quantitative understanding.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 4113,
+      "nation": "South Korea",
+      "task": "engineering",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text",
+        "Question options"
+      ],
+      "difficulty_factors": "The text is written in Japanese, which requires specialized OCR and language models. While not *vertical*, this category is closest. The lack of diagrams simplifies things, but the need to understand specific domain knowledge is present as well.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 2217,
+      "nation": "Japan",
+      "task": "engineering",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "Hindi text",
+        "numbers"
+      ],
+      "difficulty_factors": "The primary challenge is that the question is written in Hindi (Devanagari script). Most VLMs are trained predominantly on Latin script and might struggle with accurate OCR and semantic understanding of Hindi. Also, simple math is involved which might pose a secondary challenge.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 6170,
+      "nation": "India",
+      "task": "mathematics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "diagram_understanding",
+      "secondary_categories": [
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "circles",
+        "trajectories",
+        "point O",
+        "points A and B",
+        "arrow"
+      ],
+      "difficulty_factors": "Understanding the geometric relationships and transforming the described motion into a visual trajectory. Matching the text description to the diagrammatic representation is also crucial.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": false,
+      "index": 56,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "E"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "diagram_understanding",
+        "table_structure"
+      ],
+      "visual_elements": [
+        "circuit diagram",
+        "mathematical expressions",
+        "table of options"
+      ],
+      "difficulty_factors": "VLMs struggle to interpret mathematical notation and fractions, especially in the context of complex diagrams. Identifying relationships between diagram elements and formulas is challenging.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": true,
+      "has_math": true,
+      "index": 5978,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "table_structure",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "table",
+        "text",
+        "numerical values",
+        "radio buttons"
+      ],
+      "difficulty_factors": "VLMs struggle with extracting and relating information from tables, particularly when the text within the table is small or slightly distorted. The question requires using values from the table and performing a subtraction and division calculation, which involves mathematical reasoning and table lookups. OCR has to be correct to get the numbers right.",
+      "language_detected": "Portuguese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 432,
+      "nation": "EU",
+      "task": "mathematics",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "diagram_understanding",
+      "secondary_categories": [
+        "math_symbol_interpretation",
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "square diagram",
+        "labeled points A, B, C, D",
+        "charge symbols Q[C]",
+        "distances 1[m]"
+      ],
+      "difficulty_factors": "The problem requires understanding the diagram of charges arranged in a square, interpreting the labels, and applying physics knowledge about electric fields and charges. VLMs may struggle to connect the diagram to the physics problem and correctly extract the distances between charges.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 1462,
+      "nation": "South Korea",
+      "task": "engineering",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text",
+        "Numbered options with circles"
+      ],
+      "difficulty_factors": "The text is primarily Japanese, requiring VLMs to handle non-Latin scripts. The presence of vertical text in some parts presents an additional challenge, though it is minimal.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 4997,
+      "nation": "Japan",
+      "task": "computer_science",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "diagrams",
+        "Korean text",
+        "CD",
+        "DVD",
+        "Flash drive"
+      ],
+      "difficulty_factors": "Korean script presents a challenge for VLMs not trained on it. Alignment between diagrams and corresponding text options requires spatial reasoning and linking of visual elements to textual descriptions.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": false,
+      "index": 6708,
+      "nation": "South Korea",
+      "task": "physics",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "diagram_understanding",
+      "secondary_categories": [
+        "figure_text_alignment",
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "square grids",
+        "circles",
+        "triangles",
+        "dots"
+      ],
+      "difficulty_factors": "VLMs need to understand the spatial relationships within the grid diagrams and extrapolate the pattern to predict the next diagram in the series. This requires complex reasoning about visual patterns, not just object recognition. Matching the diagrams to the letter labels is also necessary.",
+      "language_detected": "English",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": false,
+      "index": 2420,
+      "nation": "EU",
+      "task": "mathematics",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "table_structure",
+      "secondary_categories": [
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "table",
+        "text",
+        "multiple choice options"
+      ],
+      "difficulty_factors": "VLMs will need to identify the table, understand its structure (column headers, rows), and extract the relevant information about 'Nordamerika' and 'Sydamerika' from the 'Størrelse (km²)' column. OCR is made slightly challenging because of different fonts, but primarily the table structure is the obstacle.",
+      "language_detected": "Danish",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 3447,
+      "nation": "EU",
+      "task": "mathematics",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Text"
+      ],
+      "difficulty_factors": "While the text is machine-printed, it is presented at a low resolution, which can degrade OCR accuracy. VLM performance could be affected by the relatively low resolution and potentially cause errors in recognizing words and numbers within the provided text.",
+      "language_detected": "Catalan",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 4840,
+      "nation": "EU",
+      "task": "law",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text",
+        "Roman letters in parenthesis"
+      ],
+      "difficulty_factors": "The question is written in Korean. While the model might be able to OCR the text, understanding the meaning and context requires Korean language proficiency.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 3428,
+      "nation": "South Korea",
+      "task": "engineering",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "matrices",
+        "mathematical notation",
+        "determinant symbol |A|"
+      ],
+      "difficulty_factors": "Requires understanding of mathematical matrix notation, determinants, inverse matrices and exponentiation (A^2). Also needs to read OCR'd text.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 3013,
+      "nation": "Japan",
+      "task": "mathematics",
+      "correct_answer": "E"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text"
+      ],
+      "difficulty_factors": "The text is in Japanese, which presents challenges for VLMs not trained on Japanese or those without robust handling of non-Latin scripts. The text is rendered horizontally, but is Japanese.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 7648,
+      "nation": "Japan",
+      "task": "engineering",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "mathematical expressions",
+        "equations"
+      ],
+      "difficulty_factors": "Understanding and interpreting the complex mathematical notation and symbols within the expressions. Small text size makes OCR difficult for specialized symbols.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 1227,
+      "nation": "Japan",
+      "task": "mathematics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text"
+      ],
+      "difficulty_factors": "The text is in Japanese, which is difficult for VLMs primarily trained on Latin script. The vertical writing is also a factor.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 7666,
+      "nation": "Japan",
+      "task": "biology",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Text",
+        "Question numbering",
+        "Multiple choice options"
+      ],
+      "difficulty_factors": "The text is relatively clear but the small font size, especially in the multiple-choice options, and the presence of special characters in the Catalan language (e.g., '·', 'è', 'ç') can pose challenges for VLMs' OCR capabilities, leading to incorrect character recognition and impacting downstream understanding.",
+      "language_detected": "Catalan",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 1545,
+      "nation": "EU",
+      "task": "engineering",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Question text in Hindi",
+        "Multiple choice options"
+      ],
+      "difficulty_factors": "The primary challenge is the presence of Hindi script, which VLMs trained primarily on Latin script data may struggle with. Although OCR is provided, the internal representation and reasoning in VLMs may still be less effective with non-Latin scripts. The question also necessitates knowledge of the Indian government.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 1495,
+      "nation": "India",
+      "task": "administration",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "diagram_understanding",
+      "secondary_categories": [
+        "figure_text_alignment",
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "pedigree chart",
+        "blood type labels",
+        "fractions",
+        "connectors between shapes"
+      ],
+      "difficulty_factors": "Understanding the pedigree chart structure and applying genetics knowledge to deduce blood type probabilities is complex. Matching labels like '(가)' and '(나)' to the diagram components is also necessary. The fractions in the multiple-choice answers need to be interpreted as probabilities.",
+      "language_detected": "ko",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 5470,
+      "nation": "South Korea",
+      "task": "physics",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "text in Devanagari script",
+        "numbered list",
+        "multiple choice options"
+      ],
+      "difficulty_factors": "The Devanagari script can be difficult for VLMs not specifically trained on it. Additionally, the text is somewhat faded and the quality isn't great, making OCR more challenging. After OCR, domain-specific economics knowledge is needed to answer the question.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 693,
+      "nation": "India",
+      "task": "economics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Hindi text",
+        "list of ports with descriptions",
+        "multiple choice options"
+      ],
+      "difficulty_factors": "The primary challenge is the presence of Devanagari script (Hindi). VLMs often struggle with non-Latin scripts compared to Latin-based languages. The vertical arrangement of the choices (a, b, c, d) also adds a minor layout complexity.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5167,
+      "nation": "India",
+      "task": "geography",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "numerical values",
+        "units of measurement (m, cm)",
+        "multiplication symbol"
+      ],
+      "difficulty_factors": "The problem involves unit conversion (meters to centimeters) and understanding the geometric relationships to calculate the maximum number of tiles that can fit on the floor. VLM need to reason through the math. The OCR has slight error, (b) has missing number that can be corrected.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 2693,
+      "nation": "India",
+      "task": "mathematics",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [],
+      "difficulty_factors": "The question requires economic reasoning (opportunity cost, sunk cost fallacy) to determine the optimal decision. The visual information is just text and numbers, easily OCRed, so the challenge is not visual, but cognitive and knowledge-based.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5400,
+      "nation": "South Korea",
+      "task": "economics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "table_structure",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "table",
+        "Korean text",
+        "numerical values"
+      ],
+      "difficulty_factors": "The question presents data in a table format with merged cells and hierarchical columns.  Understanding the table structure and relating different parts of the table to each other is crucial. Small text and Korean characters can pose issues for many VLMs. Also matching the table elements to the question text is required.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 6016,
+      "nation": "South Korea",
+      "task": "economics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "Korean text",
+        "Numbers",
+        "Units of measurement (kVA, kW)",
+        "Symbols (%, decimals)"
+      ],
+      "difficulty_factors": "The Korean script requires specialized OCR capabilities. The presence of mixed Korean and English abbreviations makes it harder. Mathematical understanding is necessary for the units. Numbers in the selection is also a possible problem.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 3709,
+      "nation": "South Korea",
+      "task": "engineering",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text",
+        "Numbered paragraphs"
+      ],
+      "difficulty_factors": "The vertical writing in Japanese, although not present in this image, is inherently challenging for VLMs trained primarily on horizontal Latin script. Even without vertical writing, the Japanese language itself poses a challenge due to its script and grammar.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5795,
+      "nation": "Japan",
+      "task": "engineering",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Chinese text",
+        "English text in parentheses",
+        "Question with multiple choice answers"
+      ],
+      "difficulty_factors": "The font may not be standard and OCR accuracy may be affected. Small text.",
+      "language_detected": "zh",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 7382,
+      "nation": "Taiwan",
+      "task": "medicine",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "Japanese text"
+      ],
+      "difficulty_factors": "The primary difficulty lies in the fact that the text is in Japanese, which is not a Latin-based script. VLMs generally perform better on Latin-based scripts. Additionally, the relatively small font size and uneven text contrast (due to image quality) will cause OCR errors.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 1702,
+      "nation": "Japan",
+      "task": "biology",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Text",
+        "Radio buttons"
+      ],
+      "difficulty_factors": "The text uses specific characters (diacritics) of the Latvian language, like 'š', 'č', 'ž', 'ā', etc. which might not be accurately recognized by standard OCR engines or cause encoding issues. The presence of html-like character entities like '&#316;' will also cause problems. Some fonts might be hard to process.",
+      "language_detected": "Latvian",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 1423,
+      "nation": "EU",
+      "task": "language",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text",
+        "Answer options"
+      ],
+      "difficulty_factors": "The primary challenge is the Korean script itself. VLMs, especially those primarily trained on Latin scripts, struggle with character recognition and contextual understanding in Korean. The text is printed but still represents a challenge for OCR and language understanding.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 1053,
+      "nation": "South Korea",
+      "task": "language",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [
+        "code_switching",
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "Chinese text",
+        "English text"
+      ],
+      "difficulty_factors": "The primary challenge is accurate OCR of the Chinese characters. VLMs may struggle with the font and the potential for minor variations in character rendering. Code-switching (English terms in parentheses) also presents a challenge. Answering the question also requires domain knowledge about common allergens.",
+      "language_detected": "Chinese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 1677,
+      "nation": "Taiwan",
+      "task": "biology",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "Differential equations",
+        "Mathematical symbols",
+        "Exponents",
+        "Japanese text"
+      ],
+      "difficulty_factors": "The mathematical notation, including derivatives and exponents, requires precise understanding and accurate OCR. The superscripts and subscripts in the math formulas and exponential expressions can be easily misread. Combining Japanese text with mathematical notation complicates OCR. The notation style and specific symbols need to be correctly interpreted to understand the equation.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 5975,
+      "nation": "Japan",
+      "task": "mathematics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [],
+      "visual_elements": [
+        "question",
+        "text",
+        "multiple choice options"
+      ],
+      "difficulty_factors": "The text is small and rendered at a relatively low resolution which makes it difficult for some OCR engines to accurately extract the text. While overall clear, certain characters could be misinterpreted.",
+      "language_detected": "English",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 6958,
+      "nation": "EU",
+      "task": "language",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text",
+        "numbered list"
+      ],
+      "difficulty_factors": "The primary visual challenge is the presence of Japanese text, which requires specialized OCR and language models. While not strictly vertical, the script is non-Latin and therefore harder to process than Latin scripts.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 637,
+      "nation": "Japan",
+      "task": "philosophy",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text",
+        "numbered list"
+      ],
+      "difficulty_factors": "The presence of vertical Japanese script, even though it's primarily horizontal, impacts readability and layout analysis. While VLMs handle horizontal Japanese well now, exam questions often have stylized layouts. The question would require deep understanding of the text, so this isn't handwriting or image-quality related.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5616,
+      "nation": "Japan",
+      "task": "philosophy",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text",
+        "Numbers",
+        "Symbols"
+      ],
+      "difficulty_factors": "The text is in Korean, which requires a VLM with Korean language capabilities. Additionally, the presence of degree symbols and technical terms might pose challenges for general-purpose VLMs.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 2987,
+      "nation": "South Korea",
+      "task": "engineering",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "vertical Japanese text"
+      ],
+      "difficulty_factors": "Japanese text is typeset both horizontally and vertically. Current VLMs struggle with vertical Japanese text due to pre-training data biases toward horizontal text. Also the font and the font-size can be challenging for OCR.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 3222,
+      "nation": "Japan",
+      "task": "biology",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [
+        "multiple choice options",
+        "euro symbol",
+        "IVA included/excluded"
+      ],
+      "difficulty_factors": "Requires understanding legal concepts (e.g., 'contracte menor d'obres', 'IVA') and reasoning to compare the given options to determine the correct answer according to EU civil service rules. The visual elements are simple, but the underlying knowledge is complex.",
+      "language_detected": "Catalan",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 6460,
+      "nation": "EU",
+      "task": "law",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "diagram_understanding",
+      "secondary_categories": [
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "circuit diagrams",
+        "graphs",
+        "component labels (A, B, C, I, VA, S)"
+      ],
+      "difficulty_factors": "Requires understanding electrical circuit diagrams, relationship between voltage and current represented in a graph, and the problem's context to deduce the correct component combination at A and B. The diagram must be connected to the text.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": true,
+      "has_math": false,
+      "index": 784,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [
+        "text"
+      ],
+      "difficulty_factors": "The image mainly contains text that is easily readable, so visual challenges are minimal. The difficulty lies in understanding the context of the question and reasoning about the correct answer based on domain knowledge of social services in Barcelona. VLMs need to know what a 'Servei d'Emergències d'Acolliment Nocturn i Centre de Dia' is in the context of Barcelona's social services and which 'Centre d'Urgències i Emergències Socials' or 'xarxa de sensellarisme' it primarily belongs to.",
+      "language_detected": "Catalan",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5578,
+      "nation": "EU",
+      "task": "administration",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text",
+        "Numbered options"
+      ],
+      "difficulty_factors": "The question and answer options are in Korean, requiring the VLM to have strong OCR and language understanding capabilities for Korean. While the text itself isn't vertical, the non-latin script is the dominant factor.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 1959,
+      "nation": "South Korea",
+      "task": "economics",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "Hindi text",
+        "mathematical symbols",
+        "dimensions of cuboid"
+      ],
+      "difficulty_factors": "The text is in Hindi, which is a non-Latin script. VLMs not trained on this script will have difficulty with OCR and understanding the problem.  The problem also involves mathematical concepts and symbols.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 6459,
+      "nation": "India",
+      "task": "mathematics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "figure_text_alignment",
+        "diagram_understanding"
+      ],
+      "visual_elements": [
+        "diagram",
+        "mathematical symbols (square root, fraction)",
+        "text annotations in diagram"
+      ],
+      "difficulty_factors": "The question involves a diagram, mathematical expressions within the answer choices, and requires understanding the relationships between labeled elements in the diagram and the text. VLMs often struggle with interpreting mathematical symbols embedded in text and diagrams, and then matching them with the correct geometric interpretation.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 4886,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "Korean text",
+        "Mathematical equations"
+      ],
+      "difficulty_factors": "Korean script is not easily recognized by all VLMs. The presence of mathematical equations requires parsing of symbols, which can be challenging for models not specifically trained on mathematical content.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 1903,
+      "nation": "South Korea",
+      "task": "economics",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text"
+      ],
+      "difficulty_factors": "The text is in Korean, which is a non-Latin script. While common VLMs are increasingly trained on multiple languages, performance tends to be lower compared to Latin script.  The vertical arrangement also makes it harder than horizontal script, even though the text is actually horizontal in this particular image.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 2930,
+      "nation": "South Korea",
+      "task": "law",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [
+        "text"
+      ],
+      "difficulty_factors": "The question primarily requires understanding the meaning of the text and applying domain knowledge about organizational elements in the context of IMSS (presumably a specific organization). The visual aspect is relatively straightforward, the text is clean and legible, the spatial layout is simple.",
+      "language_detected": "Catalan",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 4507,
+      "nation": "EU",
+      "task": "administration",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "Mathematical equations",
+        "Exponents",
+        "Chemical units"
+      ],
+      "difficulty_factors": "The problem involves understanding and correctly interpreting mathematical symbols like exponents (especially negative exponents) and the multiplication symbol. The negative exponents in the units for the gas constant (Pa・L・K⁻¹·mol⁻¹) are crucial for the calculation. Also, the 'x' symbol is used for both regular multiplication and exponent display making it tricky.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 928,
+      "nation": "Japan",
+      "task": "chemistry",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [
+        "multi_column_layout",
+        "image_quality"
+      ],
+      "visual_elements": [
+        "paragraph of text",
+        "question with multiple choice answers"
+      ],
+      "difficulty_factors": "The Devanagari script is difficult for OCR, the text is somewhat blurry and low resolution, and the layout with question/answers is hard to parse. The multiple columns add spatial complexity.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 750,
+      "nation": "India",
+      "task": "politics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [
+        "text",
+        "multiple choice options"
+      ],
+      "difficulty_factors": "The question requires understanding of EU administration domain knowledge to answer, despite appearing simple visually. The correct answer requires external knowledge about housing programs in Barcelona.",
+      "language_detected": "Catalan",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 4574,
+      "nation": "EU",
+      "task": "administration",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "Korean text",
+        "mathematical equations",
+        "polynomial p(x)",
+        "numbers"
+      ],
+      "difficulty_factors": "The primary challenge for VLMs is the presence of Korean script, which requires specialized OCR and language understanding capabilities. Additionally, even with correct text recognition, mathematical symbols and notations need to be correctly interpreted.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 1223,
+      "nation": "South Korea",
+      "task": "mathematics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Question text",
+        "Multiple choice answers"
+      ],
+      "difficulty_factors": "The text is in Devanagari script, which can be challenging for some VLMs if not specifically trained on it. The question is also in relatively low resolution, and contains a lot of \"dots\".",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 4413,
+      "nation": "India",
+      "task": "mathematics",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Hindi text"
+      ],
+      "difficulty_factors": "The primary challenge is the presence of Devanagari script (Hindi), which many VLMs are not trained to handle as effectively as Latin scripts. Although OCR can help, understanding the text semantically and answering history questions requires more than just character recognition.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 2716,
+      "nation": "India",
+      "task": "history",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "table_structure",
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "table",
+        "chemical symbols",
+        "electron configurations",
+        "superscripts"
+      ],
+      "difficulty_factors": "The subscripts and superscripts in the electron configurations are challenging to recognize and interpret correctly. The comparison symbols and exponents in the '보기' section also pose a challenge. Understanding the relationship between elements in the table and the statements in '보기' requires spatial reasoning.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 6576,
+      "nation": "South Korea",
+      "task": "physics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "figure_text_alignment",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "DNA sequence components",
+        "Options A, B, C, D",
+        "Chinese characters",
+        "English words in parenthesis"
+      ],
+      "difficulty_factors": "The correct answer relies on understanding the spatial arrangement and order of elements in each of the choices (A, B, C, D) and comparing these with the known order of genetic elements in a plasmid required for effective protein expression. VLMs will struggle to relate corresponding Chinese and English names of components.",
+      "language_detected": "zh",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5704,
+      "nation": "Taiwan",
+      "task": "biology",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Devanagari script",
+        "numbered statements",
+        "multiple choice answers"
+      ],
+      "difficulty_factors": "The text is in Devanagari script, requiring VLMs to have specific character recognition and language understanding capabilities for Hindi.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 1116,
+      "nation": "India",
+      "task": "physics",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [],
+      "difficulty_factors": "This is a computer networking problem that requires understanding of bandwidth, latency, and throughput calculations. The visual aspect is minimal; the core challenge lies in the domain-specific knowledge and problem-solving skills required to arrive at the correct answer. OCR is good enough, no diagram/table, mostly text.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 6092,
+      "nation": "Japan",
+      "task": "computer_science",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text"
+      ],
+      "difficulty_factors": "The Japanese language with a mix of Kanji, Hiragana and Katakana characters presents a challenge as Japanese can be written horizontally or vertically. Most VLMs are trained on primarily horizontal scripts. Understanding the semantic meaning of the characters and their arrangement in a coherent way is required.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 2974,
+      "nation": "Japan",
+      "task": "biology",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text",
+        "Numbered list"
+      ],
+      "difficulty_factors": "The question is written in Japanese, which many VLMs are not primarily trained on. Though not vertical script, the primary difficulty is the non-Latin script.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 3699,
+      "nation": "Japan",
+      "task": "computer_science",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [
+        "vertical_nonlatin_script"
+      ],
+      "visual_elements": [
+        "Korean text",
+        "numbered list"
+      ],
+      "difficulty_factors": "The text is in Korean, which requires specific OCR models. The font style may also present challenges for OCR engines. Some character stroke overlaps are visible making character segmentation harder. Vertical alignment of some characters can make OCR more challenging.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 7798,
+      "nation": "South Korea",
+      "task": "biology",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "Hindi text",
+        "Numbers",
+        "Question options"
+      ],
+      "difficulty_factors": "The question is in Hindi, which requires VLMs to be proficient in recognizing and understanding non-Latin scripts. OCR can also be challenging due to font style and quality. Finally, solving the math problem requires understanding the text and performing calculations.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 1738,
+      "nation": "India",
+      "task": "mathematics",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "table_structure",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "table",
+        "text",
+        "radio buttons"
+      ],
+      "difficulty_factors": "The table requires structural understanding to extract the relevant data points. OCR is imperfect, with slight errors (parństwa instead of państwa). The question requires math to perform the required calculation.",
+      "language_detected": "Polish",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 4549,
+      "nation": "EU",
+      "task": "mathematics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "diagram_understanding",
+      "secondary_categories": [
+        "figure_text_alignment",
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "circuit diagrams",
+        "graphs",
+        "labels",
+        "arrows"
+      ],
+      "difficulty_factors": "Requires understanding of circuit diagrams, relating them to graphs of current vs. time, and understanding the behavior of capacitors and inductors. Correctly matching the diagrams with the text-based answer choices is also a challenge. The graphs are stylized and can be difficult to interpret precisely.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": true,
+      "has_math": true,
+      "index": 5892,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "multi_column_layout"
+      ],
+      "visual_elements": [
+        "Japanese text",
+        "Numbered list"
+      ],
+      "difficulty_factors": "Japanese text requires specialized tokenization and understanding. The image is formatted as a dense block of text which can be difficult for VLMs to parse.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 3110,
+      "nation": "Japan",
+      "task": "biology",
+      "correct_answer": "E"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Devanagari script",
+        "question format",
+        "multiple choice options"
+      ],
+      "difficulty_factors": "The text is in Devanagari script, which many VLMs are not specifically trained to process effectively. This makes OCR and subsequent comprehension challenging.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5431,
+      "nation": "India",
+      "task": "politics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "diagram_understanding",
+      "secondary_categories": [
+        "math_symbol_interpretation",
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "springs",
+        "blocks",
+        "diagrams",
+        "force vectors"
+      ],
+      "difficulty_factors": "Understanding the connection between the physical setup in the diagrams and translating that to mathematical relationships describing the spring constant in series and parallel arrangements is crucial.  Also matching the diagrams with appropriate text descriptions and formulas",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 1682,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Hindi text"
+      ],
+      "difficulty_factors": "The primary challenge is the text is in Hindi (Devanagari script), which most VLMs are not trained on and have limited ability to process compared to Latin script.  The text arrangement is standard left-to-right, but the script itself is the main hurdle.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 4891,
+      "nation": "India",
+      "task": "mathematics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text",
+        "Answer choices"
+      ],
+      "difficulty_factors": "The main difficulty comes from the presence of vertical Japanese text that might not be well-handled by all VLMs and is arranged in horizontal lines. While not strictly vertical, the combination of Japanese script and layout can pose a problem. Furthermore, the model must then reason to select the correct combinations (e.g., A, B).",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 7768,
+      "nation": "Japan",
+      "task": "biology",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text",
+        "Numbered paragraphs"
+      ],
+      "difficulty_factors": "The text is small and could be slightly blurred making OCR accuracy questionable.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5676,
+      "nation": "Japan",
+      "task": "administration",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Hindi script text"
+      ],
+      "difficulty_factors": "The primary challenge is the presence of Devanagari script (Hindi). VLMs trained primarily on Latin scripts will struggle with OCR and understanding the text content.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 7146,
+      "nation": "India",
+      "task": "physics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "diagram_understanding",
+      "secondary_categories": [
+        "math_symbol_interpretation",
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "graph",
+        "axis labels",
+        "numeric values",
+        "text"
+      ],
+      "difficulty_factors": "The graph needs to be understood in conjunction with the text in order to derive values. The question requires the model to relate the slope of the graph to the concept of inductance and energy storage in a coil. Extracting values from the graph (0.2A, 1ms) and using physics formulas makes this complex. Furthermore, units need to be accounted for correctly.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 187,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "figure_text_alignment",
+      "secondary_categories": [
+        "math_symbol_interpretation",
+        "table_structure"
+      ],
+      "visual_elements": [
+        "text passages with blanks (A, B, C, D)",
+        "table of options",
+        "mathematical formulas"
+      ],
+      "difficulty_factors": "The core challenge is mapping the correct options from the table to the corresponding blanks (A-D) in the text. This requires understanding the context of each sentence and accurately identifying the concepts described. Additionally, the mathematical symbols increase the challenge.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 2864,
+      "nation": "Japan",
+      "task": "engineering",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "table_structure",
+      "secondary_categories": [
+        "figure_text_alignment",
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "table",
+        "text",
+        "numbers",
+        "Korean text"
+      ],
+      "difficulty_factors": "The information is presented in a table-like format, with text descriptions aligned with numerical values. VLMs need to correctly associate the descriptions with the corresponding values to perform calculations. Also, solving the problem requires economic reasoning and understanding accounting concepts.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 3020,
+      "nation": "South Korea",
+      "task": "economics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [
+        "code_switching",
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "Chinese text",
+        "English text",
+        "Question",
+        "Multiple choice options"
+      ],
+      "difficulty_factors": "The primary challenge is the presence of Chinese characters which are more difficult for some VLMs to OCR than Latin-based scripts. The presence of English mixed within the Chinese text (code-switching) presents another potential challenge. Solving the question requires biological domain knowledge of autoimmune atrophic gastritis.",
+      "language_detected": "Chinese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 4766,
+      "nation": "Taiwan",
+      "task": "biology",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text",
+        "numbered list",
+        "bullet point"
+      ],
+      "difficulty_factors": "The primary challenge is the vertical writing direction which can be problematic for some VLMs, especially if they are not specifically trained for Japanese. Additionally, the combination of Kanji, Hiragana, and Katakana requires robust character recognition.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 901,
+      "nation": "Japan",
+      "task": "administration",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [
+        "multi_column_layout",
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "Question",
+        "Statements I and II",
+        "Options (a), (b), (c), (d)"
+      ],
+      "difficulty_factors": "The text is in Hindi, which requires a VLM to have multilingual capabilities and accurate OCR for the Devanagari script. The text quality is also not perfect, which further degrades OCR performance. Small text size affects readability as well. The presence of mathematical elements (numbers) also adds to the difficulty.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 1711,
+      "nation": "India",
+      "task": "mathematics",
+      "correct_answer": "d"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text",
+        "Numbered options"
+      ],
+      "difficulty_factors": "The text is in Korean, which requires specific character recognition capabilities. Although the text is horizontal, non-Latin scripts are harder for many VLMs.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 1008,
+      "nation": "South Korea",
+      "task": "computer_science",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [],
+      "visual_elements": [
+        "question",
+        "numbered statements",
+        "multiple choice options"
+      ],
+      "difficulty_factors": "The Hindi script can be challenging for OCR, especially with variations in fonts and the presence of ligatures. The image quality further exacerbates this issue.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 2100,
+      "nation": "India",
+      "task": "administration",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text"
+      ],
+      "difficulty_factors": "The primary challenge is the presence of the Korean script (Hangul), which VLMs may not be trained on extensively or may have lower accuracy compared to Latin scripts. This makes OCR more difficult.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 3279,
+      "nation": "South Korea",
+      "task": "history",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "multi_column_layout",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Text",
+        "Lists"
+      ],
+      "difficulty_factors": "The layout of options A, B, C, and D one after another can confuse VLMs, as they might not be able to distinguish them clearly without specific training to recognize this type of question-answer format. The logical flow needs to be parsed.",
+      "language_detected": "Catalan",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 7720,
+      "nation": "EU",
+      "task": "administration",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "Japanese text",
+        "multiple choice options"
+      ],
+      "difficulty_factors": "The question and answer options are in Japanese. While the OCR is good, VLMs may still struggle with the nuances of the language. Furthermore, the text is typeset in a way that is dense and may cause minor OCR issues, compounding the problem.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 7130,
+      "nation": "Japan",
+      "task": "biology",
+      "correct_answer": "E"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Korean text",
+        "Numbers",
+        "Currency symbols"
+      ],
+      "difficulty_factors": "This question primarily requires understanding of financial concepts (bonds, interest rates, book value, net income) and applying them to a specific scenario described in Korean. The visual aspects are minimal.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 3111,
+      "nation": "South Korea",
+      "task": "economics",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "table_structure"
+      ],
+      "visual_elements": [
+        "mathematical formulas",
+        "fractions",
+        "sigma symbol",
+        "table with answer choices"
+      ],
+      "difficulty_factors": "Formulas are written in a way that requires understanding of mathematical notation, ratios, and symbols (sigma, Delta).  OCR struggles with the subscripts.  The table layout needs to be parsed to correctly associate the choices.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 4785,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "Chinese text",
+        "chemical formulas"
+      ],
+      "difficulty_factors": "The primary challenge is that the text is in Chinese. Also, the chemical formulas (like HBr and the organic compound names) require interpretation of subscripts and symbolic notation, and the image quality and font style hinder OCR accuracy.",
+      "language_detected": "Chinese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 1859,
+      "nation": "Taiwan",
+      "task": "chemistry",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Chinese text",
+        "English scientific terms",
+        "multiple choice options"
+      ],
+      "difficulty_factors": "Requires understanding of biology concepts, specifically the role of RANK ligand and osteoporosis treatment. The visual complexity is relatively low and OCR is easy. The main challenge is knowledge about drugs.",
+      "language_detected": "Chinese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 197,
+      "nation": "Taiwan",
+      "task": "biology",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [
+        "multi_column_layout",
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "Japanese text",
+        "numbered answer options",
+        "circled katakana characters"
+      ],
+      "difficulty_factors": "The text is in Japanese, which requires specific language models. The answer choices include circled characters which are difficult for OCR. Correctly associating the choices with the corresponding paragraphs is critical.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 4053,
+      "nation": "Japan",
+      "task": "computer_science",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "Korean text",
+        "Latin abbreviations (ISO, KS, H, C, V)",
+        "Numbered list"
+      ],
+      "difficulty_factors": "The primary challenge is the vertical nature of the Korean script and the nuances required to parse it correctly. VLMs often struggle with non-Latin scripts due to limited training data. Furthermore, accurate OCR is necessary before understanding the question. Some of the Korean characters can be difficult to differentiate.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 6578,
+      "nation": "South Korea",
+      "task": "engineering",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [
+        "multi_column_layout",
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "Japanese text",
+        "Numbered options"
+      ],
+      "difficulty_factors": "The text is in Japanese, which requires specific OCR models. The font might be small and the contrast not ideal, leading to recognition errors. Also, the spatial layout of choices at the bottom needs understanding.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 3504,
+      "nation": "Japan",
+      "task": "law",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Paragraph of text",
+        "Question with multiple choice options"
+      ],
+      "difficulty_factors": "The Devanagari script has complex character shapes and ligatures. Image resolution is moderate, making it harder to distinguish individual characters and words, decreasing OCR accuracy. Font style is also not very standard.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 6205,
+      "nation": "India",
+      "task": "politics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Hindi text"
+      ],
+      "difficulty_factors": "The primary challenge is that the text is in Hindi, a non-Latin script. Many VLMs are trained primarily on Latin-based languages, making it difficult for them to accurately recognize and understand the text. The vertical arrangement (numbering and answer options) could also pose a minor challenge.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 952,
+      "nation": "India",
+      "task": "biology",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "figure_text_alignment",
+        "diagram_understanding"
+      ],
+      "visual_elements": [
+        "fractions",
+        "diagram with labels",
+        "symbols like delta"
+      ],
+      "difficulty_factors": "Mathematical expressions are intertwined with diagrams. The fractions are written inline and can be hard to parse. Understanding the diagrammatic elements and their labels is also crucial.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 5945,
+      "nation": "Japan",
+      "task": "engineering",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Text",
+        "Radio buttons"
+      ],
+      "difficulty_factors": "The presence of special characters (e.g., &#316;), subtle diacritics, and potentially slightly blurry text makes OCR and subsequent text understanding challenging.",
+      "language_detected": "Latvian",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 4396,
+      "nation": "EU",
+      "task": "language",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [
+        "question",
+        "dialogue"
+      ],
+      "difficulty_factors": "The primary difficulty lies in understanding the context of the dialogues and determining which one is the most awkward or unnatural. This requires reasoning and understanding of social contexts and conversational norms, not primarily visual processing.",
+      "language_detected": "Korean/English",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 38,
+      "nation": "South Korea",
+      "task": "language",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "Hindi text",
+        "Numbering",
+        "Options (a, b, c, d)"
+      ],
+      "difficulty_factors": "The primary challenge is the presence of the Devanagari script (Hindi). VLMs often perform worse on non-Latin scripts. Additionally, the text isn't perfectly crisp, which impacts OCR accuracy, making it a secondary issue.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 4800,
+      "nation": "India",
+      "task": "geography",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Devanagari script"
+      ],
+      "difficulty_factors": "The question is written in Hindi (Devanagari script).  VLMs often struggle with non-Latin scripts and vertical writing directions when reading the text. While there is no apparent vertical alignment in this specific case, the primary issue is still the script itself, as the model needs to be trained specifically to recognize it.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 218,
+      "nation": "India",
+      "task": "engineering",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "diagram_understanding",
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "integral symbol",
+        "sine wave",
+        "cosine wave",
+        "fractions",
+        "pi symbol"
+      ],
+      "difficulty_factors": "Understanding the mathematical notation (integral, trigonometric functions, limits), integrating information from the diagram and text, recognizing standard math symbols (pi).",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 864,
+      "nation": "Japan",
+      "task": "mathematics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "table_structure"
+      ],
+      "visual_elements": [
+        "table",
+        "numbers",
+        "variable 'a'"
+      ],
+      "difficulty_factors": "The problem involves mathematical reasoning and interpreting the variable 'a' within the context of a table. It also requires understanding of the median calculation as described in the text, not necessarily the standard statistical definition. The OCR must accurately read the table values and the 'a' in the table. The VLM must understand the problem description, median calculation instruction, and use table data to calculate the number of median possibilities. VLMs might struggle with this complex chain of reasoning.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 2119,
+      "nation": "Japan",
+      "task": "mathematics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "table_structure",
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "Japanese text",
+        "Table with multiple choices"
+      ],
+      "difficulty_factors": "The text is in Japanese, which is not a language all VLMs are trained on. The table structure requires understanding of how the different choices relate to the blanks in the passage. Some character recognition may also be necessary. The vertical and non-Latin script adds a layer of complexity.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": false,
+      "index": 319,
+      "nation": "Japan",
+      "task": "geography",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "text",
+        "question",
+        "multiple choice answers"
+      ],
+      "difficulty_factors": "The question requires understanding of the Free Software Foundation's role, which is domain-specific knowledge. OCR is a secondary challenge due to the language and potentially rare vocabulary.",
+      "language_detected": "Catalan",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 4107,
+      "nation": "EU",
+      "task": "computer_science",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "table_structure",
+      "secondary_categories": [
+        "figure_text_alignment",
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "Tables (Table I and Table II)",
+        "Matching problem with choices",
+        "Percentages in a table"
+      ],
+      "difficulty_factors": "The question requires understanding the relationships between tables and matching the correct combinations based on the given context (meat types and country imports). It's not enough to just read the tables; reasoning about the data is required. The alignment between the table data and the multiple choice options needs to be understood.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 1929,
+      "nation": "Japan",
+      "task": "economics",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text",
+        "numbers",
+        "bullet points"
+      ],
+      "difficulty_factors": "The text is primarily in Japanese, which requires specialized OCR and language models. Vertical text or mixed horizontal and vertical could pose a challenge for standard VLMs.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 7748,
+      "nation": "Japan",
+      "task": "politics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "figure_text_alignment",
+        "diagram_understanding"
+      ],
+      "visual_elements": [
+        "mathematical formulas",
+        "density symbol (ρ, ρ₀)",
+        "fractions",
+        "diagram of cylinder floating in liquid",
+        "textual labels in Japanese"
+      ],
+      "difficulty_factors": "VLMs struggle with understanding and correctly interpreting mathematical symbols, especially when embedded within text or diagrams. The alignment of formulas to answer choices and the combination of visual diagram and math formulas adds to the difficulty.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 3354,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "figure_text_alignment",
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "mathematical equations",
+        "fractions",
+        "integral symbols",
+        "diagram of water channel"
+      ],
+      "difficulty_factors": "VLMs often struggle with accurately interpreting and reasoning with mathematical symbols, especially within complex formulas. Subscripts, superscripts, and fractions are particularly challenging. The text refers to sections of equations with symbols for blanks. Low resolution and a slightly stylized font also make text recognition harder.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": true,
+      "has_math": true,
+      "index": 6421,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "E"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "Lists",
+        "Hindi Text",
+        "Latin text in parentheses",
+        "Numbered items"
+      ],
+      "difficulty_factors": "The image contains text in Hindi, which may not be well-recognized by all VLMs. The font is slightly stylized, and the image quality is not perfect, which can further hinder OCR accuracy. There's also the additional task of associating the latin name with the Hindi name",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5375,
+      "nation": "India",
+      "task": "biology",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Hindi text",
+        "Question options (a-d)",
+        "Mathematical statements S1, S2"
+      ],
+      "difficulty_factors": "The text is in Hindi, a non-Latin script. VLMs often struggle with accurate character recognition and semantic understanding in non-Latin scripts compared to English. While the mathematical content isn't overly complex, understanding the problem requires deciphering the Hindi text describing the mathematical relationships.",
+      "language_detected": "Hindi",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 3341,
+      "nation": "India",
+      "task": "mathematics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "table_structure",
+      "secondary_categories": [
+        "math_symbol_interpretation",
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "table",
+        "text",
+        "radio buttons"
+      ],
+      "difficulty_factors": "The main challenge lies in understanding the table and performing calculations based on the values in it to answer the question. VLMs need to correctly associate the columns 'Bevölkerung (Mio.)' and 'Pro-Kopf-BIP (in C)' and multiply these to derive 'Gesamt-BIP' for each region, then comparing these derived values.",
+      "language_detected": "German",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": true,
+      "index": 5117,
+      "nation": "EU",
+      "task": "mathematics",
+      "correct_answer": "E"
+    },
+    {
+      "primary_category": "table_structure",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "table",
+        "text",
+        "question number"
+      ],
+      "difficulty_factors": "The table format requires understanding relationships between columns (A, B, C, D) and rows (1-5). Figuring out the correct row choice depends on the context provided in the main body of the text. Minor OCR errors in Japanese also will make it harder.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": false,
+      "index": 149,
+      "nation": "Japan",
+      "task": "administration",
+      "correct_answer": "E"
+    },
+    {
+      "primary_category": "diagram_understanding",
+      "secondary_categories": [
+        "math_symbol_interpretation",
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "pedigree diagram",
+        "arrows",
+        "mathematical formula",
+        "numbered answer choices"
+      ],
+      "difficulty_factors": "The pedigree diagram requires understanding of relationships and ancestry. The formula involves understanding mathematical notation in the context of biology. Matching the diagram with the text and the formula is crucial.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 3631,
+      "nation": "Japan",
+      "task": "biology",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [
+        "question",
+        "multiple choice answers"
+      ],
+      "difficulty_factors": "Requires knowledge of energy sources and their consumption in Barcelona during 2016. The visual aspects are not challenging for a VLM given clean OCR.",
+      "language_detected": "Catalan",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 3236,
+      "nation": "EU",
+      "task": "geography",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "Korean text",
+        "degree symbol",
+        "numerical values",
+        "multiple choice options"
+      ],
+      "difficulty_factors": "The primary challenge is the presence of Korean text, which requires VLMs to have strong OCR capabilities for non-Latin scripts. Additionally, there are degree symbols and numerical values that need to be correctly interpreted as mathematical information within the context of the question.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 4430,
+      "nation": "South Korea",
+      "task": "physics",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "table_structure",
+      "secondary_categories": [
+        "figure_text_alignment"
+      ],
+      "visual_elements": [
+        "table",
+        "text"
+      ],
+      "difficulty_factors": "The table requires understanding the relationship between network addresses and next hop addresses to answer the question. Also, matching the correct IP address from the question prompt (172.16.5.65) to the corresponding table entry can be challenging for VLMs without understanding the underlying networking concepts and routing principles. The candidates presented as a list require alignment with context to provide an answer.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": true,
+      "has_math": false,
+      "index": 2274,
+      "nation": "Japan",
+      "task": "computer_science",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "diagram_understanding",
+      "secondary_categories": [
+        "figure_text_alignment",
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "U-shaped tube",
+        "liquid levels",
+        "containers",
+        "dimension labels",
+        "arrows indicating height"
+      ],
+      "difficulty_factors": "The diagram requires understanding of fluid mechanics principles.  The alignment of text with specific parts of the diagram (e.g., 0.2 m refers to the height of the liquid B column) requires precise linking of text and visual features. Also, the question itself is a mathematical equation.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 740,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "ocr_text_recognition",
+      "secondary_categories": [
+        "pure_reasoning_knowledge"
+      ],
+      "visual_elements": [
+        "text",
+        "multiple choice options"
+      ],
+      "difficulty_factors": "The text is in a non-Latin script (Traditional Chinese), and accurate OCR is crucial for understanding the question. Although the text is clear, the character recognition in Traditional Chinese can be challenging for many general-purpose VLMs, even with good resolution. Without understanding the text, the VLM cannot apply the required economics knowledge.",
+      "language_detected": "Chinese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 4117,
+      "nation": "Taiwan",
+      "task": "economics",
+      "correct_answer": "C"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "figure_text_alignment",
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "mathematical formulas",
+        "inequality symbols",
+        "square root symbols",
+        "physics diagram"
+      ],
+      "difficulty_factors": "VLMs struggle with the accurate recognition and interpretation of mathematical notations, especially within square roots and fractions. Matching these complex mathematical expressions to diagrammatic representations requires careful spatial reasoning and alignment.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": true,
+      "has_table": false,
+      "has_math": true,
+      "index": 2765,
+      "nation": "Japan",
+      "task": "physics",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "math_symbol_interpretation",
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "Korean text",
+        "mm unit",
+        "symbol d_b"
+      ],
+      "difficulty_factors": "The Korean script requires models trained on it. The 'd_b' symbol requires some mathematical understanding. The question is heavily reliant on Korean language understanding and some technical knowledge.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 3656,
+      "nation": "South Korea",
+      "task": "engineering",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [
+        "text",
+        "multiple choice options"
+      ],
+      "difficulty_factors": "The question requires understanding of legal text, specifically city ordinances related to signage. It requires comparing different options and selecting the one that is most legally correct according to a specific ordinance which needs legal background knowledge. The image itself presents no OCR or layout challenge.",
+      "language_detected": "Catalan",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 7482,
+      "nation": "EU",
+      "task": "law",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [
+        "math_symbol_interpretation"
+      ],
+      "visual_elements": [
+        "Korean text",
+        "Mathematical symbols (Omega)",
+        "Units of measurement (V, rpm, A)"
+      ],
+      "difficulty_factors": "The primary challenge is the presence of Korean script, which requires VLMs to be trained on Korean OCR and language understanding. The vertical writing direction (within mixed direction) and inclusion of mathematical symbols adds complexity. Also, domain knowledge of electrical engineering would be necessary to solve the problem.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 3697,
+      "nation": "South Korea",
+      "task": "engineering",
+      "correct_answer": "B"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [
+        "text"
+      ],
+      "difficulty_factors": "Requires knowledge of historical context and Catalan/Spanish phrases related to the demolition of Barcelona's walls. VLMs may struggle to connect the question to the correct historical slogan.",
+      "language_detected": "Catalan and Spanish",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 2703,
+      "nation": "EU",
+      "task": "history",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [
+        "text",
+        "numbers"
+      ],
+      "difficulty_factors": "The question requires understanding the concept of 'plasticity index' in soil mechanics.  The formula for plasticity index is: Liquid Limit - Plastic Limit. The VLM needs to understand this formula and apply it to the extracted numbers 55 and 35 to derive the answer, 20. Requires domain specific understanding.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 3356,
+      "nation": "Japan",
+      "task": "engineering",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [
+        "multiple choice question",
+        "text"
+      ],
+      "difficulty_factors": "The question requires understanding of the text and the organizational structure to determine the correct answer. There are no significant visual elements that cause a challenge.",
+      "language_detected": "Catalan",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 1468,
+      "nation": "EU",
+      "task": "administration",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text"
+      ],
+      "difficulty_factors": "The text is in Japanese, which requires VLMs to be trained on Japanese script. The vertical writing style is not common and presents a unique challenge.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 651,
+      "nation": "Japan",
+      "task": "biology",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "pure_reasoning_knowledge",
+      "secondary_categories": [],
+      "visual_elements": [
+        "text"
+      ],
+      "difficulty_factors": "The question primarily requires understanding the definitions of 'factors de protecció' and 'indicadors de protecció' and applying that understanding to choose the correct statement. It is a comprehension question requiring domain knowledge of EU civil service and Catalan language proficiency rather than a significant visual challenge.",
+      "language_detected": "Catalan",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 5347,
+      "nation": "EU",
+      "task": "administration",
+      "correct_answer": "A"
+    },
+    {
+      "primary_category": "vertical_nonlatin_script",
+      "secondary_categories": [],
+      "visual_elements": [
+        "Japanese text"
+      ],
+      "difficulty_factors": "Japanese script is used, which requires specialized handling compared to Latin scripts. The vertical writing mode (though not prevalent in this image) can also cause issues if the VLM is not trained on it. OCR accuracy can be affected by the font and spacing.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": false,
+      "index": 3624,
+      "nation": "Japan",
+      "task": "engineering",
+      "correct_answer": "E"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "vertical_nonlatin_script",
+        "ocr_text_recognition"
+      ],
+      "visual_elements": [
+        "mathematical symbols",
+        "Korean text",
+        "fractions",
+        "equation"
+      ],
+      "difficulty_factors": "The presence of mathematical symbols within the Korean text poses a significant challenge for VLMs. Accurately recognizing and interpreting the meaning of these symbols (e.g., π, β, f_c, f_m, cos, sin), while also understanding their relationship to the surrounding text requires advanced symbol recognition and contextual understanding.  The vertical script requires proper handling to align to the formulas.",
+      "language_detected": "Korean",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 4760,
+      "nation": "South Korea",
+      "task": "engineering",
+      "correct_answer": "D"
+    },
+    {
+      "primary_category": "math_symbol_interpretation",
+      "secondary_categories": [
+        "ocr_text_recognition",
+        "vertical_nonlatin_script"
+      ],
+      "visual_elements": [
+        "Mathematical expressions",
+        "Japanese text",
+        "Fractions",
+        "Complex number 'i'"
+      ],
+      "difficulty_factors": "Formulas with complex numbers and fractions embedded within Japanese text. Also, small font size in some parts will hinder OCR.",
+      "language_detected": "Japanese",
+      "has_handwriting": false,
+      "has_diagram": false,
+      "has_table": false,
+      "has_math": true,
+      "index": 244,
+      "nation": "Japan",
+      "task": "mathematics",
+      "correct_answer": "C"
+    }
+  ]
+}

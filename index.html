@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="description" content="EuraGovExam: A Multilingual Multimodal Benchmark from Real-World Civil Service Exams. Image-only benchmark testing VLMs on layout-aware, instruction-free reasoning in high-stakes, culturally grounded settings.">
+  <meta name="keywords" content="benchmark, multimodal, multilingual, VLM, vision-language model, government exam, civil service, dataset, image-only, layout-aware">
+  <meta property="og:title" content="EuraGovExam">
+  <meta property="og:description" content="A Multilingual Multimodal Benchmark from Real-World Civil Service Exams">
+  <meta property="og:url" content="https://euragovexam.github.io">
+
+  <title>EuraGovExam</title>
+
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <style>
+    /* Failure category badges */
+    .tag.is-danger {
+      background-color: #f14668;
+      color: white;
+      font-weight: bold;
+    }
+    .tag.is-warning {
+      background-color: #ffe08a;
+      color: #333;
+    }
+    .tag.is-info {
+      background-color: #3e8ed0;
+      color: white;
+    }
+    .tag.is-light {
+      background-color: #f5f5f5;
+      color: #363636;
+    }
+
+    /* Enhanced example boxes */
+    .box {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .box .content {
+      margin-top: auto;
+    }
+  </style>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">EuraGovExam</h1>
+          <h2 class="subtitle is-3 publication-title">A Multilingual Multimodal Benchmark from<br>Real-World Civil Service Exams</h2>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Jea_Sung_Kim1" target="_blank">JaeSeong Kim</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Chaehwan_Lim1" target="_blank">Chaehwan Lim</a><sup>1,†</sup>,</span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Sang_Hyun_Gil1" target="_blank">Sang Hyun Gil</a><sup>1,†</sup>,</span>
+            <span class="author-block">
+              <a href="https://openreview.net/profile?id=~Suan_Lee1" target="_blank">Suan Lee</a><sup>1,*</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Semyung University</span>
+          </div>
+          <div class="is-size-7 has-text-grey">
+            <span><sup>†</sup>Equal contribution as co-second authors</span> ·
+            <span><sup>*</sup>Corresponding author</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/thisiskorea/EuraGovExam" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark is-disabled" disabled>
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv (Coming Soon)</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/EuraGovExam/EuraGovExam" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                  <span>🤗</span>
+                  <span>Dataset</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4 has-text-grey-dark mb-3">TL;DR</h2>
+        <p class="is-size-5 has-text-weight-medium mb-5" style="line-height: 1.6;">
+          EuraGovExam is a multilingual, image-only benchmark built from real civil service exams across five Eurasian regions, testing vision-language models on layout-aware, instruction-free reasoning in high-stakes, culturally grounded settings.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3 has-text-centered mb-4">Overview</h2>
+      <img src="assets/img/teaser.png" alt="EuraGovExam Overview" style="width: 100%; border-radius: 8px;">
+      <h2 class="subtitle has-text-centered mt-4">
+        EuraGovExam contains <b>8,000</b> questions from government examinations across <b>5 countries</b> (India, EU, Japan, Taiwan, South Korea) spanning <b>17 subject areas</b>.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            We introduce <b>EuraGovExam</b>, a comprehensive multilingual multimodal benchmark
+            designed to evaluate vision-language models on real-world government examination questions
+            across Eurasian countries. Our benchmark comprises <b>8,000 questions</b> spanning
+            <b>17 subject areas</b> from official civil service examinations in
+            India, the European Union, Japan, Taiwan, and South Korea.
+          </p>
+          <p>
+            Unlike existing benchmarks that focus primarily on English or academic contexts,
+            EuraGovExam captures the diverse linguistic, cultural, and administrative knowledge
+            required for government positions across different nations. We evaluate
+            <b>28 state-of-the-art vision-language models</b> and reveal significant
+            performance gaps across languages and domains, highlighting the need for more
+            culturally-aware multimodal AI systems.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Overall Results</h2>
+    <div class="content">
+      <p class="has-text-centered">Performance of vision-language models on EuraGovExam. All numbers are accuracy (%).</p>
+    </div>
+
+    <div class="table-container">
+      <table class="table is-bordered is-striped is-hoverable is-fullwidth">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Model</th>
+            <th>Overall</th>
+            <th>India</th>
+            <th>EU</th>
+            <th>Japan</th>
+            <th>Taiwan</th>
+            <th>S.Korea</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>🥇</td>
+            <td><b>Gemini-2.5-pro</b></td>
+            <td><b>86.99</b></td>
+            <td>69.23</td>
+            <td>88.08</td>
+            <td>87.59</td>
+            <td>95.51</td>
+            <td>91.12</td>
+          </tr>
+          <tr>
+            <td>🥈</td>
+            <td><b>GPT-5</b></td>
+            <td><b>85.8</b></td>
+            <td>68.35</td>
+            <td>83.87</td>
+            <td>87.5</td>
+            <td>94.8</td>
+            <td>91.17</td>
+          </tr>
+          <tr>
+            <td>🥉</td>
+            <td><b>o3</b></td>
+            <td><b>84.26</b></td>
+            <td>68.64</td>
+            <td>84.49</td>
+            <td>82.37</td>
+            <td>93.72</td>
+            <td>90.06</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>o4-mini</td>
+            <td>79.4</td>
+            <td>63.38</td>
+            <td>76.95</td>
+            <td>82.52</td>
+            <td>92.29</td>
+            <td>82.49</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Gemini-3-flash</td>
+            <td>75.28</td>
+            <td>51.7</td>
+            <td>89.54</td>
+            <td>56.69</td>
+            <td>97.31</td>
+            <td>84.5</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>GPT-5.2</td>
+            <td>69.94</td>
+            <td>53.46</td>
+            <td>68.05</td>
+            <td>73.83</td>
+            <td>78.67</td>
+            <td>73.09</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="has-text-centered is-size-7 mt-2">See full leaderboard with all 28 models: <a href="leaderboard.html">Detailed Leaderboard →</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Dataset</h2>
+    <div class="content">
+      <p>
+        <strong>EuraGovExam</strong> contains <strong>8,000 multiple-choice questions</strong> sourced from official civil service examinations across five Eurasian regions: <strong>South Korea</strong> (2,448 questions), <strong>Japan</strong> (2,048 questions), <strong>European Union</strong> (1,920 questions), <strong>India</strong> (1,024 questions), and <strong>Taiwan</strong> (560 questions). The questions span <strong>17 academic and professional domains</strong> including Law, Administration, Economics, History, Geography, Mathematics, Physics, Chemistry, Biology, Earth Science, Medicine, Computer Science, Engineering, Language, Philosophy, Psychology, and Politics.
+      </p>
+      <p>
+        All questions are presented in their <strong>original image format</strong> without text extraction, preserving authentic layout complexity including mathematical equations, scientific diagrams, tables, and multilingual scripts (Korean, Japanese, Traditional Chinese, Hindi, Catalan, and other regional languages). This image-only format tests vision-language models on real-world document understanding rather than pre-processed text.
+      </p>
+      <p>
+        The dataset was collected from publicly available government examination archives and official education portals. Each question includes the original exam image, correct answer, subject classification, and regional metadata. Questions were sampled to ensure balanced representation across difficulty levels and content domains, reflecting the authentic distribution of civil service exam topics. The complete dataset is available on <a href="https://huggingface.co/datasets/EuraGovExam/EuraGovExam" target="_blank"><strong>HuggingFace</strong></a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Key Findings</h2>
+
+    <div class="content mb-6">
+      <h3 class="title is-5">Model Performance Varies Significantly</h3>
+      <p>We evaluated 28 state-of-the-art vision-language models on EuraGovExam. The best model (Gemini-2.5-pro) achieves 86.99% overall accuracy, while smaller models struggle to reach 50%. This wide performance gap reveals that government examination questions pose substantial challenges even for frontier VLMs, requiring both strong visual parsing and domain-specific reasoning capabilities.</p>
+    </div>
+
+    <figure class="image mb-6">
+      <img src="assets/img/main_performance.png" alt="Model Performance" style="width: 100%; border-radius: 8px;">
+    </figure>
+
+    <div class="content mb-6">
+      <h3 class="title is-5">Significant Cross-Regional Performance Gaps</h3>
+      <p>Models exhibit stark performance differences across regions, with accuracy varying by up to 40 percentage points for the same model. Taiwan questions achieve the highest average accuracy (73.2%), while India questions prove most challenging (49.8%). These disparities stem from linguistic barriers (non-Latin scripts, specialized terminology), cultural context requirements (region-specific regulations, historical knowledge), and imbalanced training data distribution. Even top-performing models struggle with questions in Hindi, Traditional Chinese, and domain-specific Catalan or Korean administrative language.</p>
+    </div>
+
+    <figure class="image mb-6">
+      <img src="assets/img/main_regional.png" alt="Regional Breakdown" style="width: 100%; border-radius: 8px;">
+    </figure>
+  </div>
+</section>
+
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Example Questions</h2>
+    <p class="subtitle is-6 has-text-centered has-text-grey mb-5">
+      Representative examples showing where and why models fail on government examinations.
+    </p>
+
+    <div class="columns is-multiline">
+      <!-- Taiwan Biology -->
+      <div class="column is-half">
+        <div class="box">
+          <p class="is-size-7 has-text-grey mb-2"><b>Taiwan</b> · Biology</p>
+          <figure class="image mb-3">
+            <img src="assets/img/examples/taiwan_biology.png" alt="Taiwan Biology">
+          </figure>
+          <div class="content is-size-7">
+            <p><b>Question:</b> Traditional Chinese anatomy question asking about the location of the temporal bone (顳骨).</p>
+            <p><b>Model answer (GPT-4.1):</b> Incorrectly identified the cranial bone (顱骨) due to misreading the similar-looking character 顳 as 顱.</p>
+            <p><b>Why it failed:</b> Visual parsing error on complex Traditional Chinese characters combined with insufficient verification against anatomical context. The model's OCR component confused visually similar radicals in medical terminology.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Japan Physics -->
+      <div class="column is-half">
+        <div class="box">
+          <p class="is-size-7 has-text-grey mb-2"><b>Japan</b> · Physics</p>
+          <figure class="image mb-3">
+            <img src="assets/img/examples/japan_physics.png" alt="Japan Physics">
+          </figure>
+          <div class="content is-size-7">
+            <p><b>Question:</b> Calculate the time for a projectile to reach maximum height on an inclined plane.</p>
+            <p><b>Model answer (o4-mini):</b> Applied standard projectile motion formula for flat ground, ignoring the incline angle.</p>
+            <p><b>Why it failed:</b> The model correctly parsed the Japanese text and equations but failed to decompose gravity into incline-parallel and incline-perpendicular components. It applied memorized physics formulas without adapting to the tilted reference frame, demonstrating reasoning failure despite accurate visual parsing.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Japan Engineering -->
+      <div class="column is-half">
+        <div class="box">
+          <p class="is-size-7 has-text-grey mb-2"><b>Japan</b> · Engineering</p>
+          <figure class="image mb-3">
+            <img src="assets/img/examples/japan_engineering.png" alt="Japan Engineering">
+          </figure>
+          <div class="content is-size-7">
+            <p><b>Question:</b> Determine the logic function of a CMOS circuit from its transistor diagram.</p>
+            <p><b>Model answer (Qwen2-VL-72B):</b> Misidentified PMOS and NMOS transistors, resulting in inverted logic function.</p>
+            <p><b>Why it failed:</b> Compound failure combining visual parsing errors (confusing PMOS/NMOS symbols) and gaps in digital circuit domain knowledge. The model struggled to map circuit topology to boolean logic, revealing limitations in both diagram understanding and specialized engineering knowledge.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- South Korea Administration -->
+      <div class="column is-half">
+        <div class="box">
+          <p class="is-size-7 has-text-grey mb-2"><b>South Korea</b> · Administration</p>
+          <figure class="image mb-3">
+            <img src="assets/img/examples/korea_admin.png" alt="Korea Administration">
+          </figure>
+          <div class="content is-size-7">
+            <p><b>Question:</b> Classify a book according to Korean Decimal Classification (KDC) rules based on its description.</p>
+            <p><b>Model answer (Claude-Sonnet-4):</b> Selected category based on surface-level keywords rather than hierarchical rule application.</p>
+            <p><b>Why it failed:</b> Despite correctly parsing the Korean table structure, the model failed to apply KDC's hierarchical classification rules systematically. It relied on pattern matching instead of procedural reasoning, exposing weaknesses in rule-based decision making.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EU Law -->
+      <div class="column is-half">
+        <div class="box">
+          <p class="is-size-7 has-text-grey mb-2"><b>EU</b> · Law</p>
+          <figure class="image mb-3">
+            <img src="assets/img/examples/eu_law.png" alt="EU Law">
+          </figure>
+          <div class="content is-size-7">
+            <p><b>Question:</b> Catalan building code question about specific height restrictions for residential buildings.</p>
+            <p><b>Model answer (Claude-Sonnet-4):</b> Applied general European building standards instead of Catalonia-specific regulations.</p>
+            <p><b>Why it failed:</b> Lack of region-specific legal knowledge. The model attempted to reason from general principles but missed the domain-specific regulatory context required for Catalan ordinances, highlighting the benchmark's ability to expose gaps in localized expertise.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- South Korea Biology -->
+      <div class="column is-half">
+        <div class="box">
+          <p class="is-size-7 has-text-grey mb-2"><b>South Korea</b> · Biology</p>
+          <figure class="image mb-3">
+            <img src="assets/img/examples/korea_biology.png" alt="Korea Biology">
+          </figure>
+          <div class="content is-size-7">
+            <p><b>Question:</b> Interpret a biological process diagram showing cellular respiration with Korean labels and equations.</p>
+            <p><b>Model answer (Multiple models):</b> Misread Korean scientific terminology (e.g., 미토콘드리아 as different organelles) and failed to integrate diagram arrows with textual explanations.</p>
+            <p><b>Why it failed:</b> Compound failure: OCR errors on Korean scientific terms combined with difficulty maintaining coherent reasoning across visual (diagram) and textual (equations) modalities. Models struggled with multimodal integration when both components contained domain-specific foreign language content.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Taiwan Medicine -->
+      <div class="column is-half">
+        <div class="box">
+          <p class="is-size-7 has-text-grey mb-2"><b>Taiwan</b> · Medicine</p>
+          <figure class="image mb-3">
+            <img src="assets/img/examples/taiwan_medicine.png" alt="Taiwan Medicine">
+          </figure>
+          <div class="content is-size-7">
+            <p><b>Question:</b> Medical policy analysis question about Taiwan's National Health Insurance reimbursement criteria in Traditional Chinese.</p>
+            <p><b>Model answer (Phi-3.5-Vision):</b> Identified individual policy components correctly but drew incorrect conclusion about combined eligibility criteria.</p>
+            <p><b>Why it failed:</b> Multi-step reasoning failure. Despite accurate text parsing, the model could not chain inferences across multiple regulatory clauses to determine final eligibility. Required understanding both the policy's logical structure and healthcare domain context.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Japan Mathematics -->
+      <div class="column is-half">
+        <div class="box">
+          <p class="is-size-7 has-text-grey mb-2"><b>Japan</b> · Mathematics</p>
+          <figure class="image mb-3">
+            <img src="assets/img/examples/japan_mathematics.png" alt="Japan Mathematics">
+          </figure>
+          <div class="content is-size-7">
+            <p><b>Question:</b> Geometric proof involving angle relationships in Japanese notation with algebraic equations.</p>
+            <p><b>Model answer (Llama-3.2-11B):</b> Misparsed the geometric diagram, confusing similar angles and applying incorrect transformations.</p>
+            <p><b>Why it failed:</b> Visual grounding failure compounded by reasoning errors. The model struggled to accurately extract spatial relationships from the diagram and then applied flawed mathematical transformations. Demonstrates challenges in visual-symbolic reasoning for spatial problems in non-Latin scripts.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+            Licensed under <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
