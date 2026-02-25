@@ -1,26 +1,0 @@
-Loading dataset...
-Total: 8000 questions
-Sampled 100 questions
-[1/100] Japan/geography[2/100] South Korea/engineering[3/100] Japan/engineering[4/100] Taiwan/medicine[5/100] South Korea/medicine[6/100] South Korea/biology[7/100] South Korea/law[8/100] Japan/mathematics[9/100] Japan/philosophy[10/100] South Korea/engineering[11/100] South Korea/computer_science[12/100] India/geography[13/100] South Korea/administration[14/100] Japan/physics[15/100] Taiwan/biology[16/100] India/politics[17/100] Taiwan/medicine[18/100] India/history[19/100] EU/administration[20/100] Japan/mathematics[21/100] Japan/economics[22/100] Taiwan/biology[23/100] Taiwan/chemistry[24/100] India/language[25/100] Japan/administration[26/100] South Korea/medicine[27/100] South Korea/mathematics[28/100] Taiwan/biology[29/100] India/mathematics[30/100] Japan/law[31/100] India/economics[32/100] EU/mathematics[33/100] Japan/physics[34/100] South Korea/language[35/100] South Korea/biology[36/100] Japan/physics[37/100] South Korea/mathematics[38/100] South Korea/engineering[39/100] Japan/geography[40/100] Japan/mathematics[41/100] India/administration[42/100] EU/law[43/100] Japan/mathematics[44/100] EU/language[45/100] South Korea/computer_science[46/100] EU/administration[47/100] India/law[48/100] EU/language[49/100] EU/administration[50/100] EU/administration[51/100] EU/law[52/100] Japan/engineering[53/100] EU/language[54/100] Japan/physics[55/100] Japan/engineering[56/100] Japan/engineering[57/100] South Korea/philosophy[58/100] Taiwan/chemistry[59/100] India/law[60/100] South Korea/administration[61/100] Taiwan/administration[62/100] South Korea/administration[63/100] India/mathematics[64/100] Japan/engineering[65/100] India/economics[66/100] Japan/physics[67/100] India/economics[68/100] South Korea/computer_science[69/100] Japan/psychology[70/100] India/biology[71/100] Taiwan/medicine[72/100] India/administration[73/100] South Korea/administration[74/100] EU/language[75/100] South Korea/law[76/100] South Korea/economics[77/100] India/language[78/100] Taiwan/biology[79/100] Japan/physics[80/100] India/economics[81/100] South Korea/philosophy[82/100] India/mathematics[83/100] India/geography[84/100] EU/administration[85/100] South Korea/engineering[86/100] South Korea/mathematics[87/100] Japan/earth_science[88/100] EU/law[89/100] South Korea/biology[90/100] EU/administration[91/100] Japan/engineering[92/100] EU/history[93/100] Japan/economics[94/100] Japan/physics[95/100] Japan/mathematics[96/100] Japan/biology[97/100] India/history[98/100] India/politics[99/100] Japan/physics[100/100] Japan/physics
-
-Experiment complete: 100 questions
-
-============================================================
-OVERALL RESULTS
-============================================================
-Accuracy (Image):      87.0% (87/100)
-Accuracy (Clean-Text): 79.0% (79/100)
-Perception Gap:        -8.0%p
-
-BY NATION:
-------------------------------------------------------------
-Nation               Image       Text        Gap
-------------------------------------------------------------
-EU                   93.3%      80.0%     -13.3%p
-India                75.0%      75.0%      +0.0%p
-Japan                93.3%      73.3%     -20.0%p
-South Korea          84.0%      84.0%      +0.0%p
-Taiwan               90.0%      90.0%      +0.0%p
-------------------------------------------------------------
-
-Results saved to phase3_results.json and phase3_summary.json

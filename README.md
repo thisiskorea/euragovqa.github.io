@@ -50,17 +50,18 @@ pip install -r experiment/requirements.txt
 ### Basic Usage
 
 ```bash
-# Run evaluation on full benchmark (default: image-only)
-python experiment/evaluate.py --model gemini-2.0-flash
+# Cloud API evaluation (Gemini)
+python experiment/run_api.py --provider gemini --model gemini-2.0-flash
 
-# Evaluate on specific nation
-python experiment/evaluate.py --nation japan
+# Cloud API evaluation (OpenAI)
+python experiment/run_api.py --provider openai --model gpt-4o
 
-# Evaluate on specific domain
-python experiment/evaluate.py --domain mathematics
+# Local HuggingFace model evaluation
+python experiment/run_hf.py --model Qwen/Qwen2-VL-7B-Instruct
 
-# Combine filters
-python experiment/evaluate.py --nation korea --domain law
+# Filter by nation or domain
+python experiment/run_api.py --provider gemini --model gemini-2.0-flash --nation japan
+python experiment/run_hf.py --model Qwen/Qwen2-VL-7B-Instruct --domain mathematics
 ```
 
 ### Evaluation Protocol
@@ -71,11 +72,7 @@ python experiment/evaluate.py --nation korea --domain law
 - Minimal standardized instruction
 - Measures combined visual perception + reasoning
 
-```bash
-python experiment/evaluate.py --model gemini-2.0-flash
-```
-
-For advanced multi-track analysis (text-only, multimodal, VCE), see [`experiment/EVALUATE_README.md`](experiment/EVALUATE_README.md).
+For full CLI options and supported models, see [`experiment/EVALUATE_README.md`](experiment/EVALUATE_README.md).
 
 ## Random Baseline
 
@@ -83,30 +80,22 @@ The benchmark's random baseline is **23.7%** (weighted average of 4-choice and 5
 
 ## Files
 
-- **`experiment/evaluate.py`**: Main evaluation script
+- **`experiment/run_api.py`**: Cloud API evaluation (Gemini, OpenAI)
+- **`experiment/run_hf.py`**: Local HuggingFace model evaluation
 - **`experiment/EVALUATE_README.md`**: Detailed usage guide
-- **`experiment/config.py`**: Configuration (API keys, model settings)
 - **`experiment/requirements.txt`**: Python dependencies
-- **`experiment/analysis/`**: Statistical analysis scripts
-- **`experiment/figures/`**: Generated figures
 
 ## Configuration
 
-Edit `experiment/config.py` to configure:
+API keys can be provided via command-line arguments or environment variables:
 
-```python
-# API Keys
-GEMINI_API_KEY = "your-api-key-here"
+```bash
+# Via environment variable
+export GEMINI_API_KEY="your-key-here"
+python experiment/run_api.py --provider gemini --model gemini-2.0-flash
 
-# Model settings
-MODEL_NAME = "gemini-2.0-flash"
-
-# Dataset settings
-DATASET_NAME = "EuraGovExam/EuraGovExam"
-DATASET_SPLIT = "train"
-
-# Prompts (standardized)
-PROMPT_TRACK_A = """You are solving a multiple-choice exam question..."""
+# Via command-line argument
+python experiment/run_api.py --provider openai --model gpt-4o --api-key sk-...
 ```
 
 ## Output Format
@@ -117,7 +106,7 @@ Results are saved as JSON:
 {
   "metadata": {
     "model": "gemini-2.0-flash",
-    "setting": "image-only",
+    "provider": "gemini",
     "filters": {"nation": "japan", "domain": null},
     "sample_size": 100,
     "seed": 42
@@ -147,13 +136,10 @@ All experiments are reproducible with random seeds:
 
 ```bash
 # Run 1
-python experiment/evaluate.py --sample-size 100 --seed 42 --output-dir run1
+python experiment/run_api.py --provider gemini --model gemini-2.0-flash --sample-size 100 --seed 42 --output-dir run1
 
-# Run 2 (identical results)
-python experiment/evaluate.py --sample-size 100 --seed 42 --output-dir run2
-
-# Verify
-diff <(jq '.results' run1/*.json) <(jq '.results' run2/*.json)
+# Run 2 (identical sampling)
+python experiment/run_api.py --provider gemini --model gemini-2.0-flash --sample-size 100 --seed 42 --output-dir run2
 ```
 
 
@@ -172,16 +158,10 @@ This work is licensed under a [Creative Commons Attribution-NonCommercial-ShareA
 EuraGovExam/
 ├── README.md                          # This file
 ├── experiment/
-│   ├── evaluate.py                    # Main evaluation script
+│   ├── run_api.py                     # Cloud API evaluation (Gemini, OpenAI)
+│   ├── run_hf.py                      # Local HuggingFace model evaluation
 │   ├── EVALUATE_README.md             # Detailed usage guide
-│   ├── config.py                      # Configuration
-│   ├── requirements.txt               # Dependencies
-│   ├── analysis/                      # Analysis scripts
-│   │   ├── phase1_statistical_analysis.py
-│   │   ├── phase2_failure_taxonomy.py
-│   │   └── ...
-│   ├── figures/                       # Generated figures
-│   └── paper_draft/                   # Paper manuscript
+│   └── requirements.txt               # Dependencies
 ├── data/                              # Dataset samples
 ├── assets/                            # Static assets
 └── static/                            # Web assets
