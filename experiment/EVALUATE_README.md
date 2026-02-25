@@ -1,103 +1,176 @@
-# EuraGovExam Evaluation Script
+# EuraGovExam Evaluation
 
-## Overview
+Two self-contained scripts for evaluating VLMs on the EuraGovExam benchmark.
 
-`evaluate.py` provides standardized evaluation for the EuraGovExam benchmark using the Image-Only protocol.
+| Script | Purpose |
+|--------|---------|
+| `run_api.py` | Cloud API evaluation (Gemini, OpenAI) |
+| `run_hf.py` | Local HuggingFace model evaluation |
 
-## Quick Start
+## Installation
 
 ```bash
-# Full benchmark evaluation
-python evaluate.py --model gemini-2.0-flash
-
-# Filter by nation
-python evaluate.py --nation japan
-
-# Filter by domain
-python evaluate.py --domain mathematics
-
-# Combine filters
-python evaluate.py --nation korea --domain law
+pip install -r experiment/requirements.txt
 ```
 
-## Evaluation Protocol
+> **Note**: `run_hf.py` additionally requires `torch`, `transformers`, and `accelerate`. If you only need API evaluation, you can skip those.
 
-**Image-Only Evaluation**
-- Model receives only the exam image
-- No external OCR or text extraction
-- Minimal standardized instruction
-- Measures combined visual perception + reasoning
+## run_api.py — Cloud API Evaluation
 
-## Command-Line Options
+### Quick Start
+
+```bash
+# Gemini
+python experiment/run_api.py --provider gemini --model gemini-2.0-flash
+
+# OpenAI
+python experiment/run_api.py --provider openai --model gpt-4o
+```
+
+### API Key
+
+Provide via `--api-key` flag or environment variable:
+
+```bash
+# Environment variable
+export GEMINI_API_KEY="your-key"
+python experiment/run_api.py --provider gemini --model gemini-2.0-flash
+
+# Command-line flag
+python experiment/run_api.py --provider openai --model gpt-4o --api-key sk-...
+```
+
+### Options
 
 | Option | Description | Default |
 |--------|-------------|---------|
-| `--model` | Model identifier | `gemini-2.0-flash` |
-| `--split` | Dataset split (`train`, `test`) | `train` |
-| `--nation` | Filter by nation (`korea`, `japan`, `taiwan`, `india`, `eu`) | None (all) |
-| `--domain` | Filter by domain/subject | None (all) |
-| `--sample-size` | Override sample count | None (use all) |
-| `--output-dir` | Result JSON directory | `results/` |
-| `--seed` | Random seed for reproducibility | `42` |
-| `--verbose` | Enable verbose logging | False |
+| `--provider` | `gemini` or `openai` | (required) |
+| `--model` | Model identifier | (required) |
+| `--api-key` | API key | env var |
+| `--split` | `train` or `test` | `train` |
+| `--nation` | `korea`, `japan`, `taiwan`, `india`, `eu` | all |
+| `--domain` | Filter by domain/task | all |
+| `--sample-size` | Override sample count | all |
+| `--output-dir` | Result directory | `results` |
+| `--seed` | Random seed | `42` |
+| `--verbose` | Verbose logging | off |
+| `--delay` | Seconds between API calls | `2.0` |
+| `--max-retries` | Max retry attempts | `2` |
 
-### Valid Domains
+### Examples
 
-`mathematics`, `physics`, `chemistry`, `biology`, `earth_science`, `history`, `geography`, `politics`, `economics`, `law`, `sociology`, `ethics`, `language`, `literature`, `art`, `music`, `physical_education`
+```bash
+# Filter by nation
+python experiment/run_api.py --provider gemini --model gemini-2.0-flash --nation japan
+
+# Filter by domain
+python experiment/run_api.py --provider gemini --model gemini-2.0-flash --domain mathematics
+
+# Combined filters with sample size
+python experiment/run_api.py --provider gemini --model gemini-2.0-flash --nation korea --domain law --sample-size 50
+
+# Quick verbose test
+python experiment/run_api.py --provider gemini --model gemini-2.0-flash --sample-size 10 --verbose
+```
+
+## run_hf.py — Local HuggingFace Model Evaluation
+
+### Quick Start
+
+```bash
+python experiment/run_hf.py --model Qwen/Qwen2-VL-7B-Instruct
+python experiment/run_hf.py --model llava-hf/llava-1.5-7b-hf --dtype float16
+```
+
+### Supported Models
+
+Explicitly supported architectures (auto-detected from model ID):
+
+| Architecture | Example Models |
+|-------------|----------------|
+| Qwen2-VL / Qwen2.5-VL | `Qwen/Qwen2-VL-7B-Instruct`, `Qwen/Qwen2.5-VL-7B-Instruct` |
+| LLaVA 1.5 | `llava-hf/llava-1.5-7b-hf`, `llava-hf/llava-1.5-13b-hf` |
+| LLaVA-NeXT | `llava-hf/llava-v1.6-mistral-7b-hf` |
+
+Other VLMs (InternVL, Phi-3-vision, Llama-Vision, etc.) are loaded via `AutoModelForVision2Seq` with `trust_remote_code=True`.
+
+### Options
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--model` | HuggingFace model ID | (required) |
+| `--split` | `train` or `test` | `train` |
+| `--nation` | `korea`, `japan`, `taiwan`, `india`, `eu` | all |
+| `--domain` | Filter by domain/task | all |
+| `--sample-size` | Override sample count | all |
+| `--output-dir` | Result directory | `results` |
+| `--seed` | Random seed | `42` |
+| `--verbose` | Verbose logging | off |
+| `--device` | `auto`, `cuda`, `cuda:0`, `cpu` | `auto` |
+| `--dtype` | `auto`, `float16`, `bfloat16`, `float32` | `auto` |
+| `--max-new-tokens` | Max generation length | `512` |
+
+### Examples
+
+```bash
+# Basic usage
+python experiment/run_hf.py --model Qwen/Qwen2-VL-7B-Instruct
+
+# Specify dtype and device
+python experiment/run_hf.py --model llava-hf/llava-1.5-7b-hf --dtype float16 --device cuda:0
+
+# Filter and sample
+python experiment/run_hf.py --model Qwen/Qwen2-VL-7B-Instruct --nation japan --sample-size 100
+
+# Verbose mode
+python experiment/run_hf.py --model Qwen/Qwen2-VL-7B-Instruct --sample-size 10 --verbose
+```
 
 ## Output Format
 
-Results are saved as JSON:
+Both scripts produce identical JSON output:
 
 ```json
 {
   "metadata": {
     "model": "gemini-2.0-flash",
+    "provider": "gemini",
     "split": "train",
-    "filters": {"nation": "japan", "domain": null},
-    "sample_size": 100,
-    "seed": 42
+    "filters": {"nation": null, "domain": null},
+    "sample_size": 8000,
+    "seed": 42,
+    "timestamp": "20260225_143022"
   },
   "metrics": {
     "overall_accuracy": 67.5,
     "random_baseline": 23.7,
-    "by_nation": {...},
-    "by_domain": {...}
+    "correct_count": 5400,
+    "total_count": 8000,
+    "by_nation": {"South Korea": {"accuracy": 65.2, "correct": 1596, "total": 2448}},
+    "by_domain": {"mathematics": {"accuracy": 70.1, "correct": 350, "total": 499}}
   },
-  "results": [...]
+  "results": [
+    {
+      "index": 0,
+      "nation": "South Korea",
+      "task": "mathematics",
+      "correct_answer": "C",
+      "predicted_answer": "C",
+      "is_correct": true,
+      "response": "..."
+    }
+  ]
 }
-```
-
-## Examples
-
-```bash
-# Basic usage
-python evaluate.py
-
-# Quick test
-python evaluate.py --sample-size 10 --verbose
-
-# Filter by nation
-python evaluate.py --nation japan
-
-# Filter by domain
-python evaluate.py --domain mathematics
-
-# Combined filters
-python evaluate.py --nation korea --domain law --sample-size 50
 ```
 
 ## Reproducibility
 
 ```bash
 # Run 1
-python evaluate.py --sample-size 100 --seed 42 --output-dir run1
+python experiment/run_api.py --provider gemini --model gemini-2.0-flash --sample-size 100 --seed 42 --output-dir run1
 
-# Run 2 (identical results)
-python evaluate.py --sample-size 100 --seed 42 --output-dir run2
-
-# Verify
-diff <(jq '.results' run1/*.json) <(jq '.results' run2/*.json)
+# Run 2 (identical sampling)
+python experiment/run_api.py --provider gemini --model gemini-2.0-flash --sample-size 100 --seed 42 --output-dir run2
 ```
 
 ## Random Baseline
