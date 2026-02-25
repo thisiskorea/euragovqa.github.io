@@ -156,18 +156,7 @@ python experiment/evaluate.py --sample-size 100 --seed 42 --output-dir run2
 diff <(jq '.results' run1/*.json) <(jq '.results' run2/*.json)
 ```
 
-## Paper and Citation
 
-If you use EuraGovExam in your research, please cite:
-
-```bibtex
-@inproceedings{euragovexam2025,
-  title={EuraGovExam: A Multilingual Multimodal Benchmark for Vision-Language Models},
-  author={[Authors]},
-  booktitle={NeurIPS Datasets and Benchmarks Track},
-  year={2025}
-}
-```
 
 ## License
 
